@@ -1,0 +1,19 @@
+
+.wrapper{
+  position: relative;
+  padding: 10px;
+  background: #2B2B2B;
+  max-width: 400px;
+  width: 100%;
+  transition: .5s ease;
+  box-shadow: 0px 0px 8px rgba(37, 84, 32, 0.6);
+  &:hover{
+    background: #1D4720;
+  }
+  h1{
+    color: #fff;
+  }
+  .btns{
+    display: flex;
+  }
+}
