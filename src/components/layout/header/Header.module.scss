@@ -4,17 +4,17 @@
   .nav {
     ul {
       @apply flex  w-full text-base justify-between;
-      .links{
+      .links {
         @apply flex items-center;
       }
-      .btns{
+      .btns {
         @apply flex;
-        li{
+        li {
           @apply p-0;
         }
       }
       li {
-        @apply  relative px-6 text-gray uppercase flex items-center py-1 justify-center ;
+        @apply relative px-6 text-gray uppercase flex items-center py-1 justify-center;
         button {
           @apply w-auto;
           svg {
@@ -25,20 +25,20 @@
         a {
           @apply relative py-1 overflow-hidden;
 
-          &:hover{
-            &:before{
+          &:hover {
+            &:before {
               left: 0;
             }
           }
           .logo {
             @apply w-32 h-16;
-            &:before{
+            &:before {
               content: none;
             }
           }
-          &:before{
+          &:before {
             content: '';
-            transition: .5s ease;
+            transition: 0.5s ease;
             position: absolute;
             left: -100%;
             width: 100%;
@@ -46,7 +46,6 @@
             background: #57a53c;
             bottom: 0;
           }
-
         }
 
         &.active > div {

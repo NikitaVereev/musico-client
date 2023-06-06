@@ -1,9 +1,5 @@
-import Head from 'next/head'
-import Home from "@/src/components/screens/home/Home";
-
-
-
-
+import Head from 'next/head';
+import Home from '@/src/components/screens/home/Home';
 
 export default function HomePage() {
   return (
@@ -18,5 +14,5 @@ export default function HomePage() {
         <Home />
       </main>
     </>
-  )
+  );
 }

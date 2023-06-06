@@ -1,8 +1,8 @@
-import { NextPage } from 'next'
-import Catalog from "@/src/components/screens/catalog/Catalog";
+import { NextPage } from 'next';
+import Catalog from '@/src/components/screens/catalog/Catalog';
 
 const CatalogPage: NextPage = () => {
-    return <Catalog />
-}
+  return <Catalog />;
+};
 
-export default CatalogPage
+export default CatalogPage;
