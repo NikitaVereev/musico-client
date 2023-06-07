@@ -19,6 +19,7 @@ const Catalog: FC = () => {
                {products.map((product) => (
                    <div key={product._id} className={styles.glass}>
                        <div className={styles.card}>
+
                            <div className={styles.title}>
                                <h4>{product.type}</h4>
                                <h5>{product.title}</h5>
