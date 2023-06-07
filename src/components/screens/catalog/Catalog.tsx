@@ -6,17 +6,21 @@ import {GoChevronRight} from "react-icons/go";
 import Button from "@/src/components/ui/button/Button";
 import Aside from "@/src/components/screens/catalog/aside/Aside";
 import {useActions} from "@/src/components/hooks/useActions";
+import {useQuery} from "@tanstack/react-query";
+import {ProductServices} from "@/src/components/sercices/product.services";
 
 const Catalog: FC = () => {
-  const {addToCart, removeFromCart} = useActions()
+  const {data, isLoading}: any = useQuery(['all products'], () => ProductServices.getAllProducts())
 
+  const {addToCart, removeFromCart} = useActions()
+    console.log(data)
   return (
     <div className='wrapper'>
       <h1 className="title">Каталог</h1>
        <div className={styles.grid}>
            <Aside />
            <div className={styles.container}>
-               {products.map((product) => (
+               {isLoading ? <div>Загрузка ебать</div> : products.map((product) => (
                    <div key={product._id} className={styles.glass}>
                        <div className={styles.card}>
 

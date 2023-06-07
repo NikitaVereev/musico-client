@@ -4,7 +4,7 @@ import {SwitchTransition, CSSTransition} from "react-transition-group";
 import cn from 'classnames'
 import Link from "next/link";
 
-
+const modes = ["out-in", "in-out"];
 const Auth: FC = () => {
   const [isTab, setIsTab] = useState(true)
   const helloRef = useRef(null)
@@ -12,12 +12,16 @@ const Auth: FC = () => {
   const nodeRef = isTab ? helloRef : goodbyeRef
 
   return (
-      // <SwitchTransition>
-      //   <CSSTransition
-      //   nodeRef={nodeRef}
-      //   addEndListener={(node, done) => node.addEventListener("transitionend", done, false)}
-      //   classNames="fade"
-      //   >
+      <SwitchTransition>
+        <CSSTransition
+            key={state}
+            nodeRef={nodeRef}
+            addEndListener={(done) => {
+              nodeRef.current.addEventListener("transitionend", done, false);
+            }}
+            classNames="fade"
+        >
+        >
           <div className={styles.wrapper}>
             <div className={styles.form}>
               <ul className={styles.tabGroup}>
@@ -90,8 +94,8 @@ const Auth: FC = () => {
             </div>{" "}
 
           </div>
-      //   </CSSTransition>
-      // </SwitchTransition>
+      </CSSTransition>
+      </SwitchTransition>
 
   )
 
