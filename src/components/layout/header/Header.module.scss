@@ -11,6 +11,11 @@
         @apply flex;
         li {
           @apply p-0;
+          a{
+            &:before{
+              content: none;
+            }
+          }
         }
       }
       li {
@@ -19,6 +24,16 @@
           @apply w-auto;
           svg {
             @apply text-xl;
+          }
+        }
+        &.logo {
+          a{
+            img{
+              @apply w-auto h-16 object-contain;
+            }
+            &:before{
+              content: none;
+            }
           }
         }
 
@@ -30,12 +45,7 @@
               left: 0;
             }
           }
-          .logo {
-            @apply w-32 h-16;
-            &:before {
-              content: none;
-            }
-          }
+
           &:before {
             content: '';
             transition: 0.5s ease;

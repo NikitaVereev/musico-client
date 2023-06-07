@@ -5,7 +5,7 @@ import cn from 'classnames';
 import { FaUserAlt } from 'react-icons/fa';
 import Button from '@/src/components/ui/button/Button';
 import Link from 'next/link';
-import Logo from 'public/next.svg';
+import Logo from '@/src/assets/logo.png';
 import styles from './Header.module.scss';
 
 const Header: FC = () => {
@@ -32,7 +32,7 @@ const Header: FC = () => {
         <ul>
           <div className={styles.links}>
             {links.map((link, idx) => (
-              <li key={idx}>
+              <li key={idx} className={cn(link.icon ? styles.logo : null)}>
                 <Link href={link.link}>
                   {link.icon !== undefined ? (
                     <Image
@@ -51,7 +51,7 @@ const Header: FC = () => {
           <div className={styles.btns}>
             <li>
               <Button>
-                <FaUserAlt />
+                <Link href='/authorization'><FaUserAlt /></Link>
               </Button>
             </li>
             <Cart />

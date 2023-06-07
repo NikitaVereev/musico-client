@@ -121,11 +121,34 @@ input {
 }
 
 .title {
-  @apply mb-5 text-3xl font-bold text-gray relative z-10;
+  @apply m-12 text-5xl font-bold text-gray relative z-10;
 }
 .description {
   @apply text-xl w-[90%];
 }
+
+
+
+.fade-enter{
+  opacity: 0;
+}
+.fade-exit{
+  opacity: 1;
+}
+.fade-enter-active{
+  opacity: 1;
+}
+.fade-exit-active{
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-exit-active{
+  transition: opacity 500ms;
+}
+
+
+
+
 
 @media (prefers-color-scheme: dark) {
   html {
