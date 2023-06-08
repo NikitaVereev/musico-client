@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { products } from '@/product';
 import Image from 'next/image';
+import Link from 'next/link'
 import styles from './Catalog.module.scss';
 import {GoChevronRight} from "react-icons/go";
 import Button from "@/src/components/ui/button/Button";
@@ -8,9 +9,11 @@ import Aside from "@/src/components/screens/catalog/aside/Aside";
 import {useActions} from "@/src/components/hooks/useActions";
 import {useQuery} from "@tanstack/react-query";
 import {ProductServices} from "@/src/components/sercices/product.services";
+import {IProduct} from "@/src/components/types/product.interface";
 
-const Catalog: FC = () => {
-  const {data, isLoading}: any = useQuery(['all products'], () => ProductServices.getAllProducts())
+const CatalogItem: FC = ({data, isLoading}) => {
+
+
 
   const {addToCart, removeFromCart} = useActions()
     console.log(data)
@@ -20,7 +23,8 @@ const Catalog: FC = () => {
        <div className={styles.grid}>
            <Aside />
            <div className={styles.container}>
-               {isLoading ? <div>Загрузка ебать</div> : products.map((product) => (
+
+               {isLoading ? <div>Загрузка ебать</div> : data.map((product: IProduct) => (
                    <div key={product._id} className={styles.glass}>
                        <div className={styles.card}>
 
@@ -29,7 +33,7 @@ const Catalog: FC = () => {
                                <h5>{product.title}</h5>
                            </div>
                            <div className={styles.image}>
-                               <Image src={product.image[0]} fill alt={product.title} />
+                               <Image src={product.fileUrl} fill alt={product.title} />
                            </div>
                            <div className={styles.description}>
                                <h3 className={styles.price}>{product.price} р.</h3>
@@ -44,4 +48,4 @@ const Catalog: FC = () => {
   );
 };
 
-export default Catalog;
+export default CatalogItem;

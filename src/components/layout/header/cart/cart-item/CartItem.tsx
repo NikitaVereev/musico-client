@@ -11,7 +11,7 @@ const CartItem: FC<{ item: ICart }> = ({ item }) => {
   return (
     <div className={styles.item}>
       <Image
-        src={item.product.image[0]}
+        src={item.product.fileUrl}
         alt={item.product.title}
         width={100}
         height={100}

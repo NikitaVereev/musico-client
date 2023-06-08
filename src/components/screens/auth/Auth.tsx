@@ -7,19 +7,12 @@ import Link from "next/link";
 const modes = ["out-in", "in-out"];
 const Auth: FC = () => {
   const [isTab, setIsTab] = useState(true)
-  const helloRef = useRef(null)
-  const goodbyeRef = useRef(null)
-  const nodeRef = isTab ? helloRef : goodbyeRef
+  const nodeRef = useRef(null)
 
   return (
-      <SwitchTransition>
         <CSSTransition
-            key={state}
-            nodeRef={nodeRef}
-            addEndListener={(done) => {
-              nodeRef.current.addEventListener("transitionend", done, false);
-            }}
-            classNames="fade"
+           in={isTab}
+
         >
         >
           <div className={styles.wrapper}>
@@ -95,8 +88,6 @@ const Auth: FC = () => {
 
           </div>
       </CSSTransition>
-      </SwitchTransition>
-
   )
 
 };

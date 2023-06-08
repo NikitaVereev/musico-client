@@ -1,0 +1,44 @@
+.wrapper{
+  display: grid;
+  max-width: 900px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 300px);
+  grid-gap: 50px;
+  .catalogList{
+    @apply relative rounded-3xl flex flex-col justify-end overflow-hidden;
+    max-width: 100%;
+    width: auto;
+    h1{
+      @apply relative flex items-center gap-8 text-gray font-bold z-10 w-full p-3;
+      background: #008037;
+      >svg{
+        position: relative;
+
+        transition: .5s ease;
+        top: 2px;
+        opacity: 0;
+      }
+    }
+    >a{
+      @apply inset-0 absolute w-full h-full z-20;
+    }
+    &:hover{
+        h1{
+          svg{
+            opacity: 1;
+          }
+        }
+        img{
+          transform: scale(1.2);
+        }
+
+    }
+
+
+      img{
+        @apply object-cover z-0 ;
+        transition: .5s ease;
+      }
+
+  }
+}

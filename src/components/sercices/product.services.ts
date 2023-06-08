@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {IProduct} from "@/src/components/types/product.interface";
 
 export const ProductServices = {
     async getAllProducts(){

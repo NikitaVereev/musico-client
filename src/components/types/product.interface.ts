@@ -5,7 +5,7 @@ export interface IProduct{
     type: string
     price: number
     description?: string
-    image:string[]
+    fileUrl:string
     article: string
     features?: {
         grip: string,
