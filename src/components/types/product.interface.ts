@@ -1,8 +1,10 @@
 export interface IProduct{
-    _id: string
+    checked: boolean;
+    id: string
     title: string
     slug: string
-    type: string
+    company: string
+    subType: string
     price: number
     description?: string
     fileUrl:string

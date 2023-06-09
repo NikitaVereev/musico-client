@@ -1,0 +1,72 @@
+.glass{
+  max-width: 100%;
+  width: 100%;
+  position: relative;
+  backdrop-filter: blur(2px);
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+  font-family:Helvetica;
+  transition: .5s ease;
+  background:#FFFFFF;
+  @apply overflow-hidden rounded-[30px];
+  .absolutePosition {
+    @apply absolute inset-0 w-full h-full;
+    z-index: 49;
+
+    &:hover ~ .card:before  {
+      left: 0;
+    }
+  }
+  .card{
+    @apply p-8 flex flex-col overflow-hidden gap-6 relative  max-w-[100%] rounded-[30px];
+    transition: .5s ease;
+    &:before{
+      content: '';
+      transition: .5s ease;
+      position: absolute;
+      z-index: 0;
+      @apply bg-border;
+      transform: rotate(45deg);
+      top: 50%;
+      left: 150%;
+      width: 200%;
+      height: 100%;
+
+    }
+    .title{
+      position: relative;
+      z-index: 1;
+      h5{
+        @apply text-sm font-semibold text-center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+        color: #333;
+      }
+    }
+    .image{
+      @apply w-auto  relative h-[340px] rounded-3xl overflow-hidden;
+      >img{
+        @apply object-contain;
+        transition: .5s ease;
+      }
+    }
+    .price{
+      @apply text-2xl w-full text-center  font-bold relative z-10;
+    }
+
+    .description {
+      @apply flex pt-3 items-center relative z-50 justify-between;
+
+      > button {
+        @apply m-0 p-4 w-full relative justify-center gap-4 overflow-hidden flex items-center rounded-2xl;
+        background: #1e5725;
+        z-index: 99;
+
+        > svg {
+          @apply w-6 h-6;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+.images{
+  @apply relative h-96 w-96;
+  img{
+    @apply object-contain;
+  }
+}

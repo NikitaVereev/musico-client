@@ -14,14 +14,14 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action: PayloadAction<IAddToCartPayload>) => {
       const item = state.items.find(
-        (item) => item.product._id === action.payload.product._id
+        (item) => item.product.id === action.payload.product.id
       );
       if (!item)
-        state.items.push({ ...action.payload, _id: state.items.length });
+        state.items.push({ ...action.payload, id: state.items.length });
     },
-    removeFromCart: (state, action: PayloadAction<{ _id: number }>) => {
+    removeFromCart: (state, action: PayloadAction<{ id: number }>) => {
       state.items = state.items.filter(
-        (item) => item._id !== action.payload._id
+        (item) => item.id !== action.payload.id
       );
     },
   },

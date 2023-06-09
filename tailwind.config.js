@@ -7,7 +7,7 @@ const constants = {
   white: '#fbfbfb',
   header: '#1c1a1a',
   icon: '#57a53c',
-  border: '#22772f',
+  border: '#20932f',
   main: '#1c1b1b',
   fill: '#789b79'
 }

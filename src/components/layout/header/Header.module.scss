@@ -1,5 +1,6 @@
 .header {
-  @apply relative z-20 w-full rounded-b-2xl mx-auto  flex justify-between items-center text-gray bg-header;
+  @apply relative z-20 w-full rounded-b-2xl mx-auto  flex justify-between items-center;
+  background: #f3f3f3;
 
   .nav {
     ul {
@@ -19,7 +20,7 @@
         }
       }
       li {
-        @apply relative px-6 text-gray uppercase flex items-center py-1 justify-center;
+        @apply relative px-6  uppercase flex items-center py-1 justify-center;
         button {
           @apply w-auto;
           svg {

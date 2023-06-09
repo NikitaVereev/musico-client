@@ -1,60 +1,15 @@
 .container{
-  @apply flex gap-[30px] items-center flex-wrap;
+  //@apply flex gap-[30px] items-center flex-wrap;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-gap: 30px;
 }
 
 .grid{
-  @apply flex items-start gap-[50px];
+  @apply flex flex-col items-start gap-[50px];
+  .filters{
+    @apply w-full bg-gray relative;
+  }
 }
-.glass{
 
-  .card{
-  @apply p-8 flex flex-col overflow-hidden gap-6 relative  w-72 rounded-[30px];
-  backdrop-filter: blur(2px);
-    box-shadow: 0 0 11px rgba(33,33,33,.2);
-    font-family:Helvetica;
-  color:#fff;
-  background:rgba(0,0,0,0.13);
-  &:hover{
-    .image{
-      img{
-        transform: scale(1.2);
-      }
-    }
-  }
-  .title{
-    @apply px-4;
-    h4{
-      @apply text-xl font-bold text-gray;
-    }
-    h5{
-      @apply text-2xl font-semibold text-white;
-    }
-  }
-  .image{
-    @apply w-64  relative h-[340px] rounded-3xl overflow-hidden;
-    >img{
-      @apply object-contain;
-      transition: .5s ease;
-    }
-  }
-  .description{
-    @apply flex pt-3 items-center justify-between;
-    .price{
-      @apply text-2xl  font-bold;
-    }
-    >button{
-      @apply  absolute m-0 right-0 overflow-hidden bottom-0;
-      background: #1e5725;
-      padding-left: 1.75rem;
-      padding-right: 0.75rem;
-      padding-top: 1.25rem;
-      padding-bottom: 0.25rem;
-      border-top-left-radius: 50%;
-      >svg{
-        @apply w-12 h-12;
-      }
-    }
-  }
-}
-}
 

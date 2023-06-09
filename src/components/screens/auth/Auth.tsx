@@ -10,11 +10,8 @@ const Auth: FC = () => {
   const nodeRef = useRef(null)
 
   return (
-        <CSSTransition
-           in={isTab}
 
-        >
-        >
+
           <div className={styles.wrapper}>
             <div className={styles.form}>
               <ul className={styles.tabGroup}>
@@ -87,7 +84,7 @@ const Auth: FC = () => {
             </div>{" "}
 
           </div>
-      </CSSTransition>
+
   )
 
 };

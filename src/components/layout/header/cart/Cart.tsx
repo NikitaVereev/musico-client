@@ -30,7 +30,7 @@ const Cart: FC = () => {
           </div>
           <div className={styles.itemWrapper}>
             {state.map((item) => (
-              <CartItem key={item._id} item={item} />
+              <CartItem key={item.id} item={item} />
             ))}
           </div>
           <div className={styles.totalPrice}>

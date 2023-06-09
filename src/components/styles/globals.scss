@@ -89,11 +89,15 @@ body {
 }
 
 body {
-  @apply text-white;
+
   background: url('../../assets/bg.jpg');
+  background: #FDFBF7;
+  color: #333;
 }
 .wrapper {
-  @apply max-w-7xl w-full mx-auto;
+  @apply px-8 w-full mx-auto;
+  max-width: 1440px;
+  padding: 0 15px;
 }
 .container {
   @apply max-w-7xl w-full mx-auto py-10;
@@ -121,7 +125,7 @@ input {
 }
 
 .title {
-  @apply m-12 text-5xl font-bold text-gray relative z-10;
+  @apply m-12 text-5xl font-bold  relative z-10;
 }
 .description {
   @apply text-xl w-[90%];

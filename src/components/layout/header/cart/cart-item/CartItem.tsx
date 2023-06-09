@@ -20,7 +20,7 @@ const CartItem: FC<{ item: ICart }> = ({ item }) => {
         <h4>{item.product.title}</h4>
         <span>{item.product.price}</span>
       </div>
-      <RiDeleteBin6Fill onClick={() => removeFromCart({ _id: item._id })} />
+      <RiDeleteBin6Fill onClick={() => removeFromCart({ id: item.id })} />
     </div>
   );
 };
