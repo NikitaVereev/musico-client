@@ -1,6 +1,78 @@
 .images{
-  @apply relative h-96 w-96;
+  @apply relative  w-1/2;
+  display: flex;
+  align-items: end;
+
+  height: calc(100vh - 90px);
+  button{
+    position: relative;
+    z-index: 30;
+    width: 120px;
+    height: 80px;
+    background: #20932f;
+    transition: .5s ease;
+    cursor: pointer;
+    svg{
+      width: 40px;
+      height: 40px;
+      fill: #20932f;
+      transition: .5s ease;
+    }
+    &:hover{
+      border: 3px solid #000;
+      background: #fff;
+      svg{
+        fill: #fff;
+        color: #000;
+      }
+    }
+  }
   img{
     @apply object-contain;
+  }
+}
+.wrapper{
+
+  h1{
+    @apply text-5xl font-bold;
+    margin-bottom: 50px;
+  }
+}
+.mainInfo{
+  @apply flex justify-center items-center;
+
+  .side{
+    @apply flex flex-col gap-8  p-5 w-1/2;
+    margin-right: 30px;
+    box-shadow: 10px 20px 11px rgba(33,33,33,.2);
+    border-radius: 20px;
+    .sideInfo{
+      p{
+        font-size: 14px;
+      }
+    }
+
+    p{
+      @apply text-xl
+    }
+
+    .btn{
+      color: #333;
+    }
+    .info{
+      display: flex;
+      gap: 100px;
+      >div{
+        h3{
+          font-size: 20px;
+          font-weight: 700;
+
+        }
+        p{
+          font-size: 18px;
+          color: #a3a3a3;
+        }
+      }
+    }
   }
 }

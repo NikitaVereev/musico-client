@@ -7,34 +7,52 @@
   font-family:Helvetica;
   transition: .5s ease;
   background:#FFFFFF;
+  width: 300px;
+  height: 500px;
+
+  border-radius:10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  float: left;
+  &:hover{
+    .price, .title{
+     opacity: 0;
+    }
+    img{
+      transform: scale(1.2);
+    }
+    .description {
+      transform: translateY(-100px);
+
+      > button {
+        @apply m-0 p-4 w-full relative justify-center gap-4 overflow-hidden flex items-center rounded-2xl;
+        background: #1e5725;
+        z-index: 99;
+
+        > svg {
+          @apply w-6 h-6;
+        }
+      }
+    }
+  }
   @apply overflow-hidden rounded-[30px];
   .absolutePosition {
     @apply absolute inset-0 w-full h-full;
     z-index: 49;
 
-    &:hover ~ .card:before  {
-      left: 0;
+    &:hover ~ .card  {
+
     }
   }
   .card{
-    @apply p-8 flex flex-col overflow-hidden gap-6 relative  max-w-[100%] rounded-[30px];
+    @apply p-8 flex flex-col  gap-6 relative  max-w-[100%] rounded-[30px];
     transition: .5s ease;
-    &:before{
-      content: '';
-      transition: .5s ease;
-      position: absolute;
-      z-index: 0;
-      @apply bg-border;
-      transform: rotate(45deg);
-      top: 50%;
-      left: 150%;
-      width: 200%;
-      height: 100%;
+    box-shadow: 10px 20px 11px rgba(33,33,33,.2);
 
-    }
     .title{
       position: relative;
       z-index: 1;
+      transition: .5s ease;
       h5{
         @apply text-sm font-semibold text-center;
         overflow: hidden;
@@ -53,11 +71,12 @@
     }
     .price{
       @apply text-2xl w-full text-center  font-bold relative z-10;
+      transition: .5s ease;
     }
 
     .description {
       @apply flex pt-3 items-center relative z-50 justify-between;
-
+      transition: .5s ease;
       > button {
         @apply m-0 p-4 w-full relative justify-center gap-4 overflow-hidden flex items-center rounded-2xl;
         background: #1e5725;

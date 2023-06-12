@@ -1,8 +1,16 @@
 .wrapper{
-  @apply max-w-[300px] w-full h-[1000px];
-  backdrop-filter: blur(2px);
-  box-shadow: 0 0 11px rgba(33,33,33,.2);
-  font-family:Helvetica;
-  background:rgba(0,0,0,0.13);
+  @apply max-w-[300px] w-full ;
+
   position: relative;
+}
+.filterWrapper{
+  @apply flex  w-full;
+  max-height: 200px;
+  overflow-y: auto;
+  >div{
+    @apply border-2 border-solid border-border rounded-3xl p-5 m-2;
+  }
+  h1{
+    @apply text-2xl font-bold;
+  }
 }

@@ -12,11 +12,23 @@
         @apply flex;
         li {
           @apply p-0;
-          a{
-            &:before{
-              content: none;
-            }
-          }
+         >button{
+           border-left: none;
+           border: none;
+           svg{
+             fill: #b3b3b3;
+           }
+           span{
+             color: #000;
+           }
+           a{
+             &:before{
+               content: none;
+             }
+
+           }
+         }
+
         }
       }
       li {

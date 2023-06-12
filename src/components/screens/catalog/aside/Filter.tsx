@@ -1,21 +1,20 @@
 import React, { FC } from 'react';
 import Categories from '@/src/components/screens/catalog/aside/categories/Categories';
-import {ICategory} from "@/src/components/screens/catalog/aside/category.interface";
-
+import PriceFilter from "@/src/components/screens/catalog/aside/price/PriceFilter";
+import { ICategory } from '@/src/components/screens/catalog/aside/category.interface';
+import styles from './Filter.module.scss'
 
 interface FilterProps {
     categories: ICategory[];
     changeChecked: (categoryId: string) => void;
-
+    handleChangePrice: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    applyFilters: () => void; // Добавлено новое свойство пропсов
 }
 
-const Filter: FC<FilterProps> = ({ categories, changeChecked }) => {
+const Filter: FC<FilterProps> = ({ categories, changeChecked, handleChangePrice, applyFilters }) => {
     const uniqueCategories = categories.filter(
-        (category, index, self) =>
-            index === self.findIndex((c) => c.company === category.company)
+        (category, index, self) => index === self.findIndex((c) => c.company === category.company)
     );
-
-
 
     const productCounts: Record<string, number> = categories.reduce(
         (countMap: Record<string, number>, category: ICategory) => {
@@ -25,20 +24,24 @@ const Filter: FC<FilterProps> = ({ categories, changeChecked }) => {
         {}
     );
 
-
     return (
-        <ul>
-            <h1>Фильтры</h1>
-            {uniqueCategories.map((categoryItem) => (
-                <Categories
-                    key={categoryItem.id}
-                    category={categoryItem}
-                    count={productCounts[categoryItem.company]}
-                    changeChecked={changeChecked}
-                />
-            ))}
-
-        </ul>
+        <div className={styles.filterWrapper}>
+            <div>
+                <h1>Бренды</h1>
+                {uniqueCategories.map((categoryItem) => (
+                    <Categories
+                        key={categoryItem.id}
+                        category={categoryItem}
+                        count={productCounts[categoryItem.company]}
+                        changeChecked={changeChecked}
+                    />
+                ))}
+            </div>
+            <div>
+                <h1>Цена, р.</h1>
+                <PriceFilter handleChangePrice={handleChangePrice} applyFilters={applyFilters} />
+            </div>
+        </div>
     );
 };
 
