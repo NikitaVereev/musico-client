@@ -1,0 +1,52 @@
+.button{
+  @apply py-2 px-10;
+}
+.common{
+  @apply relative border-b border-gray-500 focus-within:border;
+  >label{
+    @apply block;
+    >span{
+      @apply text-xs uppercase text-gray-500 block;
+    }
+  }
+}
+
+.field{
+  @apply text-left mb-8;
+  input {
+    @apply outline-none border-none focus:right-0 bg-transparent text-gray-300 w-full m-0 px-0;
+  }
+}
+
+.uploadField{
+  position: relative;
+  .uploadFlex{
+    display: flex;
+    > .uploadImageContainer{
+      @apply shrink-0 relative w-24 h-24;
+      img{
+        @apply rounded-md;
+        objectPosition: 'center';
+        objectFit: 'cover';
+        pointerEvents: 'none';
+      }
+
+    }
+    >label{
+      display: block;
+      @apply mr-6;
+      .error{
+        @apply relative -bottom-3;
+      }
+      >span{
+        @apply text-xs uppercase text-gray-500 block mb-4;
+      }
+      >input{
+        @apply block w-full text-sm text-gray-500  opacity-70;
+      }
+      &:hover > input{
+        @apply opacity-100;
+      }
+    }
+  }
+}
