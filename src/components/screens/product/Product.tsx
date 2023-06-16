@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import {ProductPageProps} from "@/pages/product/[slug]";
-import {useActions} from "@/src/components/hooks/useActions";
+import {useActions} from "@/src/hooks/useActions";
 import styles from './Product.module.scss'
 import Image from "next/image";
 import cn from 'classnames'
@@ -16,7 +16,7 @@ const Product: FC<ProductPageProps> = ({product}) => {
 
                 <div className={styles.mainInfo}>
                     <div className={styles.images}>
-                        <Image src={product.fileUrl} alt={product.title} fill />
+                        {product.fileUrl ? <Image src={product.fileUrl} alt={product.title} fill /> : <div>Нету</div>}
                         <button><FiChevronLeft /></button>
                         <button><FiChevronRight /></button>
                     </div>

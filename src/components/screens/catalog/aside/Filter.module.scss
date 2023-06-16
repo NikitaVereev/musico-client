@@ -8,7 +8,7 @@
   max-height: 200px;
   overflow-y: auto;
   >div{
-    @apply border-2 border-solid border-border rounded-3xl p-5 m-2;
+    @apply border-2 border-solid border rounded-3xl p-5 m-2;
   }
   h1{
     @apply text-2xl font-bold;

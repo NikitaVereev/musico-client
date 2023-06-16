@@ -3,7 +3,7 @@ import { ICart } from '@/src/components/store/cart/cart.interface';
 import Image from 'next/image';
 import styles from './CartItem.module.scss';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
-import { useActions } from '@/src/components/hooks/useActions';
+import { useActions } from '@/src/hooks/useActions';
 
 const CartItem: FC<{ item: ICart }> = ({ item }) => {
   const { removeFromCart } = useActions();

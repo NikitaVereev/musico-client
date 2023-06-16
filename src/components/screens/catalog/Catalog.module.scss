@@ -8,7 +8,7 @@
 .grid{
   @apply flex flex-col items-start gap-[50px];
   .filters{
-    @apply w-full bg-gray p-4 relative;
+    @apply w-full bg-gray-300 p-4 relative;
     border-radius: 30px;
   }
 }

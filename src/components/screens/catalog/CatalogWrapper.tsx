@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import styles from './Catalog.module.scss';
 import Filter from '@/src/components/screens/catalog/aside/Filter';
 import CatalogItem from '@/src/components/screens/catalog/catalog-item/CatalogItem';
-import { IProduct } from '@/src/components/types/product.interface';
+import { IProduct } from '@/src/components/interfaces/product.interface';
 import { BsFilterCircleFill } from 'react-icons/bs';
 import Button from '@/src/components/ui/button/Button';
 
@@ -62,7 +62,7 @@ const CatalogWrapper: FC<{ products: IProduct[] }> = ({ products }) => {
 
     return (
         <div className="wrapper">
-            <h1 className="title">Каталог</h1>
+
             <div className={styles.grid}>
                 <div className={styles.filters}>
                     <div className={styles.btn}>

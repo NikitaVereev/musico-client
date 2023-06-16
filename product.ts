@@ -1,4 +1,4 @@
-import {IProduct} from "@/src/components/types/product.interface";
+import {IProduct} from "@/src/components/interfaces/product.interface";
 
 export const products: IProduct[] = [{
     _id: "1",

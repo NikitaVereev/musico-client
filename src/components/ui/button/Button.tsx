@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import {TChildren} from "@/src/components/types/option.interface";
+import {TChildren} from "@/src/components/interfaces/option.interface";
 import cn from "classnames";
 import styles from './Button.module.scss'
 

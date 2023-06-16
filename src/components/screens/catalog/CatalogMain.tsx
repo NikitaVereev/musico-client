@@ -12,9 +12,7 @@ const CatalogMain: FC = () => {
 
     return (
         <div className='wrapper'>
-            <h1>
-                Каталог
-            </h1>
+
             <div className={cn(styles.wrapper, 'wrapper')}>
                 {catalogList.map((item:IList) => (
                     <div className={styles.catalogList} key={item.title}>

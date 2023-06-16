@@ -9,9 +9,10 @@
         @apply flex items-center;
       }
       .btns {
-        @apply flex;
+        @apply flex items-center;
         li {
           @apply p-0;
+
          >button{
            border-left: none;
            border: none;
@@ -66,7 +67,7 @@
             left: -100%;
             width: 100%;
             height: 3px;
-            background: #57a53c;
+            @apply bg-primary;
             bottom: 0;
           }
         }
@@ -84,7 +85,7 @@
             @apply p-5 h-auto flex flex-col;
             backdrop-filter: blur(10px);
             .popupTitle {
-              @apply flex justify-between pb-3 mb-8 border-gray;
+              @apply flex justify-between pb-3 mb-8 border-gray-500;
               border-bottom: 2px solid;
               > h2 {
                 @apply font-bold;
@@ -100,7 +101,7 @@
               > h3 {
                 @apply flex gap-2;
                 span {
-                  @apply text-orange text-2xl;
+                  @apply text-white text-2xl;
                 }
               }
               > button {
@@ -114,5 +115,88 @@
         }
       }
     }
+  }
+
+}
+.search {
+  overflow: hidden;
+  margin-right: 30px;
+  float: right;
+  height: 56px;
+  width: 4em;
+  border-radius: 2em;
+  .input{
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    float: left;
+    width: 0em;
+    height: 2em;
+    margin: 1em;
+    margin-right: -4.5em;
+    background: #fff;
+    color: #6A5D4F;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 0px;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.2) inset;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.15);
+    -moz-transition: all .25s;
+    -webkit-transition: all .25s;
+    &:focus{
+      outline: none;
+      box-shadow: 0 -1px 1px rgba(255,255,255,0.25), 0 1px 5px rgba(0,0,0,0.15);
+    }
+  }
+  -moz-transition: all .35s;
+  -webkit-transition: all 0.35s;
+  &:hover, &:focus, &:focus-within{
+    width: 25em;
+    box-shadow: 0 0 5px #6A5D4F;
+    border-radius: 5px 2em 2em 5px;
+    outline: none;
+    .input{
+      display: inline-block;
+      width: 19em;
+      padding: 10px;
+    }
+
+  }
+
+
+  .button{
+    display: flex;
+    border: none;
+    transform: translate(10px, -50%);
+    top: 43%;
+
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 39;
+    border-radius: 100%;
+    float: right;
+    width: 1.75em;
+    height: 1.75em;
+    margin: 0.125em;
+    transition: 1s ease;
+    @apply w-auto;
+    svg {
+      @apply text-xl;
+    }
+
+    text-align: center;
+    font-size: 2em;
+    color: #FDF6E3;
+
+
+    &:active{
+      border: 0 !important;
+      text-shadow: 0 0 0;
+
+    }
+
   }
 }

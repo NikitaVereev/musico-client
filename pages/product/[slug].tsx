@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { IProduct } from '@/src/components/types/product.interface';
+import { IProduct } from '@/src/components/interfaces/product.interface';
 import { useQuery } from '@tanstack/react-query';
 import { ProductServices } from '@/src/components/sercices/product.services';
 import Product from '@/src/components/screens/product/Product';

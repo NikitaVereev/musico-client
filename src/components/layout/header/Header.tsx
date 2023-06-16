@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import Image from 'next/image';
 import Cart from '@/src/components/layout/header/cart/Cart';
 import cn from 'classnames';
-import { FaUserAlt } from 'react-icons/fa';
+import {FaSearch, FaUserAlt} from 'react-icons/fa';
 import Button from '@/src/components/ui/button/Button';
 import Link from 'next/link';
 import Logo from '@/src/assets/logo.png';
@@ -49,9 +49,17 @@ const Header: FC = () => {
           </div>
 
           <div className={styles.btns}>
+            <div>
+              <div tabIndex={1} className={styles.search}>
+                <input className={styles.input} type="text" placeholder="Поиск..." />
+                <Button className={styles.button}>
+                  <FaSearch />
+                </Button>
+              </div>
+            </div>
             <li>
               <Button>
-                <Link href='/authorization'><FaUserAlt /></Link>
+                <Link href='/auth'><FaUserAlt /></Link>
               </Button>
             </li>
             <Cart />

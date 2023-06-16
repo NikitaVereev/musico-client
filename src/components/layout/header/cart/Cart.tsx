@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { useTypedSelector } from '@/src/components/hooks/useTypedSelector';
+import { useTypedSelector } from '@/src/hooks/useTypedSelector';
 import { FaWindowClose, FaShoppingCart } from 'react-icons/fa';
 import CartItem from '@/src/components/layout/header/cart/cart-item/CartItem';
 import Button from '@/src/components/ui/button/Button';

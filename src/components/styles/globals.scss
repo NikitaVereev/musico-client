@@ -130,7 +130,9 @@ li {
 button,
 input {
   @apply outline-none bg-transparent border-none;
+  color: #333;
 }
+
 
 .title {
   @apply m-12 text-5xl font-bold  relative z-10;
@@ -167,3 +169,4 @@ input {
     color-scheme: dark;
   }
 }
+

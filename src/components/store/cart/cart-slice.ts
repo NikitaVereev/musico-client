@@ -4,6 +4,7 @@ import {
   IInitialState,
 } from '@/src/components/store/cart/cart.interface';
 
+
 const initialState: IInitialState = {
   items: [],
 };
@@ -26,3 +27,5 @@ export const cartSlice = createSlice({
     },
   },
 });
+
+export const {reducer} = cartSlice

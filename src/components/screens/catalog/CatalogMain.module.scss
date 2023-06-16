@@ -9,7 +9,7 @@
     max-width: 100%;
     width: auto;
     h1{
-      @apply relative flex items-center gap-8 text-gray font-bold z-10 w-full p-3;
+      @apply relative flex items-center gap-8 text-gray-500 font-bold z-10 w-full p-3;
       background: #008037;
       >svg{
         position: relative;

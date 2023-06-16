@@ -3,8 +3,8 @@ import Image from 'next/image';
 import styles from './CatalogItem.module.scss';
 import {FaShoppingCart} from "react-icons/fa";
 import Button from "@/src/components/ui/button/Button";
-import {useActions} from "@/src/components/hooks/useActions";
-import {IProduct} from "@/src/components/types/product.interface";
+import {useActions} from "@/src/hooks/useActions";
+import {IProduct} from "@/src/components/interfaces/product.interface";
 import Link from "next/link";
 
 const CatalogWrapper: FC<{ product: IProduct }> = ({product}) => {
