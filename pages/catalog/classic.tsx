@@ -2,8 +2,8 @@ import { FC } from 'react';
 import {NextPage} from "next";
 import CatalogWrapper from "@/src/components/screens/catalog/CatalogWrapper";
 import {useQuery} from "@tanstack/react-query";
-import {IProduct} from "@/src/components/interfaces/product.interface";
-import {ProductServices} from "@/src/components/sercices/product.services";
+import {IProduct} from "@/src/interfaces/product.interface";
+import {ProductServices} from "@/src/services/product.services";
 
 const ClassicPage: NextPage = () => {
     const {data: products, isLoading}: any = useQuery<IProduct[]>(['all products'], () => ProductServices.getOnlyCategories('Классическая'))

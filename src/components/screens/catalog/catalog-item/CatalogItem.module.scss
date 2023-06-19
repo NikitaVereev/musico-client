@@ -1,6 +1,7 @@
 .glass{
   max-width: 100%;
   width: 100%;
+  overflow: hidden;
   position: relative;
   backdrop-filter: blur(2px);
   box-shadow: 0 0 11px rgba(33,33,33,.2);
@@ -63,7 +64,7 @@
       }
     }
     .image{
-      @apply w-auto  relative h-[340px] rounded-3xl overflow-hidden;
+      @apply w-auto  relative h-[340px] rounded-3xl ;
       >img{
         @apply object-contain;
         transition: .5s ease;

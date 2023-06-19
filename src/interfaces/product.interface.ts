@@ -25,3 +25,22 @@ export interface IProduct{
     }
 }
 
+export type TypeProductDataFilters = {
+    sort?: string
+    searchTerm?: string
+    page?: string | number
+    perPage?: string | number
+    ratings: string
+    minPrice?: string
+    maxPrice?: string
+    categoryId?: string
+}
+
+export enum EnumProductSort {
+    HIGH_PRICE = 'По убыванию',
+    LOW_PRICE = 'По убыванию',
+    NEWEST = 'Новые',
+    OLDEST = 'Старые'
+}
+
+

@@ -1,19 +1,38 @@
 .container{
-  //@apply flex gap-[30px] items-center flex-wrap;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-gap: 30px;
+  @apply grid grid-cols-4 gap-10;
+  //display: grid;
+  //grid-template-columns: repeat(4, minmax(0, 1fr));
+  //grid-gap: 30px;
 }
 
-.grid{
-  @apply flex flex-col items-start gap-[50px];
-  .filters{
-    @apply w-full bg-gray-300 p-4 relative;
-    border-radius: 30px;
+//.grid{
+//  @apply flex flex-col items-start gap-[50px];
+//  .filters{
+//    @apply w-full bg-gray-300 p-4 relative;
+//    border-radius: 30px;
+//  }
+//}
+//.btn{
+//  @apply flex items-center gap-8;
+//}
+
+.explorer{
+  @apply flex;
+  >aside{
+    @apply w-0 whitespace-nowrap opacity-0;
+    transition: width 600ms ease-in, opacity 600ms ease-in;
   }
-}
-.btn{
-  @apply flex items-center gap-8;
+  >section{
+    @apply w-full;
+    transition: width 600ms ease-in;
+  }
+  &.filterOpened{
+    @apply gap-5;
+
+    >aside{
+      @apply w-2/6 opacity-100;
+    }
+  }
 }
 
 

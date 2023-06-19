@@ -1,10 +1,11 @@
 .header {
-  @apply relative z-20 w-full rounded-b-2xl mx-auto  flex justify-between items-center;
-  background: #f3f3f3;
+  @apply relative z-20 w-full bg-gray-300 rounded-b-2xl mx-auto  flex justify-between items-center;
+
+
 
   .nav {
     ul {
-      @apply flex  w-full text-base justify-between;
+      @apply flex  items-center w-full text-base justify-between;
       .links {
         @apply flex items-center;
       }
@@ -33,11 +34,14 @@
         }
       }
       li {
-        @apply relative px-6  uppercase flex items-center py-1 justify-center;
+        @apply relative px-4  uppercase flex items-center py-1 justify-center;
         button {
           @apply w-auto;
           svg {
-            @apply text-xl;
+            @apply text-2xl;
+          }
+          a{
+            @apply h-full w-full inset-0 absolute;
           }
         }
         &.logo {
@@ -76,37 +80,22 @@
           @apply right-0 h-full;
         }
 
-        > div {
-          @apply fixed  w-1/3 min-h-full top-0 rounded-2xl -right-full z-40;
-
+        .cartWrapper {
+          //@apply fixed  w-1/3 min-h-full top-0 rounded-2xl -right-full z-40;
+          @apply absolute -left-[12.5rem] top-[4.2rem] z-20 w-80 rounded-xl bg-gray-300 px-6 py-4 text-sm text-white;
           backdrop-filter: blur(20px);
+          animation: cartAnimation .5s ease;
           transition: 0.5s ease;
-          .wrapper {
-            @apply p-5 h-auto flex flex-col;
-            backdrop-filter: blur(10px);
-            .popupTitle {
-              @apply flex justify-between pb-3 mb-8 border-gray-500;
-              border-bottom: 2px solid;
-              > h2 {
-                @apply font-bold;
-              }
+          .cart{
+            @apply mb-10;
+
+          }
+          .totalPrice{
+            >div:first-child{
+              @apply text-sm text-black;
             }
-            .itemWrapper {
-              @apply flex flex-col gap-5;
-              flex: 1 0 auto;
-            }
-            .totalPrice {
-              flex: 0 0 auto;
-              @apply flex gap-11 items-center;
-              > h3 {
-                @apply flex gap-2;
-                span {
-                  @apply text-white text-2xl;
-                }
-              }
-              > button {
-                @apply w-full;
-              }
+            >div:last-child{
+              @apply text-xl font-semibold;
             }
           }
         }
@@ -119,84 +108,54 @@
 
 }
 .search {
-  overflow: hidden;
-  margin-right: 30px;
-  float: right;
-  height: 56px;
-  width: 4em;
-  border-radius: 2em;
-  .input{
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    float: left;
-    width: 0em;
-    height: 2em;
-    margin: 1em;
-    margin-right: -4.5em;
-    background: #fff;
-    color: #6A5D4F;
-    font-size: 1em;
-    font-weight: 600;
-    padding: 0px;
-    border: 0;
-    border-radius: 5px;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.2) inset;
-    text-shadow: 0 1px 1px rgba(0,0,0,0.15);
-    -moz-transition: all .25s;
-    -webkit-transition: all .25s;
-    &:focus{
-      outline: none;
-      box-shadow: 0 -1px 1px rgba(255,255,255,0.25), 0 1px 5px rgba(0,0,0,0.15);
+
+  flex: auto;
+  max-width: 600px;
+  .input {
+    width: 100%;
+    padding: 12px 24px;
+
+    background-color: transparent;
+    transition: transform 250ms ease-in-out;
+    font-size: 14px;
+    line-height: 18px;
+
+    color: #575756;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: 95% center;
+    border-radius: 15px;
+    @apply border-2 border-gray-500 border-solid;
+    transition: all 250ms ease-in-out;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+
+    &::placeholder {
+      color: color(#575756 a(0.8));
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    &:hover,
+    &:focus {
+      padding: 12px 0;
+      outline: 0;
+      border: 1px solid transparent;
+      border-bottom: 1px solid #575756;
+      border-radius: 0;
+      background-position: 100% center;
     }
   }
-  -moz-transition: all .35s;
-  -webkit-transition: all 0.35s;
-  &:hover, &:focus, &:focus-within{
-    width: 25em;
-    box-shadow: 0 0 5px #6A5D4F;
-    border-radius: 5px 2em 2em 5px;
-    outline: none;
-    .input{
-      display: inline-block;
-      width: 19em;
-      padding: 10px;
-    }
 
+}
+
+@keyframes cartAnimation {
+  from {
+    transform: translateX(110%)
   }
-
-
-  .button{
-    display: flex;
-    border: none;
-    transform: translate(10px, -50%);
-    top: 43%;
-
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    z-index: 39;
-    border-radius: 100%;
-    float: right;
-    width: 1.75em;
-    height: 1.75em;
-    margin: 0.125em;
-    transition: 1s ease;
-    @apply w-auto;
-    svg {
-      @apply text-xl;
-    }
-
-    text-align: center;
-    font-size: 2em;
-    color: #FDF6E3;
-
-
-    &:active{
-      border: 0 !important;
-      text-shadow: 0 0 0;
-
-    }
-
+  to{
+    transform: translateX(0)
   }
 }

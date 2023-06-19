@@ -3,17 +3,16 @@ import styles from './Auth.module.scss'
 import {SubmitHandler, useForm} from "react-hook-form";
 import Button from '@/src/components/ui/button/Button'
 import {useActions} from "@/src/hooks/useActions";
-import {useAuth} from "@/src/hooks/useAuth";
 
 import AuthFields from "@/src/components/screens/auth/AuthFields";
 import {IAuthInput} from "@/src/components/screens/auth/auth.interface";
 import {useAuthRedirect} from "@/src/components/screens/auth/useAuthRedirect";
+import {useAuth} from "@/src/hooks/useAuth";
 
 
 const Auth: FC = () => {
   useAuthRedirect()
-
-  const { isLoading } = useAuth()
+  const {isLoading} = useAuth()
 
   const [type, setType] = useState<'login' | 'register'>('login')
 
@@ -31,13 +30,14 @@ const Auth: FC = () => {
   const onSubmit: SubmitHandler<IAuthInput> = (data) => {
     if (type === 'login') login(data)
     else if (type === 'register') register(data)
-
     reset()
   }
+
 
     return (
         <div>
           <section className={styles.wrapper}>
+            {isLoading && <div>Загрузка</div>}
             <form onSubmit={handleSubmit(onSubmit)}>
               <h1 title="Авторизация" className="mb-6" />
               <AuthFields
@@ -47,13 +47,13 @@ const Auth: FC = () => {
               />
               <div className={styles.button}>
                 <Button
-                    type="submit"
+
                     onClick={() => setType('login')}
-                    disabled={isLoading}
+
                 >
                   Логин
                 </Button>
-                <Button type="submit" onClick={() => setType('register')}>
+                <Button  onClick={() => setType('register')}>
                   Регистрация
                 </Button>
               </div>

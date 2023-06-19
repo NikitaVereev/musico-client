@@ -5,13 +5,23 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Provider } from 'react-redux';
 import NextNProgress from 'nextjs-progressbar';
 import { store } from '@/src/components/store/store';
+import ReduxToast from "@/src/providers/ReduxToast";
+
 
 export default function App({ Component, pageProps }: AppProps) {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false
+      }
+    }
+  });
 
   return (
-    <QueryClientProvider client={queryClient}>
+
       <Provider store={store}>
+        <QueryClientProvider client={queryClient}>
+          <ReduxToast />
         <Layout>
           <NextNProgress
             color="#57a53c"
@@ -22,7 +32,8 @@ export default function App({ Component, pageProps }: AppProps) {
           />
           <Component {...pageProps} />
         </Layout>
+        </QueryClientProvider>
       </Provider>
-    </QueryClientProvider>
+
   );
 }

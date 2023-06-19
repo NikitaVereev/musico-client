@@ -63,7 +63,7 @@ module.exports = {
       },
       keyframes: {
         fade: {
-          from: { opacity: 0 },
+          from: { opacity: 0.2 },
           to: { opacity: 1 },
         },
         scaleIn: {
@@ -81,8 +81,8 @@ module.exports = {
         },
       },
       animation: {
-        fade: 'fade 1s ease',
-        scaleIn: 'scaleIn .5s ease',
+        fade: 'fade .5s ease',
+        scaleIn: 'scaleIn .35s ease',
       },
     },
   },

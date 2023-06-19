@@ -1,6 +1,7 @@
 .item {
-  @apply relative flex bg-black p-4 rounded-2xl bg-opacity-60 gap-4;
-  backdrop-filter: blur(20px);
+  //@apply relative flex bg-black p-4 rounded-2xl bg-opacity-60 gap-4;
+  //backdrop-filter: blur(20px);
+  @apply flex items-center gap-4 border-b border-b-black/30 pb-6 pt-4;
   > img {
     @apply relative rounded-2xl object-contain;
   }

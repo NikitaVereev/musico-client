@@ -1,4 +1,4 @@
-import { IProduct } from '@/src/components/interfaces/product.interface';
+import { IProduct } from '@/src/interfaces/product.interface';
 
 export interface ICart {
   id: number;
