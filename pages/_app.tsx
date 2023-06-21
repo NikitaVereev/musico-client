@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import NextNProgress from 'nextjs-progressbar';
 import { store } from '@/src/components/store/store';
 import ReduxToast from "@/src/providers/ReduxToast";
+import AuthProvider from "@/src/providers/auth-provider/AuthProvider";
 
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -22,16 +23,18 @@ export default function App({ Component, pageProps }: AppProps) {
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
           <ReduxToast />
-        <Layout>
-          <NextNProgress
-            color="#57a53c"
-            startPosition={0.3}
-            stopDelayMs={200}
-            height={3}
-            showOnShallow={true}
-          />
-          <Component {...pageProps} />
-        </Layout>
+        <AuthProvider Component={Component}>
+            <Layout>
+                <NextNProgress
+                    color="#57a53c"
+                    startPosition={0.3}
+                    stopDelayMs={200}
+                    height={3}
+                    showOnShallow={true}
+                />
+                <Component {...pageProps} />
+            </Layout>
+        </AuthProvider>
         </QueryClientProvider>
       </Provider>
 

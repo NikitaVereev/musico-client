@@ -4,7 +4,7 @@ import {register, login, logout} from "@/src/components/store/user/user.actions"
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState: IInitialState = {
-    user: getStoreLocal('user'),
+    user: getStoreLocal('user') || null,
     isLoading: false,
 }
 

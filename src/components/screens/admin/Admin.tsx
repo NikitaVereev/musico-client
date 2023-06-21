@@ -9,6 +9,7 @@ import generateSlug from '@/src/components/utils/string/generate-slug';
 import SlugField from '@/src/components/ui/form-elements/slug-field/SlugField';
 import {useProduct} from "@/src/components/screens/admin/useProduct";
 import UploadField from "@/src/components/ui/form-elements/upload-field/UploadField";
+import {useAuth} from "@/src/hooks/useAuth";
 
 const Admin: FC = () => {
     const {
@@ -21,6 +22,12 @@ const Admin: FC = () => {
     } = useForm({
         mode: 'onChange',
     });
+    const { user } = useAuth()
+    console.log(user)
+
+    if(user?.admin === false) {
+        return <div>Нету(</div>
+    }
 
     const {onSubmitEdit} = useProduct(setValue)
 

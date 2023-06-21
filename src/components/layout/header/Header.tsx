@@ -31,7 +31,9 @@ const Header: FC = () => {
     handleSearch(); // Выполняем поиск после каждого изменения значения в поле ввода
   };
 
-  const { user } = useAuth();
+  const { user } = useAuth()
+  console.log(searchResults)
+
 
   const links = [
     {
@@ -72,21 +74,24 @@ const Header: FC = () => {
                   type="text"
                   placeholder="Поиск..."
                   value={searchQuery}
-                  onChange={handleChange} // Обновленный обработчик onChange
+                  onChange={handleChange}
               />
-              <button onClick={handleSearch}>
+              <button className={styles.searchButton} onClick={handleSearch}>
                 <FaSearch />
               </button>
 
-              <ul>
-                {searchResults.map((result, index) => (
-                    <li key={result.id}>
-                      <span href={`/product/${result.slug}`}>
-                        <a>{result.title}</a>
-                      </span>
-                    </li>
-                ))}
-              </ul>
+              <div className={styles.searchInfo}>
+                {searchQuery !== '' ? searchResults.map((result, index) => (
+                    <div key={result.id}>
+                      <Link onClick={() => {
+                        setSearchQuery('');
+                        setSearchResults([])
+                      }} href={`/product/${result.slug}`}>
+                        {result.title}
+                      </Link>
+                    </div>
+                )) : null}
+              </div>
             </div>
 
             <div className={styles.btns}>
