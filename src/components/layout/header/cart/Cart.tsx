@@ -5,8 +5,11 @@ import Button from '@/src/components/ui/button/Button';
 import styles from '../Header.module.scss';
 import Link from "next/link";
 import {MdShoppingCart} from "react-icons/md";
+import {useAuth} from "@/src/hooks/useAuth";
 
 const Cart: FC = () => {
+
+  const {user} = useAuth()
   const state = useTypedSelector((state) => state.cart.items);
   const [openBasket, setOpenBasket] = useState(false);
   const totalPrice = state.reduce(
@@ -29,14 +32,17 @@ const Cart: FC = () => {
                 <CartItem key={item.id} item={item} />)) : <div>Пусто(</div>
             }
           </div>
-          <div className={styles.totalPrice}>
-            <div>Цена:</div>
-            <div>{totalPrice}</div>
-          </div>
-          {!!state.length && (
-              <div className='text-center mt-7 mb-5'>
-                <Link  href='/checkout'>Перейти к покупке</Link>
-              </div>
+        {!!state.length && (
+         <>
+           <div className={styles.totalPrice}>
+             <div>Цена:</div>
+             <div>{totalPrice}</div>
+           </div>
+
+           <Button className='p-0 text-center w-full flex items-center justify-center mt-7 mb-5'>
+             <Link className='py-3 relative'  href='/checkout'>{user ? 'Перейти к покупке' : 'Регистрация'}</Link>
+           </Button>
+         </>
           )}
 
       </div>}

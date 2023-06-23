@@ -3,6 +3,7 @@ import {IAuthResponse} from "@/src/components/store/user/user.interface";
 import axios from "axios";
 import Cookies from 'js-cookie'
 import {getContentType} from "@/src/api/api.helpers";
+import instance from "@/src/api/api.interceptors";
 
 export const AuthService = {
 	async register(email: string, password: string) {
@@ -32,11 +33,13 @@ export const AuthService = {
 	},
 
 	async getNewTokens() {
-		const refreshToken = Cookies.get('accessToken')
+		const refreshToken = Cookies.get('refreshToken')
 		console.log(refreshToken)
 		const response = await axios.post<IAuthResponse>(
-			'http://localhost:8080/auth/refresh-token', {refreshToken},
-			{headers: {...getContentType(), Authorization: `Bearer ${refreshToken}`} }
+			'http://localhost:8080/auth/refresh-token', null,
+			{
+				headers: {Authorization: `Bearer ${refreshToken}`}
+			}
 		)
 		if(response.data) saveToStorage(response.data)
 		console.log(response)

@@ -1,4 +1,4 @@
-import axios from '@/src/api/interceptors'
+import axios from '@/src/api/api.interceptors'
 
 import { getUserUrl } from '@/src/config/api.config'
 

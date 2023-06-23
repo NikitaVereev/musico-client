@@ -1,4 +1,4 @@
-import axios from './interceptors'
+import axios from './api.interceptors'
 
 type TypeInput = {
     url: string

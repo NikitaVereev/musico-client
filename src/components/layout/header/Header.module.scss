@@ -16,12 +16,16 @@
 
          >button{
            border-left: none;
+           display: flex;
+           align-items: end;
            border: none;
            svg{
              fill: #b3b3b3;
            }
            span{
              color: #000;
+             font-size: 14px;
+             @apply bg-primary px-1.5 rounded-full;
            }
            a{
              &:before{
@@ -110,11 +114,11 @@
 .search {
   @apply relative;
   .searchButton{
-    @apply absolute top-[18px] right-[5%] ;
+    @apply absolute top-[18px] right-[5%] z-50 ;
 
   }
   .searchInfo{
-    @apply flex flex-col gap-8 absolute rounded-3xl p-3 top-10 w-full bg-gray-300 z-50;
+    @apply flex flex-col gap-8 absolute rounded-3xl p-3 top-10 w-full bg-gray-300 z-10;
     >div{
       @apply border-b border-gray-500;
     }
@@ -125,7 +129,7 @@
     width: 100%;
     padding: 12px 24px;
     position: relative;
-    z-index: 99;
+    z-index: 12;
     background-color: transparent;
     transition: transform 250ms ease-in-out;
     font-size: 14px;
