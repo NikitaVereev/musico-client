@@ -1,0 +1,53 @@
+.mostPopular{
+  @apply grid grid-cols-5 gap-12;
+
+}
+.bannerWrapper{
+  @apply flex justify-between gap-12;
+  .banner{
+    @apply flex gap-8 items-center bg-white max-w-[300px] rounded-3xl px-6 py-4;
+    box-shadow: 10px 20px 11px rgba(33,33,33,.2);
+    svg{
+      @apply text-7xl;
+    }
+    h4{
+      @apply text-lg font-semibold max-w-[50%];
+    }
+  }
+}
+
+.catalog{
+
+  >div{
+    width: 30%;
+  }
+  .card{
+    @apply w-[100%] bg-primary flex justify-center items-center;
+
+    >div{
+      @apply relative w-full h-52 ;
+
+        img{
+          opacity: 0;
+          transition: .5s ease;
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        a{
+          position: relative;
+          width: 100%;
+          text-align: center;
+          z-index: 2;
+        }
+        a:hover ~ img{
+
+          opacity: 1;
+
+        }
+
+    }
+  }
+}

@@ -46,6 +46,10 @@ const Header: FC = () => {
       link: '/catalog',
     },
     {
+      name: 'Доставка',
+      link: '/dostavka'
+    },
+    {
       name: 'О нас',
       link: '/about',
     },

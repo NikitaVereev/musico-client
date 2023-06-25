@@ -1,0 +1,24 @@
+.wrapper{
+  @apply w-full h-auto rounded-xl  px-8 py-16;
+  background: linear-gradient(to right, #57a53c, #3c693c);
+  background-size: 200% auto;
+  animation: gradientAnimation 3s ease-in-out infinite;
+  >div, h1{
+    @apply mx-auto;
+  }
+  h1{
+    @apply text-white font-bold text-5xl mb-8;
+  }
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

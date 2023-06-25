@@ -51,3 +51,52 @@ export const catalogList: IList[] = [
         link: '/klava'
     }
 ]
+
+export const guitars = [
+    {
+        image: Acoustic,
+        title: 'Акустические гитары',
+        link: '/acoustic'
+    },
+    {
+        image: Classic,
+        title: 'Классические гитары',
+        link: '/classic'
+    },
+    {
+        image: Electro,
+        title: 'Электрогитары',
+        link: '/electric-guitar'
+    },
+    {
+        image: Ukulele,
+        title: 'Укулеле',
+        link: '/ukulele'
+    },
+    {
+        image: Strings,
+        title: 'Струны',
+        link: '/strings'
+    },
+    {
+        image: Acses,
+        title: 'Аксессуары для гитар',
+        link: '/accessories-guitar'
+    },
+]
+
+export const drum = [
+    {
+        image: Drum,
+        title: 'Аксессуары для ударных',
+        link: '/accessories-drum'
+    }
+]
+
+export const klavish = [
+    {
+        image: Klava,
+        title: 'Клавишные',
+        link: '/klava'
+    }
+]

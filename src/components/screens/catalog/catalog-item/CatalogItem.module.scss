@@ -27,7 +27,7 @@
 
       > button {
         @apply m-0 p-4 w-full relative justify-center gap-4 overflow-hidden flex items-center rounded-2xl;
-        background: #1e5725;
+        background: transparent;
         z-index: 99;
 
         > svg {
@@ -79,8 +79,8 @@
       @apply flex pt-3 items-center relative z-50 justify-between;
       transition: .5s ease;
       > button {
-        @apply m-0 p-4 w-full relative justify-center gap-4 overflow-hidden flex items-center rounded-2xl;
-        background: #1e5725;
+        @apply m-0 p-4 w-full font-bold relative justify-center gap-4 overflow-hidden flex items-center rounded-2xl;
+        color: #333;
         z-index: 99;
 
         > svg {

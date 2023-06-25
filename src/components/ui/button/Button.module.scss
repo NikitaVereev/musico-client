@@ -15,7 +15,7 @@ $dark: #242627;
 $gray: #636363;
 $grayLight: #a9abab;
 
-$white: #000;
+$white: #fff;
 $black: #fff;
 
 
@@ -33,11 +33,12 @@ $black: #fff;
   margin-left: 0;
   border: 3px solid $greenDark;
   width: fit-content;
+  background: transparent;
   position: relative;
   &.green {
-    border-left: 4px solid $greenDark;
+
     &:after {
-      background: $greenDark;
+      @apply bg-primary;
     }
   }
   padding-top: 1.15rem;

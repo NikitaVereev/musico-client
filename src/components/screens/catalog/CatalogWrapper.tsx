@@ -7,6 +7,7 @@ import { BsFilterCircleFill } from 'react-icons/bs';
 import Button from '@/src/components/ui/button/Button';
 import {useFilters} from "@/src/components/screens/catalog/useFilters";
 import {useQuery} from "@tanstack/react-query";
+import {useRouter} from "next/router";
 import cn from "classnames";
 
 const CatalogWrapper: FC<{ products: IProduct[] }> = ({ products }) => {
@@ -16,23 +17,15 @@ const CatalogWrapper: FC<{ products: IProduct[] }> = ({ products }) => {
     const [minPrice, setMinPrice] = useState('');
     const [maxPrice, setMaxPrice] = useState('');
 
-
+    const router = useRouter()
     const [isFilterOpen, setIsFilterOpen] = useState(false)
         // const {isFilterUpdated, queryParams, updateQueryParams} = useFilters()
 
-
-
-
-
-
-
-
-
     return (
         <div className="wrapper">
-            <Button onClick={() => setIsFilterOpen(!isFilterOpen)}>
+            {router.pathname !== '/' ? <Button onClick={() => setIsFilterOpen(!isFilterOpen)}>
                 {isFilterOpen ? 'Закрыть фильтры' : 'Показать фильтры'}
-            </Button>
+            </Button> : null}
             <div className={cn(styles.explorer, {[styles.filterOpened]: isFilterOpen})}>
                 <aside>
                     dfdf
