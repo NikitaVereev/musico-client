@@ -37,7 +37,7 @@ const Auth: FC = () => {
     return (
         <div>
           <section className={styles.wrapper}>
-            {isLoading && <div>Загрузка</div>}
+            {isLoading && <div  className='loader'>Загрузка</div>}
             <form onSubmit={handleSubmit(onSubmit)}>
               <h1 title="Авторизация" className="mb-6" />
               <AuthFields

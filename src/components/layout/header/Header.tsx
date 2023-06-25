@@ -26,7 +26,7 @@ const Header: FC = () => {
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setSearchQuery(e.target.value);
     handleSearch(); // Выполняем поиск после каждого изменения значения в поле ввода
   };
@@ -85,7 +85,7 @@ const Header: FC = () => {
               </button>
 
               <div className={styles.searchInfo}>
-                {searchQuery !== '' ? searchResults.map((result, index) => (
+                {searchQuery !== '' ? searchResults.map((result: {id: string, slug: string, title: string}, index) => (
                     <div key={result.id}>
                       <Link onClick={() => {
                         setSearchQuery('');
