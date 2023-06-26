@@ -1,9 +1,26 @@
 import { FC } from 'react';
+import {useActions} from "@/src/hooks/useActions";
+import {useQuery} from "@tanstack/react-query";
+import {OrderService} from "@/src/services/order.service";
+import {useAuth} from "@/src/hooks/useAuth";
+import CartItem from "@/src/components/layout/header/cart/cart-item/CartItem";
 
 const Checkout: FC = () => {
+
+    const { user } = useAuth();
+    const email = user?.email;
+
+    const { data: orders, isLoading } = useQuery(['single order'], () => email ? OrderService.getOrder(email) : null);
+    if(isLoading) return <div className='loader'>Загрузка</div>
+
     return (
         <div>
-            Привет, покупатель!)
+            {orders && orders.items.map(item => (
+                <div key={item.id}>
+                    <CartItem item={item} />
+                </div>
+            ))}
+            <h1>Цена: {orders && orders.price}</h1>
         </div>
     );
 }

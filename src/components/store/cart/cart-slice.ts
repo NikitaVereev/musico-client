@@ -3,6 +3,10 @@ import {
   IAddToCartPayload,
   IInitialState,
 } from '@/src/components/store/cart/cart.interface';
+import {useAuth} from "@/src/hooks/useAuth";
+import {useQuery} from "@tanstack/react-query";
+import {OrderService} from "@/src/services/order.service";
+
 
 
 const initialState: IInitialState = {

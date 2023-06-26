@@ -96,7 +96,7 @@ const Home: FC = () => {
     </Banner>
   <div className="wrapper">
     <h1 className='font-bold text-5xl mb-8'>Кто мы?</h1>
-    <div className='flex gap-10 items-center '>
+    <div className='flex gap-10 items-end '>
       <div className={styles.about}>
         <h1 className='font-bold text-3xl mb-6'>MUS & CO - МУЗ и Ко</h1>
         <p>Музыкальный магазин MUS&CO работает без обеда и выходных с 10:00 до 20:00!</p>
@@ -121,54 +121,61 @@ const Home: FC = () => {
       </div>
 
     </div>
-    <div>
-      <h1 className='font-bold text-5xl mb-8'>Отзывы</h1>
-        <div
-            style={{
-                width: 560,
-                height: 800,
-                overflow: "hidden",
-                position: "relative"
-            }}
-        >
-            <iframe
-                id="widgetFrame"
-                style={{
-                    width: "100%",
-                    height: "100%",
-                    border: "1px solid #e6e6e6",
-                    borderRadius: 8,
-                    boxSizing: "border-box"
-                }}
-                src="https://yandex.ru/maps-reviews-widget/16582718810?comments"
-            />
-            <a
-                href="https://yandex.ru/maps/org/mus_co/16582718810/"
-                target="_blank"
-                style={{
-                    boxSizing: "border-box",
-                    textDecoration: "none",
-                    color: "#b3b3b3",
-                    fontSize: 10,
-                    fontFamily: "YS Text,sans-serif",
-                    padding: "0 16px",
-                    position: "absolute",
-                    bottom: 8,
-                    width: "100%",
-                    textAlign: "center",
-                    left: 0,
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    display: "block",
-                    maxHeight: 14,
-                    whiteSpace: "nowrap"
-                }}
-            >
-                Mus &amp; Co на карте Перми — Яндекс&nbsp;Карты
-            </a>
-        </div>
-    </div>
+
   </div>
+      <div className="wrapper my-32">
+          <div>
+              <h1 className='font-bold text-5xl mb-8'>Отзывы</h1>
+              <div className='flex items-center justify-between gap-12'>
+                  <div
+                      style={{
+                          width: '100%',
+                          height: 1200,
+                          overflow: "hidden",
+                          position: "relative"
+                      }}
+                      className={styles.map}
+                  >
+                      <iframe
+                          id="widgetFrame"
+                          style={{
+                              width: "100%",
+                              height: "100%",
+                              border: "1px solid #e6e6e6",
+                              borderRadius: 8,
+                              boxSizing: "border-box"
+                          }}
+                          src="https://yandex.ru/maps-reviews-widget/16582718810?comments"
+                      />
+                      <a
+                          href="https://yandex.ru/maps/org/mus_co/16582718810/"
+                          target="_blank"
+                          style={{
+                              boxSizing: "border-box",
+                              textDecoration: "none",
+                              color: "#b3b3b3",
+                              fontSize: 10,
+                              fontFamily: "YS Text,sans-serif",
+                              padding: "0 16px",
+                              position: "absolute",
+                              bottom: 8,
+                              width: "100%",
+                              textAlign: "center",
+                              left: 0,
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
+                              display: "block",
+                              maxHeight: 14,
+                              whiteSpace: "nowrap"
+                          }}
+                      >
+                          Mus &amp; Co на карте Перми — Яндекс&nbsp;Карты
+                      </a>
+                  </div>
+
+              </div>
+          </div>
+      </div>
   </>
 };
 

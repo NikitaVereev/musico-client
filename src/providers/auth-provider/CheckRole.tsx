@@ -8,6 +8,7 @@ const CheckRole: FC<TypeComponentAuthFields> = ({
     Component: {isOnlyAdmin, isOnlyUser}
                                                 }) => {
     const {user} = useAuth()
+    console.log(user)
     const router = useRouter()
     const Children = () => <>{children}</>
 

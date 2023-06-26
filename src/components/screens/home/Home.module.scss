@@ -15,7 +15,11 @@
     }
   }
 }
-
+.map{
+  *{
+    display: flex !important;
+  }
+}
 .about{
   p{
     @apply font-semibold text-xl text-gray-500;

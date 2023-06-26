@@ -1,6 +1,6 @@
 import {IInitialState} from "@/src/components/store/user/user.interface";
 import {getStoreLocal} from "@/src/components/utils/local-storage";
-import {register, login, logout} from "@/src/components/store/user/user.actions";
+import {register, login, logout, checkAuth} from "@/src/components/store/user/user.actions";
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState: IInitialState = {
@@ -39,6 +39,18 @@ export const userSlice = createSlice({
                 state.user = null
             })
             .addCase(logout.fulfilled, (state) => {
+                state.isLoading = false
+                state.user = null
+            })
+            .addCase(checkAuth.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(checkAuth.fulfilled, (state, { payload }) => {
+                state.isLoading = false
+                state.user = payload.user
+                console.log(payload)
+            })
+            .addCase(checkAuth.rejected, (state) => {
                 state.isLoading = false
                 state.user = null
             })
