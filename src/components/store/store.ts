@@ -1,11 +1,20 @@
-import {  configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-import {reducers} from "@/src/components/store/rootReducer";
+import { rootReducer } from '@/src/components/store/rootReducer';
 
+
+const persistConfig = {
+  key: 'root',
+  storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: reducers,
-  devTools: true
+  reducer: persistedReducer,
+  devTools: true,
 });
 
-export type TypeRootState = ReturnType<typeof store.getState>;
+export const persistor = persistStore(store);
