@@ -8,6 +8,7 @@ import AuthFields from "@/src/components/screens/auth/AuthFields";
 import {IAuthInput} from "@/src/components/screens/auth/auth.interface";
 import {useAuthRedirect} from "@/src/components/screens/auth/useAuthRedirect";
 import {useAuth} from "@/src/hooks/useAuth";
+import {useQueryClient} from "@tanstack/react-query";
 
 
 const Auth: FC = () => {
@@ -15,6 +16,8 @@ const Auth: FC = () => {
   const {isLoading} = useAuth()
 
   const [type, setType] = useState<'login' | 'register'>('login')
+
+  const queryClient = useQueryClient()
 
   const {
     register: registerInput,
@@ -27,8 +30,13 @@ const Auth: FC = () => {
 
   const { login, register } = useActions()
 
-  const onSubmit: SubmitHandler<IAuthInput> = (data) => {
-    if (type === 'login') login(data)
+  const onSubmit: SubmitHandler<IAuthInput> = async (data) => {
+
+    if (type === 'login') {
+      await queryClient.invalidateQueries({queryKey: 'single order'})
+      login(data)
+
+    }
     else if (type === 'register') register(data)
     reset()
   }

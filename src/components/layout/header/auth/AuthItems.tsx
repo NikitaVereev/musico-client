@@ -10,13 +10,13 @@ const AuthItems: FC = () => {
         <>
             {user ? (
                 <>
-                    {/*<MenuItem*/}
-                    {/*    item={{*/}
-                    {/*        icon: 'MdSettings',*/}
-                    {/*        link: '/profile',*/}
-                    {/*        title: 'Профиль',*/}
-                    {/*    }}*/}
-                    {/*/>*/}
+                    <MenuItem
+                        item={{
+                            icon: 'MdSettings',
+                            link: '/profile',
+
+                        }}
+                    />
                     <LogoutButton />
                 </>
             ) : (

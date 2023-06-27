@@ -13,11 +13,13 @@ const Checkout: FC = () => {
     const { data: orders, isLoading } = useQuery(['single order'], () => email ? OrderService.getOrder(email) : null);
     if(isLoading) return <div className='loader'>Загрузка</div>
 
+    console.log(orders)
+
     return (
         <div>
             {orders && orders.items.map(item => (
                 <div key={item.id}>
-                    <CartItem item={item} />
+                    <CartItem item={item.product} />
                 </div>
             ))}
             <h1>Цена: {orders && orders.price}</h1>

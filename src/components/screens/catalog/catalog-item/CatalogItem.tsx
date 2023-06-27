@@ -8,31 +8,40 @@ import {IProduct} from "@/src/interfaces/product.interface";
 import Link from "next/link";
 import cn from "classnames";
 import {useAuth} from "@/src/hooks/useAuth";
-import {useMutation} from "@tanstack/react-query";
+import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import {OrderService} from "@/src/services/order.service";
 
 const CatalogWrapper: FC<{ product: IProduct }> = ({product}) => {
     const {addToCart, removeFromCart} = useActions()
+
+    const queryClient = useQueryClient()
+
+    const {isLoading: loadingCreated, isError, error, isSuccess, mutate} = useMutation({
+        mutationFn: (createCartItem) => OrderService.createOrder(createCartItem),
+        onSuccess: () => {
+            queryClient.invalidateQueries()
+        }
+    })
 
     const {user} = useAuth()
     //@ts-ignore
     const email = user?.email
     console.log(user)
 
+    const { data: orders, isLoading } = useQuery(['single order'], () => email ? OrderService.getOrder(email) : null, {
 
-    const {mutateAsync} = useMutation(
-        (data) => OrderService.createOrder(data),
-        {
-            onSuccess:(data) => {
-                console.log('kkk')
-            }
+    });
+    if(isLoading) return <div className='loader'>Загрузка</div>
 
-        }
-    )
+
+    console.log(orders)
+    console.log(product)
 
     const handleClick = () => {
-        addToCart({product, quantity: 1})
-        mutateAsync({email: email, idProduct: product.id})
+        if(!user) return alert('Зарегистрируйтесь, ради бога')
+        mutate({email: user.email, idProduct: product.id})
+
+
     }
 
     return (

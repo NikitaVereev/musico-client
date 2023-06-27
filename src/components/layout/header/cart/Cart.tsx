@@ -14,33 +14,44 @@ import {useActions} from "@/src/hooks/useActions";
 
 
 const Cart: FC = () => {
-  const {addToCart} = useActions()
+  const {addToCart, clearCart} = useActions()
   const { user } = useAuth();
   const state = useTypedSelector((state) => state.cart.items);
+
   const [openBasket, setOpenBasket] = useState(false);
-  const totalPrice = state.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
+  const totalPrice = state.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   const email = user?.email;
 
-  const dispatch = useDispatch();
 
-  const { data: orders, isLoading } = useQuery(['single order'], () => email ? OrderService.getOrder(email) : null);
 
-  useEffect(() => {
+
+
+  const { data: orders, isLoading } = useQuery({queryKey: 'single order', queryFn: () => email ? OrderService.getOrder(email) : null});
+
+
     localStorage.setItem('cartItems', JSON.stringify(state));
-  }, [state]);
+
+
+  if(!user) localStorage.removeItem('cartItems')
 
   if (isLoading) return <div className='loader'>Загрузка</div>;
 
+  // if(!user) {
+  //   clearCart()
+  //
+  //   return
+  // }
+console.log(orders)
   const handleAddToCart = (item: any) => {
-    dispatch(addToCart(item));
+    addToCart(item);
   };
 
   return (
       <li>
         <Button onClick={() => setOpenBasket(!openBasket)}>
           <MdShoppingCart />
-          <span>{state.length === 0 ? '' : state.length}</span>
+          <span>{orders && orders.items.length === 0 ? '' : orders && orders.items.length}</span>
         </Button>
 
         {openBasket && (
@@ -48,20 +59,22 @@ const Cart: FC = () => {
               <div className='font-normal text-lg mb-5'>Корзина</div>
 
               <div className={styles.cart}>
-                {state.length ? (
-                    state.map((item) => (
-                        <CartItem key={item.id} item={item} addToCart={handleAddToCart} />
+                {orders && orders.items.length ? (
+                     orders.items.map(item => (
+                        <div key={item.id}>
+                          <CartItem item={item.product} />
+                        </div>
                     ))
                 ) : (
                     <div>Пусто(</div>
                 )}
               </div>
 
-              {!!state.length && (
+              {orders  && (
                   <>
                     <div className={styles.totalPrice}>
                       <div>Цена:</div>
-                      <div>{totalPrice}</div>
+                      <div>{orders.price}</div>
                     </div>
 
                     <Button className='p-0 text-center w-full flex items-center justify-center mt-7 mb-5'>
