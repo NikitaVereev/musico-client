@@ -18,9 +18,7 @@ const CatalogWrapper: FC<{ product: IProduct }> = ({product}) => {
 
     const {isLoading: loadingCreated, isError, error, isSuccess, mutate} = useMutation({
         mutationFn: (createCartItem) => OrderService.createOrder(createCartItem),
-        onSuccess: () => {
-            queryClient.invalidateQueries()
-        }
+        onSuccess: () => queryClient.invalidateQueries(["single"])
     })
 
     const {user} = useAuth()

@@ -9,16 +9,21 @@ import ReduxToast from "@/src/providers/ReduxToast";
 import { PersistGate } from 'redux-persist/integration/react';
 
 import AuthProvider from "@/src/providers/auth-provider/AuthProvider";
+import {useState} from "react";
 
 
 export default function App({ Component, pageProps }: AppProps) {
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        refetchOnWindowFocus: false
-      }
-    }
+  const [queryClient] = useState(function () {
+      return new QueryClient({
+          defaultOptions: {
+              queries: {
+                  refetchOnWindowFocus: false
+              }
+          }
+      })
   });
+
+
 
   return (
 

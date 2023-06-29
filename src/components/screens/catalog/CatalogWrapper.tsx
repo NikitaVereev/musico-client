@@ -22,10 +22,11 @@ const CatalogWrapper: FC<{ products: IProduct[] }> = ({ products }) => {
         // const {isFilterUpdated, queryParams, updateQueryParams} = useFilters()
 
     return (
-        <div className="wrapper">
-            {router.pathname !== '/' ? <Button onClick={() => setIsFilterOpen(!isFilterOpen)}>
-                {isFilterOpen ? 'Закрыть фильтры' : 'Показать фильтры'}
-            </Button> : null}
+        <div className="wrapper mt-32">
+
+            {/*{router.pathname !== '/' ? <Button onClick={() => setIsFilterOpen(!isFilterOpen)}>*/}
+            {/*    {isFilterOpen ? 'Закрыть фильтры' : 'Показать фильтры'}*/}
+            {/*</Button> : null}*/}
             <div className={cn(styles.explorer, {[styles.filterOpened]: isFilterOpen})}>
                 <aside>
                     dfdf

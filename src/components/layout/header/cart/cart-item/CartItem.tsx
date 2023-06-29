@@ -4,17 +4,16 @@ import Image from 'next/image';
 import styles from './CartItem.module.scss';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import { useActions } from '@/src/hooks/useActions';
-import {useMutation} from "@tanstack/react-query";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {OrderService} from "@/src/services/order.service";
 
 const CartItem: FC<{ item: ICart }> = ({ item }) => {
   const { removeFromCart } = useActions();
+  const queryClient = useQueryClient()
 
   const {mutate: deleteItemFromCart} = useMutation({
       mutationFn: (data: string) => OrderService.deleteOrderItem(data),
-      onSuccess: () => {
-          console.log('Waky-waky')
-      }
+      onSuccess: () => queryClient.invalidateQueries(["single"])
   })
     console.log(item)
 

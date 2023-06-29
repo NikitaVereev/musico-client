@@ -10,6 +10,7 @@ import { useAuth } from '@/src/hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import { OrderService } from '@/src/services/order.service';
 import {useActions} from "@/src/hooks/useActions";
+import {IProduct} from "@/src/interfaces/product.interface";
 
 
 
@@ -27,10 +28,8 @@ const Cart: FC = () => {
 
 
 
-  const { data: orders, isLoading } = useQuery( ['single order'],() => email ? OrderService.getOrder(email) : null,
-  {
-    keepPreviousData: true
-  }
+  const { data: orders, isLoading } = useQuery( ["single"],() => email ? OrderService.getOrder(email) : null,
+
   );
 
 
@@ -64,7 +63,7 @@ console.log(orders)
 
               <div className={styles.cart}>
                 {orders && orders.items.length ? (
-                     orders.items.map(item => (
+                     orders.items.map((item: {product: IProduct, id: string, quantity: number}) => (
                         <div key={item.id}>
                           <CartItem item={item} />
                         </div>
