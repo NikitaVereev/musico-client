@@ -4,22 +4,31 @@ import {useQuery} from "@tanstack/react-query";
 import {OrderService} from "@/src/services/order.service";
 import {useAuth} from "@/src/hooks/useAuth";
 import CartItem from "@/src/components/layout/header/cart/cart-item/CartItem";
+import {IProduct} from "@/src/interfaces/product.interface";
+
+interface IOrder{
+    product: IProduct
+    id: string
+    quantity: number
+}
 
 const Checkout: FC = () => {
 
     const { user } = useAuth();
     const email = user?.email;
 
-    const { data: orders, isLoading } = useQuery(['single order'], () => email ? OrderService.getOrder(email) : null);
+    const { data: orders, isLoading } = useQuery( ["single"],() => email ? OrderService.getOrder(email) : null,
+
+    );
     if(isLoading) return <div className='loader'>Загрузка</div>
 
-    console.log(orders)
+
 
     return (
         <div>
-            {orders && orders.items.map(item => (
+            {orders && orders.items.map((item: IOrder) => (
                 <div key={item.id}>
-                    <CartItem item={item.product} />
+                    <CartItem item={item} />
                 </div>
             ))}
             <h1>Цена: {orders && orders.price}</h1>

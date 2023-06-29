@@ -33,7 +33,7 @@ const Auth: FC = () => {
   const onSubmit: SubmitHandler<IAuthInput> = async (data) => {
 
     if (type === 'login') {
-      await queryClient.invalidateQueries({queryKey: 'single order'})
+      await queryClient.invalidateQueries(["single"])
       login(data)
 
     }

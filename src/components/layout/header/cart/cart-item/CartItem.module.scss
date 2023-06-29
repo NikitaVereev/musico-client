@@ -1,9 +1,9 @@
 .item {
-  //@apply relative flex bg-black p-4 rounded-2xl bg-opacity-60 gap-4;
-  //backdrop-filter: blur(20px);
-  @apply flex relative items-center gap-4 border-b border-b-black/30 pb-6 pt-4;
+  @apply relative items-end flex gap-4 overflow-hidden border-b border-b-black/30 pb-6 pt-4 rounded-2xl bg-opacity-60 max-h-[230px] h-full;
+  backdrop-filter: blur(20px);
+  //@apply flex relative items-center gap-4 border-b border-b-black/30 pb-6 pt-4;
   > img {
-    @apply relative rounded-2xl object-contain;
+    @apply relative rounded-2xl h-fit object-contain;
   }
   > svg {
     @apply absolute top-4 right-4 text-2xl text-gray-300 cursor-pointer;
@@ -14,5 +14,28 @@
       transform: scale(1.2);
       outline-offset: 5px;
     }
+  }
+  .itemInfo{
+    @apply flex flex-col gap-6;
+    >h4{
+      @apply mt-8;
+    }
+    >span{
+      @apply text-primary font-bold;
+    }
+  }
+}
+.quantityContainer{
+  @apply flex gap-3 items-center;
+  >svg{
+    @apply w-8 h-8 fill-gray-500 cursor-pointer;
+    transition: .5s ease;
+    &:hover{
+      @apply fill-primary;
+      transform: scale(1.2);
+    }
+  }
+  >span{
+    @apply text-xl;
   }
 }

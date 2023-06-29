@@ -1,7 +1,7 @@
 import '@/src/components/styles/globals.scss';
 import type { AppProps } from 'next/app';
 import Layout from '@/src/components/layout/Layout';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import {  QueryClientProvider } from '@tanstack/react-query';
 import { Provider } from 'react-redux';
 import NextNProgress from 'nextjs-progressbar';
 import { store, persistor } from '@/src/components/store/store';
@@ -10,6 +10,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import AuthProvider from "@/src/providers/auth-provider/AuthProvider";
 import {useReactQueryClient} from "@/src/hooks/useReactQueryClient";
+import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -20,8 +21,11 @@ export default function App({ Component, pageProps }: AppProps) {
       <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
             <QueryClientProvider client={queryClient}>
+                <ReactQueryDevtools initialIsOpen={false} />
                 <ReduxToast />
-                <AuthProvider Component={Component}>
+                <AuthProvider
+                    //@ts-ignore
+                    Component={Component}>
                     <Layout>
                         <NextNProgress
                             color="#57a53c"

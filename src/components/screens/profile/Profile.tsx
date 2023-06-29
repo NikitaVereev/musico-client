@@ -20,7 +20,7 @@ const Profile: FC = () => {
     return (
         <div className='wrapper, animate-scaleIn'>
             <h1>Мои заказы</h1>
-            {orders && orders.map(item => (
+            {orders && orders.map((item: {id: string, status: string, price: number}) => (
                 <div key={item.id} className={styles.order}>
                     <h2>Статус: { item.status}</h2>
                     <h2>Дата:</h2>

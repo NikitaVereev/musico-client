@@ -19,28 +19,21 @@ const CatalogWrapper: FC<{ product: IProduct }> = ({product}) => {
 
 
 
+
     const {isLoading: loadingCreated, isError, error, isSuccess, mutate} = useMutation({
-        mutationFn: (createCartItem) => OrderService.createOrder(createCartItem),
+        mutationFn: (createCartItem) => OrderService.createOrder(
+            // @ts-ignore
+            createCartItem),
         onSuccess: () => queryClient.invalidateQueries(["single"])
     })
 
     const {user} = useAuth()
     const email = user?.email
-    useEffect(() => {
-        // Предварительно загружаем данные на следующей странице
-        const prefetch = async () => {
-            await queryClient.prefetchQuery(['single'], () =>
-                email ? OrderService.getOrder(email) : null
-            );
-        };
 
-        prefetch();
-    }, [email, queryClient]);
-    //@ts-ignore
 
     console.log(user)
 
-    const { data: orders, isLoading } = useQuery(['single order'], () => email ? OrderService.getOrder(email) : null, {
+    const { data: orders, isLoading } = useQuery(['single'], () => email ? OrderService.getOrder(email) : null, {
 
     });
     if(isLoading) return <div className='loader'>Загрузка</div>
@@ -53,6 +46,7 @@ const CatalogWrapper: FC<{ product: IProduct }> = ({product}) => {
 
     const handleClick = () => {
         if(!user) return alert('Зарегистрируйтесь, ради бога')
+        //@ts-ignore
         mutate({email: user.email, idProduct: product.id})
 
 

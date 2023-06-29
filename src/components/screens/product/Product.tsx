@@ -28,9 +28,9 @@ const Product: FC<ProductPageProps> = ({product}) => {
                             <p>Гарантия: 1 год</p>
                         </div>
                         <p>{product.description}</p>
-                        <Button className={styles.btn} onClick={() => addToCart({product, quantity: 1})}>
-                            Добавить в корзину
-                        </Button>
+                        {/*<Button className={styles.btn} onClick={() => addToCart({product, quantity: 1})}>*/}
+                        {/*    Добавить в корзину*/}
+                        {/*</Button>*/}
                         <div className={styles.info}>
                             <div><h3>Характеристика</h3><p>Описание</p></div>
                             <div><h3>Характеристика</h3><p>Описание</p></div>

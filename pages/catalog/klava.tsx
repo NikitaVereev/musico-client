@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import {NextPage} from "next";
 import {useQuery} from "@tanstack/react-query";
 import {IProduct} from "@/src/interfaces/product.interface";
@@ -11,7 +10,9 @@ const KlavaPage: NextPage = () => {
     if(isLoading)  return <div  className='loader'>Загрузка</div>
     console.log(products)
     return (
-        <CatalogWrapper products={products} isLoading={isLoading} />
+        <CatalogWrapper products={products}
+            //@ts-ignore
+                        isLoading={isLoading} />
     );
 }
 

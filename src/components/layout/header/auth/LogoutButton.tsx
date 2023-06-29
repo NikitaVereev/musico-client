@@ -10,8 +10,8 @@ const LogoutButton: FC = () => {
 
     const logoutHandler =  async(e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        await queryClient.invalidateQueries({queryKey: 'single order'})
         logout()
+        await queryClient.invalidateQueries(["single"])
 
     }
 

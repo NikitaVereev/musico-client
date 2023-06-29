@@ -1,9 +1,8 @@
-import { FC, useState } from 'react';
+import {FC, useEffect, useState} from 'react';
 import Image from 'next/image';
 import Cart from '@/src/components/layout/header/cart/Cart';
 import cn from 'classnames';
 import { FaSearch } from 'react-icons/fa';
-import Button from '@/src/components/ui/button/Button';
 import Link from 'next/link';
 import Logo from '@/src/assets/logo.png';
 import styles from './Header.module.scss';
@@ -15,6 +14,32 @@ const DynamicAuth = dynamic(() => import('./auth/AuthItems'), { ssr: false });
 const Header: FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [isShow, setIsShow] = useState(false)
+  const [isLastScrollY, setIsLastScrollY] = useState(200)
+  const [openBasket, setOpenBasket] = useState(false);
+
+  const controlNavbar = () => {
+    if(typeof window !== 'undefined'){
+      if(window.scrollY < isLastScrollY){
+        setIsShow(false)
+        setOpenBasket(false)
+
+      }else{
+        setIsShow(true)
+        setOpenBasket(false)
+      }
+      setIsLastScrollY(window.scrollY)
+    }
+  }
+
+  useEffect(() => {
+    if(typeof window !== 'undefined'){
+      window.addEventListener('scroll', controlNavbar)
+      return () => {
+        window.removeEventListener('scroll', controlNavbar)
+      }
+    }
+  }, [isLastScrollY])
 
   const handleSearch = async () => {
     try {
@@ -26,13 +51,16 @@ const Header: FC = () => {
     }
   };
 
+
+
   const handleChange = (e: any) => {
     setSearchQuery(e.target.value);
-    handleSearch(); // Выполняем поиск после каждого изменения значения в поле ввода
+    handleSearch();
   };
 
   const { user } = useAuth()
   console.log(searchResults)
+
 
 
   const links = [
@@ -55,7 +83,7 @@ const Header: FC = () => {
     },
   ];
   return (
-      <header className={styles.header}>
+      <header className={cn(styles.header, isShow && styles.active)}>
         <nav className={cn(styles.nav, 'wrapper')}>
           <ul>
             <div className={styles.links}>
@@ -100,7 +128,9 @@ const Header: FC = () => {
 
             <div className={styles.btns}>
               <DynamicAuth />
-              <Cart />
+              <Cart
+                  //@ts-ignore
+                  setOpenBasket={setOpenBasket} openBasket={openBasket} />
             </div>
           </ul>
         </nav>

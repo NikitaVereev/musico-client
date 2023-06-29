@@ -1,6 +1,21 @@
 .header {
-  @apply relative z-20 w-full bg-gray-300 rounded-b-2xl mx-auto  flex justify-between items-center;
+  @apply relative  top-0 z-20 w-full bg-gray-300 rounded-b-2xl mx-auto  flex justify-between items-center;
   box-shadow: 5px 20px 11px rgba(153,153,153,.2);
+  transition: .5s cubic-bezier(.26,.71,.72,.3);
+  &.active{
+    transform: translateY(-80%);
+    .search{
+      transform: translateY(100%);
+      @apply bg-gray-300 p-3;
+
+      .searchInfo{
+        top: 3.3rem;
+        left: 0;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+      }
+    }
+  }
 
 
   .nav {
@@ -38,7 +53,7 @@
         }
       }
       li {
-        @apply relative px-4  uppercase flex items-center py-1 justify-center;
+        @apply  px-4  uppercase flex items-center py-1 justify-center;
         button {
           @apply w-auto;
           svg {
@@ -86,12 +101,14 @@
 
         .cartWrapper {
           //@apply fixed  w-1/3 min-h-full top-0 rounded-2xl -right-full z-40;
-          @apply absolute -left-[12.5rem] top-[4.2rem] z-20 w-80 rounded-xl bg-gray-300 px-6 py-4 text-sm text-white;
-          backdrop-filter: blur(20px);
-          animation: cartAnimation .5s ease;
+          @apply overflow-x-hidden absolute min-h-full max-h-[90vh] overflow-y-scroll -right-[100%] top-[5rem] z-20 w-80 rounded-xl bg-gray-300 px-6 py-4 text-sm text-white;
+
           transition: 0.5s ease;
+          &.active{
+            @apply right-0
+          }
           .cart{
-            @apply mb-10;
+            @apply mb-10 overflow-y-auto ;
 
           }
           .totalPrice{
@@ -112,13 +129,14 @@
 
 }
 .search {
-  @apply relative;
+  @apply relative bg-gray-300;
+  transition: .5s cubic-bezier(.26,.71,.72,.3);
   .searchButton{
     @apply absolute top-[18px] right-[5%] z-50 ;
 
   }
   .searchInfo{
-    @apply flex flex-col gap-8 absolute rounded-3xl p-3 top-10 w-full bg-gray-300 z-10;
+    @apply left-0 flex flex-col gap-8 absolute rounded-3xl p-3 top-10 w-full bg-gray-300 z-10;
     >div{
       @apply border-b border-gray-500;
     }
@@ -163,11 +181,3 @@
 
 }
 
-@keyframes cartAnimation {
-  from {
-    transform: translateX(110%)
-  }
-  to{
-    transform: translateX(0)
-  }
-}

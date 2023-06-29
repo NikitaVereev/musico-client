@@ -9,7 +9,9 @@ const AccessoriesDrumPage: NextPage = () => {
     if(isLoading)  return <div  className='loader'>Загрузка</div>
     console.log(products)
     return (
-        <CatalogWrapper products={products} isLoading={isLoading} />
+        <CatalogWrapper products={products}
+                        //@ts-ignore
+                        isLoading={isLoading} />
     );
 }
 

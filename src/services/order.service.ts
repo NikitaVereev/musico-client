@@ -34,5 +34,14 @@ export const OrderService = {
             console.log(e)
         }
     },
+    async decrementQuantityOrderItem(data: string){
+        try{
+            return axios.put(`http://localhost:8080/order?action=DECREASE&idItemOrder=${data}`)
+
+        }
+        catch(e){
+            console.log(e)
+        }
+    }
 
 }

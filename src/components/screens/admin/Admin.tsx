@@ -12,6 +12,7 @@ import UploadField from "@/src/components/ui/form-elements/upload-field/UploadFi
 import {useAuth} from "@/src/hooks/useAuth";
 
 const Admin: FC = () => {
+
     const {
         handleSubmit,
         register,
@@ -24,12 +25,12 @@ const Admin: FC = () => {
     });
     const { user } = useAuth()
     console.log(user)
-
+    const {onSubmitEdit} = useProduct(setValue)
     if(user?.admin === false) {
         return <div>Нету(</div>
     }
 
-    const {onSubmitEdit} = useProduct(setValue)
+
 
 
     return (

@@ -20,7 +20,7 @@ export const ProductServices = {
             console.log(e)
         }
     },
-    async createProduct(data){
+    async createProduct(data: string){
         try{
             return axios.post('http://localhost:8080/product', data)
         }catch(e){

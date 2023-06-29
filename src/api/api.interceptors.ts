@@ -1,9 +1,4 @@
 import axios from 'axios'
-import Cookies from 'js-cookie'
-
-
-
-
 
 import { errorCatch, getContentType } from './api.helpers'
 import {getAccessToken, removeTokensStorage} from "@/src/services/auth/auth.helper";

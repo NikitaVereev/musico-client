@@ -1,7 +1,8 @@
 import { ChangeEvent, FC } from 'react'
 
-import SearchField from '../searvh-field/SearchField'
+
 import AdminCreateButton from "@/src/components/ui/button/admin-table/admin-create-button/AdminCreateButton";
+import SearchField from "@/src/components/ui/search-field/SearchField";
 
 
 

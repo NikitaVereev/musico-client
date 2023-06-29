@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import Header from '@/src/components/layout/header/Header';
 import Footer from '@/src/components/layout/footer/Footer';
 import { TChildren } from '@/src/interfaces/option.interface';
