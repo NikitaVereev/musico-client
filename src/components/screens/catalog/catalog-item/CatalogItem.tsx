@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import {FC, useEffect} from 'react';
 import Image from 'next/image';
 import styles from './CatalogItem.module.scss';
 import {FaShoppingCart} from "react-icons/fa";
@@ -16,14 +16,28 @@ const CatalogWrapper: FC<{ product: IProduct }> = ({product}) => {
 
     const queryClient = useQueryClient()
 
+
+
+
     const {isLoading: loadingCreated, isError, error, isSuccess, mutate} = useMutation({
         mutationFn: (createCartItem) => OrderService.createOrder(createCartItem),
         onSuccess: () => queryClient.invalidateQueries(["single"])
     })
 
     const {user} = useAuth()
-    //@ts-ignore
     const email = user?.email
+    useEffect(() => {
+        // Предварительно загружаем данные на следующей странице
+        const prefetch = async () => {
+            await queryClient.prefetchQuery(['single'], () =>
+                email ? OrderService.getOrder(email) : null
+            );
+        };
+
+        prefetch();
+    }, [email, queryClient]);
+    //@ts-ignore
+
     console.log(user)
 
     const { data: orders, isLoading } = useQuery(['single order'], () => email ? OrderService.getOrder(email) : null, {
@@ -34,6 +48,8 @@ const CatalogWrapper: FC<{ product: IProduct }> = ({product}) => {
 
     console.log(orders)
     console.log(product)
+
+
 
     const handleClick = () => {
         if(!user) return alert('Зарегистрируйтесь, ради бога')

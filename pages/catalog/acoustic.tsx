@@ -7,7 +7,7 @@ import {IProduct} from "@/src/interfaces/product.interface";
 import {ProductServices} from "@/src/services/product.services";
 
 const AcousticPage: NextPage = () => {
-    const {data: products, isLoading}: any = useQuery<IProduct[]>(['all products'], () => ProductServices.getOnlyCategories('Акустическая'))
+    const {data: products, isLoading}: any = useQuery<IProduct[]>(['acoustic'], () => ProductServices.getOnlyCategories('Акустическая'))
     if(isLoading)  return <div className='loader'>Загрузка</div>
     console.log(products)
     return (
