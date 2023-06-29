@@ -27,7 +27,11 @@ const Cart: FC = () => {
 
 
 
-  const { data: orders, isLoading } = useQuery({queryKey: 'single order', queryFn: () => email ? OrderService.getOrder(email) : null});
+  const { data: orders, isLoading } = useQuery( ['single order'],() => email ? OrderService.getOrder(email) : null,
+  {
+    keepPreviousData: true
+  }
+  );
 
 
     localStorage.setItem('cartItems', JSON.stringify(state));
@@ -62,7 +66,7 @@ console.log(orders)
                 {orders && orders.items.length ? (
                      orders.items.map(item => (
                         <div key={item.id}>
-                          <CartItem item={item.product} />
+                          <CartItem item={item} />
                         </div>
                     ))
                 ) : (

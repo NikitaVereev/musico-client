@@ -20,21 +20,21 @@ const CartItem: FC<{ item: ICart }> = ({ item }) => {
 
     const handleClick = (orderId) => {
       deleteItemFromCart(item.id)
-      removeFromCart({id: item.id})
+      console.log(item.id)
 
     }
 
   return (
     <div className={styles.item}>
       <Image
-        src={item.fileUrl}
-        alt={item.title}
+        src={item.product.fileUrl}
+        alt={item.product.title}
         width={100}
         height={100}
       />
       <div className={styles.itemInfo}>
-        <h4>{item.title}</h4>
-        <span>{item.price}</span>
+        <h4>{item.product.title}</h4>
+        <span>{item.product.price}</span>
       </div>
       <RiDeleteBin6Fill onClick={handleClick} />
     </div>
