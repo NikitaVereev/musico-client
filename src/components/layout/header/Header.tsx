@@ -84,7 +84,7 @@ const Header: FC = () => {
   ];
   return (
       <header className={cn(styles.header, isShow && styles.active)}>
-        <nav className={cn(styles.nav, 'wrapper')}>
+        <nav className={cn(styles.nav, 'wrapperHeader')}>
           <ul>
             <div className={styles.links}>
               {links.map((link, idx) => (

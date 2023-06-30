@@ -25,6 +25,12 @@ export interface IProduct{
     }
 }
 
+export interface ICatalogPage{
+    products: IProduct[]
+    heading: string
+    isLoading: boolean
+}
+
 export type TypeProductDataFilters = {
     sort?: string
     searchTerm?: string

@@ -11,7 +11,7 @@ import styles from './CatalogMain.module.scss'
 const CatalogMain: FC = () => {
 
     return (
-        <div className='wrapper'>
+        <div className='wrapper martinTop'>
 
             <div className={cn(styles.wrapper, 'wrapper')}>
                 {catalogList.map((item:IList) => (
@@ -20,7 +20,7 @@ const CatalogMain: FC = () => {
 
                         <Image src={item.image} alt={item.title} fill  />
 
-                        <h1>{item.title} </h1>
+                        <h1 className='text-white text-3xl'>{item.title} </h1>
                     </div>
                 ))}
             </div>

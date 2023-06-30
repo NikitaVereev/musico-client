@@ -82,7 +82,7 @@ const Home: FC = () => {
       </div>
     </div>;
     <Banner className='my-32'>
-      <div className='wrapper'>
+      <div className='wrapperHeader'>
         <h1>Выбирая нас вы получите</h1>
         <div className={styles.bannerWrapper}>
           {banerData.map(item => (
@@ -94,7 +94,7 @@ const Home: FC = () => {
         </div>
       </div>
     </Banner>
-  <div className="wrapper">
+  <div className="wrapperHeader">
     <h1 className='font-bold text-5xl mb-8'>Кто мы?</h1>
     <div className='flex gap-10 items-end '>
       <div className={styles.about}>

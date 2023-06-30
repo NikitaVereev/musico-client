@@ -19,7 +19,7 @@ const Footer: FC = () => {
   }, [])
 
   return <div className='bg-gray-300 py-16 mt-32 z-0 ' style={{opacity: isVisible ? 1 : 0}}>
-    <div className="wrapper">
+    <div className="wrapperHeader">
       <div className='flex items-start justify-between'>
         <div className={styles.column}>
          <div>

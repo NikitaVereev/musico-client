@@ -12,7 +12,7 @@ const Product: FC<ProductPageProps> = ({product}) => {
 
     return (
         <>
-            <div className={cn(styles.wrapper)}>
+            <div className={cn(styles.wrapper, 'wrapper')}>
 
                 <div className={styles.mainInfo}>
                     <div className={styles.images}>

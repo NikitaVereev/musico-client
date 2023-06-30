@@ -96,10 +96,16 @@ body {
   background: #f3f3f3;
   color: #333;
 }
-.wrapper {
+.wrapper, .wrapperHeader {
   @apply px-8  w-full mx-auto;
+  margin-top: 150px;
   max-width: 1400px;
   padding: 0 15px;
+}
+.wrapperHeader{
+
+  margin-top: 0;
+
 }
 .container {
   @apply max-w-7xl w-full mx-auto py-10;
@@ -115,7 +121,7 @@ h4 {
   font-weight: inherit;
 }
 h1{
-  @apply font-bold ;
+  @apply font-bold text-5xl ;
 }
 svg{
   fill: #333;

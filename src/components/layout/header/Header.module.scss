@@ -1,20 +1,20 @@
 .header {
-  @apply relative  top-0 z-20 w-full bg-gray-300 rounded-b-2xl mx-auto  flex justify-between items-center;
+  @apply fixed  top-0 z-50 w-full bg-gray-300 rounded-b-2xl mx-auto  flex justify-between items-center;
   box-shadow: 5px 20px 11px rgba(153,153,153,.2);
   transition: .5s cubic-bezier(.26,.71,.72,.3);
   &.active{
     transform: translateY(-80%);
-    .search{
-      transform: translateY(100%);
-      @apply bg-gray-300 p-3;
-
-      .searchInfo{
-        top: 3.3rem;
-        left: 0;
-        border-bottom-right-radius: 20px;
-        border-bottom-left-radius: 20px;
-      }
-    }
+    //.search{
+    //  transform: translateY(100%);
+    //  @apply bg-gray-300 p-3;
+    //
+    //  .searchInfo{
+    //    top: 3.3rem;
+    //    left: 0;
+    //    border-bottom-right-radius: 20px;
+    //    border-bottom-left-radius: 20px;
+    //  }
+    //}
   }
 
 
@@ -100,8 +100,8 @@
         }
 
         .cartWrapper {
-          //@apply fixed  w-1/3 min-h-full top-0 rounded-2xl -right-full z-40;
-          @apply overflow-x-hidden absolute min-h-full max-h-[90vh] overflow-y-scroll -right-[100%] top-[5rem] z-20 w-80 rounded-xl bg-gray-300 px-6 py-4 text-sm text-white;
+          @apply fixed overflow-x-hidden absolute min-h-full max-h-[90vh] overflow-y-scroll  w-1/3 min-h-full top-0 rounded-2xl -right-full z-40 text-white;
+         //@apply overflow-x-hidden absolute min-h-full max-h-[90vh] overflow-y-scroll -right-[100%] top-[5rem] z-20 w-80 rounded-xl bg-gray-300 px-6 py-4 text-sm text-white;
 
           transition: 0.5s ease;
           &.active{
@@ -163,7 +163,7 @@
     transform-style: preserve-3d;
 
     &::placeholder {
-      color: color(#575756 a(0.8));
+      color: #575756;
       text-transform: uppercase;
       letter-spacing: 1.5px;
     }

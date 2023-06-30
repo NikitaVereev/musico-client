@@ -9,6 +9,7 @@ import {IAuthInput} from "@/src/components/screens/auth/auth.interface";
 import {useAuthRedirect} from "@/src/components/screens/auth/useAuthRedirect";
 import {useAuth} from "@/src/hooks/useAuth";
 import {useQueryClient} from "@tanstack/react-query";
+import cn from "classnames";
 
 
 const Auth: FC = () => {
@@ -44,7 +45,7 @@ const Auth: FC = () => {
 
     return (
         <div>
-          <section className={styles.wrapper}>
+          <section className={cn(styles.wrapper, 'marginTop')}>
             {isLoading && <div  className='loader'>Загрузка</div>}
             <form onSubmit={handleSubmit(onSubmit)}>
               <h1 title="Авторизация" className="mb-6" />
