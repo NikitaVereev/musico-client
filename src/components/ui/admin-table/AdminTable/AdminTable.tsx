@@ -20,16 +20,19 @@ const AdminTable: FC<IAdminTable> = ({
 	removeHandler,
 	tableItems,
 }) => {
+	console.log(tableItems)
 	return (
 		<div>
-			<AdminTableHeader headerItems={headerItems} />
+			<AdminTableHeader headerItems={headerItems}
+							  //@ts-ignore
+							  isLoading={isLoading} />
 			{isLoading ? (
 				<SkeletonLoader count={1} height={48} className="mt-4" />
 			) : tableItems.length ? (
 				tableItems.map((tableItems) => (
 					<AdminHeaderItem
-						key={tableItems._id}
-						removeHandler={() => removeHandler(tableItems._id)}
+						key={tableItems.id}
+						removeHandler={() => removeHandler(tableItems.id)}
 						tableItem={tableItems}
 					/>
 				))

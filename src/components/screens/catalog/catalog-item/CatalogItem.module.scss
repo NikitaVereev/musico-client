@@ -1,5 +1,7 @@
 .glass{
   max-width: 100%;
+  grid-column-start: span 3;
+  grid-column-end: auto;
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -8,7 +10,7 @@
   font-family:Helvetica;
   transition: .5s ease;
   background:#FFFFFF;
-  width: 300px;
+  max-width: 300px;
   height: 500px;
 
   border-radius:10px;

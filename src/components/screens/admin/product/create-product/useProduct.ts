@@ -9,7 +9,7 @@ export const useProduct = (setValue: UseFormSetValue<any>) => {
     const {query, push} = useRouter()
 
     const { mutateAsync } = useMutation(
-        (data) => ProductServices.createProduct(data),
+        (data: any) => ProductServices.createProduct(data),
         {
             onError(error) {
                 toastError(error, 'Добавление продукта');
@@ -21,9 +21,25 @@ export const useProduct = (setValue: UseFormSetValue<any>) => {
         }
     );
 
-    const onSubmitEdit: SubmitHandler<any> = async(data) => {
+    const {mutateAsync: mutateEditProduct} = useMutation(
+        ({slug, data}: any) => ProductServices.changeProduct(slug, data),
+        {
+            onError(error) {
+                toastError(error, 'Товар не был обновлён')
+            },
+            onSuccess(){
+                toastr.success('Товар обновлен', 'товар успешно обновлен')
+                push('http://localhost:3000/catalog')
+            }
+        }
+    )
+
+    const onSubmitCreate: SubmitHandler<any> = async(data) => {
         await mutateAsync(data)
     }
+    const onSubmitEdit: SubmitHandler<any> = async(data) => {
+        await mutateEditProduct(data)
+    }
 
-    return {onSubmitEdit}
+    return {onSubmitCreate, onSubmitEdit}
 }

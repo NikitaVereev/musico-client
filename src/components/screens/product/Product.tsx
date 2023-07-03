@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import {ProductPageProps} from "@/pages/product/[slug]";
-import {useActions} from "@/src/hooks/useActions";
+import ReactImageMagnify from 'react-image-magnify'
 import styles from './Product.module.scss'
 import Image from "next/image";
 import cn from 'classnames'
@@ -8,7 +8,7 @@ import Button from '@/src/components/ui/button/Button'
 import {FiChevronLeft , FiChevronRight} from "react-icons/fi";
 
 const Product: FC<ProductPageProps> = ({product}) => {
-    const {addToCart} = useActions()
+
 
     return (
         <>
@@ -16,7 +16,23 @@ const Product: FC<ProductPageProps> = ({product}) => {
 
                 <div className={styles.mainInfo}>
                     <div className={styles.images}>
-                        {product.fileUrl ? <Image src={product.fileUrl} alt={product.title} fill /> : <div>Нету</div>}
+                        {product.fileUrl ? <ReactImageMagnify
+                            {...{
+                                smallImage: {
+                                    alt: 'Wristwatch by Ted Baker London',
+                                    isFluidWidth: true,
+                                    src: product.fileUrl,
+                                },
+                                largeImage: {
+                                    src: product.fileUrl,
+                                    width: 1200,
+                                    height: 1800,
+                                    sizes: '(min-width: 1200px) 1200px, 100vw',
+                                },
+                                lensStyle: { backgroundColor: 'rgba(0,0,0,.6)' },
+                                imageStyle: { objectFit: 'cover', backdropFilter: 'blur(20px)' },
+                            }}
+                        /> : <div>Нету</div>}
                         <button><FiChevronLeft /></button>
                         <button><FiChevronRight /></button>
                     </div>

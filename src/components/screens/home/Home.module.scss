@@ -1,6 +1,9 @@
 .mostPopular{
-  @apply grid grid-cols-4 gap-12;
-
+  //@apply grid grid-cols-4 gap-12;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  justify-items: center;
+  grid-gap: 1px;
 }
 .bannerWrapper{
   @apply flex justify-between gap-12;

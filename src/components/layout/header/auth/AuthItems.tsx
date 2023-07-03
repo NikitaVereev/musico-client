@@ -5,7 +5,6 @@ import LogoutButton from "@/src/components/layout/header/auth/LogoutButton";
 
 const AuthItems: FC = () => {
     const {user} = useAuth()
-    console.log(user)
     return (
         <>
             {user ? (

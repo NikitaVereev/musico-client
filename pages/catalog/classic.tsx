@@ -6,12 +6,13 @@ import {ProductServices} from "@/src/services/product.services";
 
 const ClassicPage: NextPage = () => {
     const {data: products, isLoading}: any = useQuery<IProduct[]>(['classic'], () => ProductServices.getOnlyCategories('Классическая'))
+    const heading = 'Классические гитары'
+
     if(isLoading)  return <div className='loader'>Загрузка</div>
     console.log(products)
     return (
         <CatalogWrapper products={products}
-            //@ts-ignore
-                        isLoading={isLoading} />
+            heading={heading} />
     );
 }
 

@@ -17,17 +17,25 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action: PayloadAction<{ payload: IAddToCartPayload; user: string }>) => {
       const { payload, user } = action.payload;
-      const item = state.items.find((item) => item.id === payload.id);
+      const item = state.items.find((item) => item.id ===
+          //@ts-ignore
+          payload.id);
       if (!item) {
-        state.items.push({ ...payload, id: state.items.length });
+        state.items.push({ ...payload,
+          //@ts-ignore
+          id: state.items.length });
         OrderService.createOrder({
           email: user || 'user@example.com', // Используем переданный user или дефолтное значение
-          idProduct: payload.id,
+          idProduct:
+          //@ts-ignore
+          payload.id,
         });
       }
     },
     removeFromCart: (state, action: PayloadAction<{ id: number }>) => {
-      state.items = state.items.filter((item) => item.id !== action.payload.id);
+      state.items = state.items.filter((item) =>
+          //@ts-ignore
+          item.id !== action.payload.id);
     },
   },
   extraReducers: (builder) => {

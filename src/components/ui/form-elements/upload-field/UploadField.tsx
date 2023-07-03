@@ -18,7 +18,7 @@ const UploadField: FC<IUploadField> = ({
                                            value,
                                        }) => {
     const { isLoading, uploadImage } = useUpload(onChange, folder)
-console.log(value, folder, onChange)
+
     return (
         <div className={cn(styles.field, styles.uploadField)} style={style}>
             <div className={styles.uploadFlex}>

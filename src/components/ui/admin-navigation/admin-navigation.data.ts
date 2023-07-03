@@ -13,15 +13,12 @@ export const navItems: INavItem[] = [
 		link: getAdminUrl('users'),
 	},
 	{
-		title: 'Фильмы',
-		link: getAdminUrl('movies'),
+		title: 'Заказы',
+		link: getAdminUrl('orders'),
 	},
 	{
-		title: 'Актеры',
-		link: getAdminUrl('actors'),
+		title: 'Продукты',
+		link: getAdminUrl('product-list'),
 	},
-	{
-		title: 'Жанры',
-		link: getAdminUrl('genres'),
-	},
+
 ]

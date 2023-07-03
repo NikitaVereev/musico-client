@@ -9,6 +9,7 @@ import styles from './Header.module.scss';
 import { useAuth } from '@/src/hooks/useAuth';
 
 import dynamic from 'next/dynamic';
+import {useRouter} from "next/router";
 
 const DynamicAuth = dynamic(() => import('./auth/AuthItems'), { ssr: false });
 const Header: FC = () => {
@@ -17,6 +18,8 @@ const Header: FC = () => {
   const [isShow, setIsShow] = useState(false)
   const [isLastScrollY, setIsLastScrollY] = useState(200)
   const [openBasket, setOpenBasket] = useState(false);
+
+  const router = useRouter()
 
   const controlNavbar = () => {
     if(typeof window !== 'undefined'){
@@ -59,7 +62,7 @@ const Header: FC = () => {
   };
 
   const { user } = useAuth()
-  console.log(searchResults)
+
 
 
 
@@ -75,7 +78,7 @@ const Header: FC = () => {
     },
     {
       name: 'Доставка',
-      link: '/dostavka'
+      link: '/delivery'
     },
     {
       name: 'О нас',
@@ -88,7 +91,7 @@ const Header: FC = () => {
           <ul>
             <div className={styles.links}>
               {links.map((link, idx) => (
-                  <li key={idx} className={cn(link.icon ? styles.logo : null)}>
+                  <li key={idx} className={cn(link.icon ? styles.logo : null, router.pathname === link.link && styles.active)}>
                     <Link href={link.link}>
                       {link.icon !== undefined ? (
                           <Image src={link.icon} alt={link.name} className={styles.logo} />

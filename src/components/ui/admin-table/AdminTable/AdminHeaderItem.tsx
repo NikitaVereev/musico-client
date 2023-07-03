@@ -4,7 +4,11 @@ import AdminActions from './AdminActions/AdminActions'
 import styles from './AdminTable.module.scss'
 import { IAdminTableItem } from './admin-table.interface'
 
-const AdminHeaderItem: FC<IAdminTableItem> = ({ tableItem, removeHandler }) => {
+const AdminHeaderItem: FC<IAdminTableItem> = ({ tableItem, removeHandler,
+												  //@ts-ignore
+												  isLoading }) => {
+	if (isLoading) return <div className="loaded">Загрузка</div>
+	console.log(tableItem)
 	return (
 		<div className={styles.item}>
 			{tableItem.items.map((value) => (

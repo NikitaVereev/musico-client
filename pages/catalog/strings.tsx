@@ -5,13 +5,14 @@ import {ProductServices} from "@/src/services/product.services";
 import CatalogWrapper from "@/src/components/screens/catalog/CatalogWrapper";
 
 const StringsPage: NextPage = () => {
-    const {data: products, isLoading}: any = useQuery<IProduct[]>(['all products'], () => ProductServices.getOnlyCategories('Струна'))
+    const {data: products, isLoading}: any = useQuery<IProduct[]>(['strings'], () => ProductServices.getOnlyCategories('Струна'))
+    const heading = 'Струны'
+
     if(isLoading)  return <div  className='loader'>Загрузка</div>
     console.log(products)
     return (
         <CatalogWrapper products={products}
-            //@ts-ignore
-                        isLoading={isLoading} />
+            heading={heading} />
     );
 }
 

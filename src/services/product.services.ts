@@ -26,5 +26,14 @@ export const ProductServices = {
         }catch(e){
             console.log(e)
         }
+    },
+
+    async changeProduct(slug: string, data: string) {
+        try{
+            return axios.put(`http://localhost:8080/product/${slug}`, data)
+            console.log('привет', slug, data)
+        }catch (e){
+            console.log(e)
+        }
     }
 }

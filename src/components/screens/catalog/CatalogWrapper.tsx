@@ -9,8 +9,11 @@ import {useFilters} from "@/src/components/screens/catalog/useFilters";
 import {useQuery} from "@tanstack/react-query";
 import {useRouter} from "next/router";
 import cn from "classnames";
+import Banner from "@/src/components/ui/banner/Banner";
+import {filtersData} from "@/src/components/screens/catalog/filters/filters.data";
+import Sort from "@/src/components/screens/catalog/sort/Sort";
 
-const CatalogWrapper: FC<{ products: IProduct[] }> = ({ products }) => {
+const CatalogWrapper: FC<{ products: IProduct[], heading: string }> = ({ products,heading }) => {
     const [categories, setCategories] = useState(products);
     const [isProduct, setIsProduct] = useState(products);
     const [resultsFound, setResultsFound] = useState(true);
@@ -27,16 +30,24 @@ const CatalogWrapper: FC<{ products: IProduct[] }> = ({ products }) => {
             {/*{router.pathname !== '/' ? <Button onClick={() => setIsFilterOpen(!isFilterOpen)}>*/}
             {/*    {isFilterOpen ? 'Закрыть фильтры' : 'Показать фильтры'}*/}
             {/*</Button> : null}*/}
-            <div className={cn(styles.explorer, {[styles.filterOpened]: isFilterOpen})}>
+            <h1 className='mb-12'>{heading}</h1>
+            <div className={cn(styles.explorer, {[styles.filterOpened]: !isFilterOpen})}>
                 <aside>
-                    dfdf
+                    <ul>
+                        <Sort />
+                        {filtersData.map((item, index) => (
+                            <li key={index}>
+                                <h3>{item.title}</h3>
+                            </li>
+                        ))}
+                    </ul>
                 </aside>
                 <section>
                     <div className={styles.grid}>
 
-                        <div className={styles.container}>
+                        <div className={cn(styles.container, isProduct.length === 0 && 'block')}>
                             {resultsFound ? (
-                                isProduct.map((product: IProduct) => <CatalogItem key={product.id} product={product} />)
+                                isProduct.length === 0 ? <Banner className='w-full'><h1>Сорян, братан, товаров в данной категории не имеется, заходи завтра</h1></Banner> : isProduct.map((product: IProduct) => <CatalogItem key={product.id} product={product} />)
                             ) : (
                                 <div>Нет результатов</div>
                             )}

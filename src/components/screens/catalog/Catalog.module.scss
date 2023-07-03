@@ -1,8 +1,9 @@
 .container{
-  @apply grid grid-cols-4 gap-10;
-  //display: grid;
-  //grid-template-columns: repeat(4, minmax(0, 1fr));
-  //grid-gap: 30px;
+  //@apply grid grid-cols-4 gap-10;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  justify-items: center;
+  grid-gap: 30px;
 }
 
 //.grid{
@@ -17,10 +18,17 @@
 //}
 
 .explorer{
-  @apply flex;
+  @apply flex flex-col;
   >aside{
-    @apply w-0 whitespace-nowrap opacity-0;
+    @apply w-full whitespace-nowrap opacity-100;
     transition: width 600ms ease-in, opacity 600ms ease-in;
+    >ul{
+      @apply flex items-center justify-between;
+      >li{
+        @apply bg-white px-4 py-2;
+        box-shadow: 0 0 11px rgba(33,33,33,.2);
+      }
+    }
   }
   >section{
     @apply w-full;
@@ -29,9 +37,9 @@
   &.filterOpened{
     @apply gap-5;
 
-    >aside{
-      @apply w-2/6 opacity-100;
-    }
+    //>aside{
+    //  @apply w-2/6 opacity-100;
+    //}
   }
 }
 
