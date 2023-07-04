@@ -14,7 +14,7 @@ export const navItems: INavItem[] = [
 	},
 	{
 		title: 'Заказы',
-		link: getAdminUrl('orders'),
+		link: getAdminUrl('order-list'),
 	},
 	{
 		title: 'Продукты',

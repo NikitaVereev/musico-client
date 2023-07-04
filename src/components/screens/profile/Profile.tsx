@@ -4,6 +4,7 @@ import {useDispatch} from "react-redux";
 import {useQuery} from "@tanstack/react-query";
 import {OrderService} from "@/src/services/order.service";
 import {useAuth} from "@/src/hooks/useAuth";
+import cn from "classnames";
 
 const Profile: FC = () => {
     const {user} = useAuth()
@@ -18,7 +19,7 @@ const Profile: FC = () => {
 
     console.log(orders)
     return (
-        <div className='wrapper, animate-scaleIn'>
+        <div className='wrapper animate-scaleIn'>
             <h1>Мои заказы</h1>
             {orders && orders.map((item: {id: string, status: string, price: number}) => (
                 <div key={item.id} className={styles.order}>

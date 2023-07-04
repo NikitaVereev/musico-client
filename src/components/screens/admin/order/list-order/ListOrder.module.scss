@@ -1,0 +1,15 @@
+.order{
+  @apply  py-2 px-4 rounded-3xl overflow-hidden bg-gray-700 bg-opacity-10 shadow-lg;
+  .heading{
+    @apply flex items-center justify-between;
+    >div{
+      @apply text-xl font-bold text-gray-700;
+      span{
+        @apply text-lg text-gray-800 font-black;
+        >span{
+          @apply text-primary;
+        }
+      }
+    }
+  }
+}

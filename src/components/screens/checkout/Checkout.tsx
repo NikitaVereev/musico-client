@@ -25,7 +25,8 @@ const Checkout: FC = () => {
 
 
     return (
-        <div>
+        <div className='wrapper'>
+            <h1>Корзина</h1>
             {orders && orders.items.map((item: IOrder) => (
                 <div key={item.id}>
                     <CartItem item={item} />

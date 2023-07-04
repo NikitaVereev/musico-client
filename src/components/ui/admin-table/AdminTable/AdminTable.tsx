@@ -4,6 +4,7 @@ import SkeletonLoader from '../../heading/SkeletonLoader'
 
 import AdminHeaderItem from './AdminHeaderItem'
 import styles from './AdminTable.module.scss'
+import {useRouter} from 'next/router'
 import AdminTableHeader from './AdminTableHeader'
 import { ITableItem } from './admin-table.interface'
 
@@ -20,14 +21,19 @@ const AdminTable: FC<IAdminTable> = ({
 	removeHandler,
 	tableItems,
 }) => {
+	const {pathname} = useRouter()
 	console.log(tableItems)
 	return (
-		<div>
+		<div className='animate-scaleIn'>
 			<AdminTableHeader headerItems={headerItems}
 							  //@ts-ignore
 							  isLoading={isLoading} />
 			{isLoading ? (
 				<SkeletonLoader count={1} height={48} className="mt-4" />
+			) : pathname === '/manage/order-list' && tableItems.items.length ? (
+				tableItems.items.map((tableItems) => (
+					<AdminHeaderItem key={tableItems.id} tableItem={tableItems} removeHandler={() => {}} />
+				))
 			) : tableItems.length ? (
 				tableItems.map((tableItems) => (
 					<AdminHeaderItem

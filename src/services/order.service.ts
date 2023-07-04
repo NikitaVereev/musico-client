@@ -42,6 +42,15 @@ export const OrderService = {
         catch(e){
             console.log(e)
         }
+    },
+
+    async getAllOrdersByAdmin(){
+        try{
+            const response = await axios.get('http://localhost:8080/order/all')
+            return response.data
+        }catch(e){
+            console.log(e)
+        }
     }
 
 }
