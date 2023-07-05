@@ -22,7 +22,7 @@ export const useProduct = (setValue: UseFormSetValue<any>) => {
     );
 
     const {mutateAsync: mutateEditProduct} = useMutation(
-        ({slug, data}: any) => ProductServices.changeProduct(slug, data),
+        ( data: any) => ProductServices.changeProduct(data),
         {
             onError(error) {
                 toastError(error, 'Товар не был обновлён')
@@ -38,6 +38,7 @@ export const useProduct = (setValue: UseFormSetValue<any>) => {
         await mutateAsync(data)
     }
     const onSubmitEdit: SubmitHandler<any> = async(data) => {
+        console.log('df', data)
         await mutateEditProduct(data)
     }
 

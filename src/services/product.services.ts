@@ -12,6 +12,14 @@ export const ProductServices = {
            console.log(e)
        }
     },
+    async getShittyFilter(data: string){
+        try{
+            const response = await axios.get(`http://localhost:8080/product/search/${data}`)
+            return response.data
+        }catch(e){
+            console.log(e)
+        }
+    },
     async getOnlyCategories(data: string) {
         try{
             const response = await axios.get(`http://localhost:8080/catalog/${data}`)
@@ -28,12 +36,16 @@ export const ProductServices = {
         }
     },
 
-    async changeProduct(slug: string, data: string) {
+    async changeProduct( data: string) {
         try{
-            return axios.put(`http://localhost:8080/product/${slug}`, data)
-            console.log('привет', slug, data)
+            return axios.put(`http://localhost:8080/product/changes`, data)
+            console.log('привет', data)
         }catch (e){
-            console.log(e)
+            console.log(e, 'dsgwegewhewh')
         }
+    },
+
+    async deleteProduct(id: string){
+        return axios.delete<string>(`http://localhost:8080/product?id=${id}`)
     }
 }

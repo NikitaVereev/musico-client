@@ -1,11 +1,12 @@
 import {ChangeEvent, useMemo, useState} from "react";
 import {useDebounce} from "@/src/hooks/useDebounce";
 import {useRouter} from "next/router";
-import {useQuery} from "@tanstack/react-query";
+import {useMutation, useQuery} from "@tanstack/react-query";
 import {ProductServices} from "@/src/services/product.services";
 import {getAdminUrl} from "@/src/config/url.config";
 import {toastError} from "@/src/components/utils/toast-error";
 import {ITableItem} from "@/src/components/ui/admin-table/AdminTable/admin-table.interface";
+import {toastr} from "react-redux-toastr";
 
 export const useProductsList = () => {
     const [searchTerm, setSearchTerm] = useState('')
@@ -44,9 +45,21 @@ console.log(queryData, 'куку')
         setSearchTerm(e.target.value)
     }
 
-    const deleteAsync = () => {
-        console.log('удалил')
-    }
+    const {mutateAsync: deleteAsync} = useMutation(
+        ['delete product'],
+        (productId: string) => ProductServices.deleteProduct(productId),
+        {
+            onError: (error) => {
+                toastError(error, 'Удаление товара не прошло')
+            },
+            onSuccess: () => {
+                toastr.success('Удаление товара', 'удаление прошло успешно')
+                queryData.refetch()
+            }
+        }
+
+    )
+
 
     return useMemo(
         () => ({

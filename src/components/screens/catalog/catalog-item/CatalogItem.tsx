@@ -31,7 +31,7 @@ const CatalogWrapper: FC<{ product: IProduct }> = ({product}) => {
     const email = user?.email
 
 
-    console.log(user)
+
 
     const { data: orders, isLoading } = useQuery(['single'], () => email ? OrderService.getOrder(email) : null, {
 
@@ -39,8 +39,7 @@ const CatalogWrapper: FC<{ product: IProduct }> = ({product}) => {
     if(isLoading) return <div className='loader'>Загрузка</div>
 
 
-    console.log(orders)
-    console.log(product)
+
 
 
 

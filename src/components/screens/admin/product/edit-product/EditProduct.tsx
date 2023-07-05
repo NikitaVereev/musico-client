@@ -29,6 +29,7 @@ const EditProduct: FC<IProduct> = ({
     } = useForm({
         mode: 'onChange',
         defaultValues: {
+            id: product.id,
             title: product.title,
             price: product.price,
             description: product.description,
@@ -40,6 +41,7 @@ const EditProduct: FC<IProduct> = ({
     const { user } = useAuth()
     console.log(user)
     const {onSubmitEdit} = useProduct(setValue)
+
     if(user?.admin === false) {
         return <div>Нету(</div>
     }
@@ -54,6 +56,7 @@ const EditProduct: FC<IProduct> = ({
             <h1>Редактирование продукта</h1>
             <form onSubmit={handleSubmit(onSubmitEdit)} style={{ padding: 30 }} className={cn( 'marginTop, animate-scaleIn')}>
                 <div >
+                    <div {...register('id')}></div>
                     <Field
                         {...register('title')}
                         // @ts-ignore
