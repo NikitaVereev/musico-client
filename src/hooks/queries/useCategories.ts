@@ -1,10 +1,9 @@
 import {useQuery} from "@tanstack/react-query";
 import {CategoryService} from "@/src/services/category.service";
 
-export const useCategories = () => {const {data, isLoading} = useQuery(['get categories'], () => CategoryService.getAllCategories(),
-    {
-        select: ({data}) => data
-    })
-    console.log(data)
-    return {data, isLoading}
+export const useCategories = (subType: string) => {
+    const {data, isLoading, isError} = useQuery(['get all categories'], () => CategoryService.getAllCategories(subType))
+
+
+    return {data, isLoading, isError}
 }

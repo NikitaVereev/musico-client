@@ -5,7 +5,7 @@ import {ProductServices} from "@/src/services/product.services";
 import CatalogWrapper from "@/src/components/screens/catalog/CatalogWrapper";
 
 const AccessoriesDrumPage: NextPage = () => {
-    const {data: products, isLoading}: any = useQuery<IProduct[]>(['accessories drum'], () => ProductServices.getOnlyCategories('Аксессуары для ударных'))
+    const {data: products, isLoading, isError}: any = useQuery<IProduct[]>(['accessories drum'], () => ProductServices.getOnlyCategories('Аксессуары для ударных'))
     const heading = 'Аксессуары для ударных'
 
     if(isLoading)  return <div  className='loader'>Загрузка</div>
@@ -13,6 +13,7 @@ const AccessoriesDrumPage: NextPage = () => {
     return (
         <CatalogWrapper products={products}
                         heading={heading}
+                        isError={isError}
                         />
     );
 }

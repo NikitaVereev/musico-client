@@ -30,10 +30,8 @@ import SwiperContainer from "@/src/components/screens/home/swiper/SwiperContaine
 
 
 const Home: FC = () => {
-  const {data: products, isLoading}: any = useQuery<IProduct[]>(['all products'], () => ProductServices.getAllProducts())
+  const {data: products, isLoading, isError}: any = useQuery<IProduct[]>(['all products'], () => ProductServices.getAllProducts())
   if(isLoading)  return <div className='loader'>Загрузка</div>
-
-
 
   return <>
     {/*<div className="box">*/}
@@ -73,7 +71,7 @@ const Home: FC = () => {
       <div>
         <h1 className='font-bold text-5xl mb-8'>Популярные продукты</h1>
         <div className={styles.mostPopular}>
-          {
+          {isError ? <div>Ошибка загрузки</div> :
             products.map((product: IProduct) => <CatalogItem  key={product.id} product={product} /> ).slice(0,4)
           }
         </div>

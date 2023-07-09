@@ -4,10 +4,10 @@ import storage from 'redux-persist/lib/storage';
 
 import { rootReducer } from '@/src/components/store/rootReducer';
 
-
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['filters', 'user', 'toastr'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

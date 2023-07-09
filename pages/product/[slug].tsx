@@ -10,10 +10,6 @@ export interface ProductPageProps {
 }
 
 const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
-    const { data: products, isLoading }: any = useQuery<IProduct[]>(['all products'], () =>
-        ProductServices.getAllProducts()
-    );
-
     return <Product product={product} />;
 };
 

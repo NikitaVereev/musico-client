@@ -44,9 +44,9 @@ export type TypeProductDataFilters = {
 
 export enum EnumProductSort {
     HIGH_PRICE = 'По убыванию',
-    LOW_PRICE = 'По убыванию',
+    LOW_PRICE = 'По возрастанию',
     NEWEST = 'Новые',
-    OLDEST = 'Старые'
+    POPULAR = 'Популярные'
 }
 
 

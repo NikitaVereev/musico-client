@@ -1,18 +1,21 @@
-export const sortData = [
+import {ISelectItem} from "@/src/components/ui/select/select.interface";
+import {EnumProductSort} from "@/src/interfaces/product.interface";
+
+export const SORT_SELECT_DATA: ISelectItem<EnumProductSort>[] = [
     {
-        title: 'Популярные',
-        id: 1
+        key: EnumProductSort.HIGH_PRICE,
+        label: 'По убыванию'
     },
     {
-        title: 'Новинки',
-        id: 2
+        key: EnumProductSort.LOW_PRICE,
+        label: 'По возрастанию'
     },
     {
-        title: 'Сначала дешевле',
-        id: 3
+        key: EnumProductSort.NEWEST,
+        label: 'Новые'
     },
     {
-        title: 'Сначала дорогие',
-        id: 4
+        key: EnumProductSort.POPULAR,
+        label: 'Популярные'
     }
 ]

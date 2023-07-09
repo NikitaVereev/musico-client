@@ -20,7 +20,7 @@
 .explorer{
   @apply flex flex-col;
   >aside{
-    @apply w-full whitespace-nowrap opacity-100;
+    @apply w-full  opacity-100;
     transition: width 600ms ease-in, opacity 600ms ease-in;
     >ul{
       @apply flex items-center justify-between;

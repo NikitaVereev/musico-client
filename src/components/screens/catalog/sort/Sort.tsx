@@ -1,38 +1,18 @@
-import {FC, useState} from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import {sortData} from "@/src/components/screens/catalog/sort/sort.data";
-
-
+import { FC } from 'react';
+import {useFilters} from "@/src/components/screens/catalog/useFilters";
+import Select from '@/src/components/ui/select/Select'
+import {SORT_SELECT_DATA} from "@/src/components/screens/catalog/sort/sort.data";
 
 const Sort: FC = () => {
-    const [sort, setSort] = useState('')
-    const handleChange = (event: SelectChangeEvent) => {
-        setSort(event.target.value as string);
-    };
-    console.log(sort)
-    return (
-        <div>
-            <Box sx={{ maxWidth: 120 }}>
-                <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">Age</InputLabel>
-                    <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={sort}
-                        label="Age"
-                        onChange={handleChange}
-                    >
-                        {sortData.map(item => (
-                            <MenuItem key={item.id} value={item.id}>{item.title}</MenuItem>
-                        ))}
+    const {queryParams, updateQueryParams} = useFilters()
 
-                    </Select>
-                </FormControl>
-            </Box>
+    return (
+        <div className='text-right w-full flex justify-end z-10 mb-8'>
+            <Select
+            data={SORT_SELECT_DATA}
+            onChange={value => updateQueryParams('sort', value.key.toString())}
+            value={SORT_SELECT_DATA.find(value => value.key === queryParams.sort)}
+            />
         </div>
     );
 }

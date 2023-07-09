@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import CategoryGroup from "@/src/components/screens/catalog/filters/category-group/CategoryGroup";
 
-const Filters: FC = () => {
+const Filters: FC<{heading?: string}> = ({heading}) => {
     return (
         <>
-            <CategoryGroup />
+            <CategoryGroup heading={heading} />
         </>
     );
 }

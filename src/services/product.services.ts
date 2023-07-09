@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {IProduct} from "@/src/interfaces/product.interface";
 
 
 export const ProductServices = {
@@ -20,6 +21,14 @@ export const ProductServices = {
             console.log(e)
         }
     },
+    async getSearchedProduct(data: IProduct[]){
+        try{
+            const response = await axios.get(`http://localhost:8080/product/search/${data}`)
+            return response.data
+        }catch(e){
+            console.log(e)
+        }
+    } ,
     async getOnlyCategories(data: string) {
         try{
             const response = await axios.get(`http://localhost:8080/catalog/${data}`)

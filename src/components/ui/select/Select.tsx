@@ -1,57 +1,42 @@
-import { FC } from 'react'
-import ReactSelect, { OnChangeValue } from 'react-select'
-import makeAnimated from 'react-select/animated'
-
-import formStyles from '../form-elements/Form.module.scss'
-
+import {FC, useState} from 'react';
 import styles from './Select.module.scss'
-import { IOption, ISelect } from './select.interface'
+import {ISelect} from "@/src/components/ui/select/select.interface";
+import {BsCaretDownFill} from "react-icons/bs";
+import cn from "classnames";
 
-const animatedComponents = makeAnimated()
 
-const Select: FC<ISelect> = ({
-                                 placeholder,
-                                 error,
-                                 isMulti,
-                                 options,
-                                 field,
-                                 isLoading,
-                             }) => {
-    const onChange = (newValue: unknown | OnChangeValue<IOption, boolean>) => {
-        field.onChange(
-            isMulti
-                ? (newValue as IOption[]).map((item) => item.value)
-                : (newValue as IOption).value
-        )
-    }
-
-    const getValue = () => {
-        if (field.value) {
-            return isMulti
-                ? options.filter((option) => field.value.indexOf(option.value) >= 0)
-                : options.find((option) => option.value === field.value)
-        } else {
-            return isMulti ? [] : ''
-        }
-    }
+function Select<K>({data, onChange, value, title}: ISelect<K>){
+    const [isOpen, setIsOpen] = useState(false)
 
     return (
-        <div className={styles.selectContainer}>
-            <label>
-                <span>{placeholder}</span>
-                <ReactSelect
-                    classNamePrefix="custom-select"
-                    options={options}
-                    value={getValue()}
-                    isMulti={isMulti}
-                    onChange={onChange}
-                    components={animatedComponents}
-                    isLoading={isLoading}
-                />
-            </label>
-            {error && <div className={formStyles.error}>{error.message}</div>}
+        <div className={styles.select}>
+            <button onClick={() => setIsOpen(!isOpen)}>
+                {title && <b>{title}:</b>}
+                {value?.label || 'Default'}
+                <BsCaretDownFill />
+            </button>
+            {isOpen && (
+                <ul>
+                    {data.map(item => (
+                        <li key={item.key?.toString()}
+                        className={cn({
+                            [styles.active]: item.key === value?.key
+                        })}
+                        >
+                            <button onClick={() => {
+                                onChange(item)
+                                setIsOpen(false)
+                            }}
+                            disabled={item.key === value?.key}
+                            >
+
+                                {item.label}
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     )
 }
-
-export default Select
+export default Select;

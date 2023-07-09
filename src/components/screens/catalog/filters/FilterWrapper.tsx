@@ -5,9 +5,9 @@ interface IFilterWrapper{
 }
 const FilterWrapper: FC<PropsWithChildren<IFilterWrapper>> = ({title, children}) => {
     return (
-        <div className='mb-6'>
-            <div className='mb-3 font-semibold'>{title}</div>
-            <div>{children}</div>
+        <div className='my-6'>
+            <h2 className='mb-3 font-semibold text-4xl'>{title}</h2>
+            <div className='flex items-start justify-between'>{children}</div>
         </div>
     );
 }

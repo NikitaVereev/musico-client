@@ -8,6 +8,7 @@ import Logo from '@/src/assets/logo.png';
 import styles from './Header.module.scss';
 import { useAuth } from '@/src/hooks/useAuth';
 
+
 import dynamic from 'next/dynamic';
 import {useRouter} from "next/router";
 
@@ -49,6 +50,8 @@ const Header: FC = () => {
       const response = await fetch(`http://localhost:8080/product/search/${searchQuery}`);
       const data = await response.json();
       setSearchResults(data);
+      localStorage.setItem('search' , data)
+
     } catch (error) {
       console.error('Ошибка при выполнении запроса поиска:', error);
     }
@@ -111,7 +114,10 @@ const Header: FC = () => {
                   value={searchQuery}
                   onChange={handleChange}
               />
-              <button className={styles.searchButton} onClick={handleSearch}>
+              <button className={styles.searchButton} onClick={() => {
+                handleSearch
+                router.push('/search-page')
+              }}>
                 <FaSearch />
               </button>
 
