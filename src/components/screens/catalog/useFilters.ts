@@ -25,7 +25,7 @@ export const useFilters = () => {
         });
     }, []);
 
-    const updateQueryParams = (key: keyof TypeProductDataFilters, value: string) => {
+    const updateQueryParams = (key: keyof TypeProductDataFilters, value: string | null) => {
         const newParams = new URLSearchParams(searchParams.toString());
 
         if (value) {

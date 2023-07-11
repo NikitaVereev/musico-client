@@ -3,19 +3,19 @@ import {IProduct} from "@/src/interfaces/product.interface";
 
 
 export const ProductServices = {
-    async getAllProducts(searchTerm?:string){
+    async getAllProducts(search?:string){
        try{
-           const response = await axios.get(`http://localhost:8080/product `, {
-               params: searchTerm ? {searchTerm} : {}
+           const response = await axios.get(`http://localhost:8080/product`, {
+               params: search ? {search} : {}
            })
            return response.data
        }catch(e){
            console.log(e)
        }
     },
-    async getShittyFilter(data: string){
+    async getShittyFilter(subType: string,data: string){
         try{
-            const response = await axios.get(`http://localhost:8080/product/search/${data}`)
+            const response = await axios.get(`http://localhost:8080/product/search?product.subType=${subType}&${data}`)
             return response.data
         }catch(e){
             console.log(e)
@@ -31,7 +31,7 @@ export const ProductServices = {
     } ,
     async getOnlyCategories(data: string) {
         try{
-            const response = await axios.get(`http://localhost:8080/catalog/${data}`)
+            const response = await axios.get(`http://localhost:8080/product/search?product.subType=${data}`)
             return response.data
         }catch(e){
             console.log(e)

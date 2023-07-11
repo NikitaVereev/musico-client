@@ -3,8 +3,7 @@ import { useFilters } from '@/src/components/screens/catalog/useFilters';
 import { useCategories } from '@/src/hooks/queries/useCategories';
 import Checkbox from '@/src/components/ui/checkbox/Checkbox';
 import FilterWrapper from '@/src/components/screens/catalog/filters/FilterWrapper';
-import { useQuery } from '@tanstack/react-query';
-import { CategoryService } from '@/src/services/category.service';
+import styles from '../Filters.module.scss'
 
 const CategoryGroup: FC<{ heading?: string | any }> = ({ heading }) => {
     const { queryParams, updateQueryParams } = useFilters();
@@ -33,30 +32,36 @@ const CategoryGroup: FC<{ heading?: string | any }> = ({ heading }) => {
 
         setCheckedItems(updatedCheckedItems);
 
-        const updatedSearchTerm = updatedCheckedItems.length > 0 ? updatedCheckedItems.map((id) => {
-            let categoryName = '';
+        const updatedSearchTerms = updatedCheckedItems.map((id) => {
+            let categoryField = '';
+            let paramName = '';
+
             data.forEach((category: any) => {
                 const filterValue = category.filterValues.find((filterValue: any) => filterValue.id === id);
                 if (filterValue) {
-                    categoryName = filterValue.name;
+                    categoryField = category.field;
+                    paramName = filterValue.name;
                 }
             });
-            return categoryName;
-        }).join(' ') : '';
 
-        updateQueryParams('categoryId', updatedCheckedItems.length > 0 ? updatedCheckedItems.join(',') : null);
-        updateQueryParams('searchTerm', updatedSearchTerm);
+            return `${encodeURIComponent(categoryField)}=${encodeURIComponent(paramName)}`;
+        });
+
+        updateQueryParams('product.subType', encodeURIComponent('Электрогитара'));
+        updateQueryParams('searchTerm', updatedSearchTerms.join('&'));
     };
 
 
 
     return (
-        <FilterWrapper title='Фильтры'>
-            <div className='flex gap-10 items-start flex-wrap'>
+        <FilterWrapper title=''>
+            <div className={styles.item}>
                 {data?.length ? (
                     data.map((category: any) => (
-                        <div key={category.id} className='max-w-[30%] w-fit border border-solid border-gray-500 p-2 rounded-3xl'>
-                            <h2>{category.name}</h2>
+                        <div key={category.id} className=' w-full  p-2 rounded-3xl'>
+                            <div className={styles.heading}>
+                                <h2 className={styles.filterTitle}>{category.name}</h2>
+                            </div>
                             {category.filterValues.map((param: any) => {
                                 const isChecked = checkedItems.includes(param.id);
 
@@ -74,7 +79,7 @@ const CategoryGroup: FC<{ heading?: string | any }> = ({ heading }) => {
                         </div>
                     ))
                 ) : (
-                    <p>Категории не найдены</p>
+                    <p>Фильтры не найдены</p>
                 )}
             </div>
         </FilterWrapper>

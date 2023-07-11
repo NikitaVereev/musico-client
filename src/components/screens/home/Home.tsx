@@ -109,7 +109,7 @@ const Home: FC = () => {
           </div>
           <div>
             <h2 className='text-4xl font-black text-primary'>500+</h2>
-            <p className='text-primary'>Тысяч заплачено Егору и Никите</p>
+            <p className='text-primary'>Чего-то</p>
           </div>
 
         </div>

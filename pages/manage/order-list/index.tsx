@@ -6,7 +6,7 @@ import {OrderService} from "@/src/services/order.service";
 const OrderListPage: NextPageAuth = () => {
     const { data: orders, isLoading } = useQuery(['all orders by admin'], () => OrderService.getAllOrdersByAdmin());
 
-    if(isLoading) return <div className="loaded">Загрузка</div>
+    if(isLoading) return <div className="loader">Загрузка</div>
     return (
         <ListOrder orders={orders} isLoading={isLoading} />
     );

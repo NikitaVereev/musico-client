@@ -16,14 +16,14 @@ const CatalogWrapper: FC<{ products: IProduct[], heading?: string}> = ({ product
 
     const {isFilterUpdated, queryParams, updateQueryParams} = useFilters()
 
-    const { data, isFetching } = useQuery(['product explorer', queryParams, heading], () => ProductServices.getShittyFilter(queryParams.searchTerm), {
+    const { data, isFetching } = useQuery(['product explorer', queryParams, heading], () => ProductServices.getShittyFilter(products[0].subType , queryParams.searchTerm), {
         initialData: products,
         enabled: true
     });
 
 
 
-    console.log(products[0])
+    // console.log(products[0])
 
 
 
@@ -46,10 +46,8 @@ const CatalogWrapper: FC<{ products: IProduct[], heading?: string}> = ({ product
 
                         <div className={cn(styles.container, isProduct.length === 0 && 'block')}>
                             {!isFetching ? (
-                                data.length === 0 ? <Banner className='w-full'><h1>Сорян, братан, товаров в данной категории не имеется, заходи завтра</h1></Banner> : data.map((product: IProduct) => <CatalogItem key={product.id} product={product} />)
-                            ) : (
-                                <div>Нет результатов</div>
-                            )}
+                                data.length === 0 ? <Banner className='w-full'><h1>Товаров в выбранной категории на данный момент нет</h1></Banner> : data.map((product: IProduct) => <CatalogItem key={product.id} product={product} />)
+                            ): <div className='loader'>Загрузка</div>}
                         </div>
                     </div>
                     {/*Pagination*/}

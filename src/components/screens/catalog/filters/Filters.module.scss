@@ -1,5 +1,11 @@
 .item{
-  @apply animate-scaleIn  relative   border border-solid border-gray-500 p-2 rounded-3xl;
+  @apply animate-scaleIn  relative  p-2 rounded-3xl;
+  >div{
+    @apply mb-[24px];
+    .heading{
+      @apply flex items-center justify-between mb-[16px] w-full;
+    }
+  }
 }
 
 .filterTitle{

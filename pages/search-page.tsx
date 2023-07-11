@@ -13,7 +13,7 @@ const SearchPage: NextPage = () => {
     console.log(products)
     return (
         <div>
-            {isLoading ? <div>Загрузка</div> : isError ? <div>Ошибка</div> : products.map((item: IProduct) => (
+            {isLoading ? <div className='loader'></div> : isError ? <div>Ошибка</div> : products.map((item: IProduct) => (
                 <h1 key={item.id}>item.title</h1>
             ))}
         </div>

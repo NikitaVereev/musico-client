@@ -11,7 +11,7 @@ const AdminHeaderItem: FC<IAdminTableItem> = ({ tableItem, removeHandler,
 												  isLoading }) => {
 	const {pathname} = useRouter()
 
-	if (isLoading) return <div className="loaded">Загрузка</div>
+	if (isLoading) return <div className="loader">Загрузка</div>
 	console.log(tableItem)
 	return (
 		<>

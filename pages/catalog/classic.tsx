@@ -3,12 +3,14 @@ import CatalogWrapper from "@/src/components/screens/catalog/CatalogWrapper";
 import {useQuery} from "@tanstack/react-query";
 import {IProduct} from "@/src/interfaces/product.interface";
 import {ProductServices} from "@/src/services/product.services";
+import Banner from "@/src/components/ui/banner/Banner";
 
 const ClassicPage: NextPage = () => {
-    const {data: products, isLoading}: any = useQuery<IProduct[]>(['classic'], () => ProductServices.getOnlyCategories('Классическая'))
+    const {data: products, isLoading, isError}: any = useQuery<IProduct[]>(['classic'], () => ProductServices.getOnlyCategories('Классическая'))
     const heading = 'Классические гитары'
 
     if(isLoading)  return <div className='loader'>Загрузка</div>
+    if(isError) return <Banner className='wrapper'><h1>Проблемы на серверной стороне, мы уже разбираемся с этим</h1></Banner>
     console.log(products)
     return (
         <CatalogWrapper products={products}
