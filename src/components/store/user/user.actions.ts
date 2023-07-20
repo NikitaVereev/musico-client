@@ -10,7 +10,7 @@ export const register = createAsyncThunk<IAuthResponse, IEmailPassword>(
     async ({ email, password }, thunkApi) => {
         try {
             const response = await AuthService.register(email, password)
-            toastr.success('Registration', 'Completed successfully')
+            toastr.success('Регистрация почти закончена', 'Чтобы подтвердить регистрацию, перейдите по ссылке, прищедщей на вашу почту')
             return response.data
         } catch (error) {
             toastError(error)

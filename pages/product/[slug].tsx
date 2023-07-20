@@ -7,6 +7,7 @@ import {ProductServices} from "@/src/services/product.services";
 
 export interface ProductPageProps {
     product: IProduct;
+
 }
 
 const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
@@ -15,11 +16,13 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const products = await ProductServices.getAllProducts();
+    console.log('ssgdsg', products)
     const paths = products.map((product: IProduct) => {
         return {
             params: { slug: product.slug },
         };
     });
+    console.log(paths, products, 'sdsd')
     return { paths, fallback: 'blocking' };
 };
 

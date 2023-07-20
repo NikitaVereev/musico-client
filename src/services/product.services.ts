@@ -6,16 +6,18 @@ export const ProductServices = {
     async getAllProducts(search?:string){
        try{
            const response = await axios.get(`http://localhost:8080/product`, {
-               params: search ? {search} : {}
+               params: {search},
+
            })
+
            return response.data
        }catch(e){
            console.log(e)
        }
     },
-    async getShittyFilter(subType: string,data: string){
+    async getShittyFilter(subType: string, heading: string,data: string){
         try{
-            const response = await axios.get(`http://localhost:8080/product/search?product.subType=${subType}&${data}`)
+            const response = await axios.get(`http://localhost:8080/product/search/${subType}?product.subType=${heading}&${data}`)
             return response.data
         }catch(e){
             console.log(e)
@@ -29,9 +31,9 @@ export const ProductServices = {
             console.log(e)
         }
     } ,
-    async getOnlyCategories(data: string) {
+    async getOnlyCategories( data: string, heading: string) {
         try{
-            const response = await axios.get(`http://localhost:8080/product/search?product.subType=${data}`)
+            const response = await axios.get(`http://localhost:8080/product/search/${data}?product.subType=${heading}`)
             return response.data
         }catch(e){
             console.log(e)
@@ -40,6 +42,21 @@ export const ProductServices = {
     async createProduct(data: string){
         try{
             return axios.post('http://localhost:8080/product', data)
+        }catch(e){
+            console.log(e)
+        }
+    },
+    async createFeatures(type: string, id: string | null, data: string){
+        try{
+            return axios.post(`http://localhost:8080/product/features/${type}?productId=${id}`, data)
+        }catch (e){
+            console.log(e)
+        }
+    },
+
+    async createImageProduct(id: string, data: any){
+        try{
+            return axios.post(`http://localhost:8080/product/upload?productId=${id}`, data)
         }catch(e){
             console.log(e)
         }

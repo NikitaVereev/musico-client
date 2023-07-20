@@ -1,19 +1,31 @@
-import { FC } from 'react';
-import Button from '@/src/components/ui/button/Button';
-import { useForm, Controller } from 'react-hook-form';
-import Field from '@/src/components/ui/form-elements/Field';
-import Link from 'next/link';
-import styles from '../ProductManipulation.module.scss';
+import {FC, useEffect, useState} from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import UploadField from '@/src/components/ui/form-elements/upload-field/UploadField';
+import AdminNavigation from '@/src/components/ui/admin-navigation/AdminNavigation';
 import cn from 'classnames';
-import generateSlug from '@/src/components/utils/string/generate-slug';
+import Field from '@/src/components/ui/form-elements/Field';
 import SlugField from '@/src/components/ui/form-elements/slug-field/SlugField';
-import {useProduct} from "@/src/components/screens/admin/product/create-product/useProduct";
-import UploadField from "@/src/components/ui/form-elements/upload-field/UploadField";
-import {useAuth} from "@/src/hooks/useAuth";
-import AdminNavigation from "@/src/components/ui/admin-navigation/AdminNavigation";
+import generateSlug from '@/src/components/utils/string/generate-slug';
+import styles from '@/src/components/screens/admin/product/ProductManipulation.module.scss';
+import Button from '@/src/components/ui/button/Button';
+import Link from 'next/link';
+import { useAuth } from '@/src/hooks/useAuth';
+import { useProduct } from '@/src/components/screens/admin/product/create-product/useProduct';
+import CreateImage from '@/pages/manage/create-product/create-image';
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
+import dynamic from "next/dynamic";
 
-
+const DynamicSelectType = dynamic(() => import('@/src/components/screens/admin/product/create-product/SelectType'), {
+    ssr: false
+})
 const CreateProduct: FC = () => {
+    const [isSubType, setIsSubType] = useState(null)
+    useEffect(() => {
+        setIsSubType(getValues('subType'))
+        console.log('sdgdsg')
+    }, [])
+
 
     const {
         handleSubmit,
@@ -25,22 +37,34 @@ const CreateProduct: FC = () => {
     } = useForm({
         mode: 'onChange',
     });
-    const { user } = useAuth()
-    console.log(user)
-    const {onSubmitCreate} = useProduct(setValue)
-    if(user?.admin === false) {
-        return <div>Нету(</div>
+
+    const options = [
+        { value: 'Электрогитара', label: 'Электрогитара' },
+        { value: 'Акустическая', label: 'Акустическая гитара' },
+        { value: 'Классическая', label: 'Классическая гитара' }
+    ]
+
+    const { user } = useAuth();
+    const { onSubmitCreate } = useProduct(setValue);
+
+    if (user?.admin === false) {
+        return <div>Нету(</div>;
     }
-
-
+    console.log(getValues('subType'), 'aaaa');
 
 
     return (
-        <div className='wrapper'>
-
+        <div className="wrapper">
             <AdminNavigation />
             <h1>Создание продукта</h1>
-        <form onSubmit={handleSubmit(onSubmitCreate)} style={{ padding: 30 }} className={cn( 'marginTop, animate-scaleIn')}>
+            <form
+                onSubmit={
+                    handleSubmit(onSubmitCreate)
+
+                }
+                style={{ padding: 30 }}
+                className={cn('marginTop, animate-scaleIn')}
+            >
             <div >
                 <Field
                     {...register('title', {
@@ -80,10 +104,27 @@ const CreateProduct: FC = () => {
                 />
             </div>
             <div>
-                <Field
-                    placeholder="Подтип"
-                    {...register('subType', )}
+                {/*<Field*/}
+                {/*    placeholder="Подтип"*/}
+                {/*    {...register('subType', )}*/}
+                {/*    name="subType"*/}
+                {/*/>*/}
+                <Controller
+                    control={control}
                     name="subType"
+                    render={({ field, fieldState: { error } }) => (
+                        <DynamicSelectType
+                            field={field}
+                            options={options || {}}
+                            isLoading={false}
+
+                            placeholder="Тип"
+                            error={error}
+                        />
+                    )}
+                    rules={{
+                        required: 'Пожалуйста, введите хоть один жанр!',
+                    }}
                 />
             </div>
             <div>
@@ -92,44 +133,28 @@ const CreateProduct: FC = () => {
                     {...register('company', )}
                     name="company"
                 />
+
             </div>
 
-            <Controller
-                control={control}
-                name="fileUrl"
-                defaultValue=""
-
-                render={({
-                             field: { value, onChange },
-                             fieldState: { error },
-                         }) => (
-                    <UploadField
-                        onChange={onChange}
-                        value={value}
-                        placeholder="Изображение"
-                        error={error}
-                        folder="uploads"
-                    />
-                )}
-                rules={{
-                    required: 'Poster is required',
-                }}
-            />
 
 
 
 
-            <div className={styles.buttons}>
-                <Button >
-                    <span>Опубликовать</span>
-                </Button>
-                <Link href="/">
+
+                <div className={styles.buttons}>
                     <Button>
-                        <span>Отмена</span>
+                        <span>Добавить изображения</span>
                     </Button>
-                </Link>
-            </div>
-        </form>
+                    <Link href="/">
+                        <Button>
+                            <span>Отмена</span>
+                        </Button>
+                    </Link>
+                </div>
+
+            </form>
+
+
         </div>
     );
 };

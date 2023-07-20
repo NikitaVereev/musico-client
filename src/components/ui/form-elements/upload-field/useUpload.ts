@@ -13,12 +13,12 @@ type TypeUpload = (
     isLoading: boolean
 }
 
-export const useUpload: TypeUpload = (onChange, folder) => {
+export const useUpload: TypeUpload = (onChange, id) => {
     const [isLoading, setIsLoading] = useState(false)
 
     const { mutateAsync } = useMutation(
 
-        (data: FormData) => FileService.upload(data, folder),
+        (data: FormData) => FileService.upload(data, id),
         {
             onSuccess: ({ data }) => {
                 onChange(data);

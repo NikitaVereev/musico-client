@@ -47,7 +47,7 @@ const CategoryGroup: FC<{ heading?: string | any }> = ({ heading }) => {
             return `${encodeURIComponent(categoryField)}=${encodeURIComponent(paramName)}`;
         });
 
-        updateQueryParams('product.subType', encodeURIComponent('Электрогитара'));
+
         updateQueryParams('searchTerm', updatedSearchTerms.join('&'));
     };
 
@@ -64,7 +64,7 @@ const CategoryGroup: FC<{ heading?: string | any }> = ({ heading }) => {
                             </div>
                             {category.filterValues.map((param: any) => {
                                 const isChecked = checkedItems.includes(param.id);
-
+                                if(param.name === null) return null
                                 return (
                                     <Checkbox
                                         key={param.id}

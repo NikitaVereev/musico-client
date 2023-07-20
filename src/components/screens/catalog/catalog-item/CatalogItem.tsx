@@ -59,7 +59,7 @@ const CatalogWrapper: FC<{ product: IProduct }> = ({product}) => {
 
 
                         <div className={styles.image}>
-                            <Image src={product.fileUrl} fill alt={product.title} />
+                            <Image src={product.fileUrl[0]?.url} fill alt={product.title} />
                         </div>
                         <h3 className={styles.price}>{product.price} р.</h3>
                         <div className={styles.title}>

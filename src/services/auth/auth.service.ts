@@ -11,7 +11,7 @@ export const AuthService = {
 			'http://localhost:8080/auth/register',
 			{ email, password }
 		)
-		console.log(response.data.accessToken)
+
 
 		if (response.data.accessToken) saveToStorage(response.data)
 		return response

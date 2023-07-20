@@ -4,7 +4,7 @@ import { useAuth } from '@/src/hooks/useAuth'
 
 export const useAuthRedirect = () => {
     const { user } = useAuth()
-    console.log(user)
+
 
     const {replace} = useRouter()
 

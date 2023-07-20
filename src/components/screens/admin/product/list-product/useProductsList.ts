@@ -37,7 +37,7 @@ export const useProductsList = () => {
     })
 
 
-console.log(queryData, 'куку')
+console.log(queryData, 'куку', debouncedSearch, searchTerm)
 
 
 
