@@ -16,6 +16,7 @@ export const useProduct = (setValue: UseFormSetValue<any>) => {
         {
             onError(error) {
                 toastError(error, 'Добавление продукта');
+                console.log('Ты заебал')
             },
             onSuccess(ggg) {
                 toastr.success('Товар добавлен', 'товар добавлен успешно');
@@ -24,6 +25,7 @@ export const useProduct = (setValue: UseFormSetValue<any>) => {
                 localStorage.setItem('ggg',
                     //@ts-ignore
                     ggg.data.id);
+                console.log('Ты пидор')
                 localStorage.setItem('subType',
                     //@ts-ignore
                     ggg.data.subType)

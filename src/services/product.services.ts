@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {IProduct} from "@/src/interfaces/product.interface";
-import instance from "@/src/api/api.interceptors";
+import Cookies from "js-cookie";
+// import axios from "@/src/api/api.interceptors";
 
 
 export const ProductServices = {
@@ -46,15 +47,18 @@ export const ProductServices = {
         }
     },
     async createProduct(data: string){
+        const refreshToken = Cookies.get('accessToken')
         try{
-            return instance.post('http://localhost:8080/product', data)
+            return axios.post('http://localhost:8080/product/new', data, {
+                headers: {Authorization: `Bearer ${refreshToken}`}
+            }).then(console.log).catch(console.log)
         }catch(e){
             console.log(e)
         }
     },
     async createFeatures(type: string, id: string | null, data: string){
         try{
-            return instance.post(`http://localhost:8080/product/features/${type}?productId=${id}`, data)
+            return axios.post(`http://localhost:8080/product/features/${type}?productId=${id}`, data)
         }catch (e){
             console.log(e)
         }
