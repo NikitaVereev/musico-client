@@ -3,20 +3,14 @@ import { Controller, useForm } from 'react-hook-form';
 import UploadField from '@/src/components/ui/form-elements/upload-field/UploadField';
 import AdminNavigation from '@/src/components/ui/admin-navigation/AdminNavigation';
 import cn from 'classnames';
-import Field from '@/src/components/ui/form-elements/Field';
-import styles from '@/src/components/screens/admin/product/ProductManipulation.module.scss';
-import Button from '@/src/components/ui/button/Button';
-import Link from 'next/link';
 import { useAuth } from '@/src/hooks/useAuth';
 import { useRouter } from 'next/router';
 import {useProduct} from "@/src/components/screens/admin/product/create-product/useProduct";
 import CreateFeatures from "@/pages/manage/create-product/create-features";
 
-interface CreateImageProps {
-    subType: string;
-}
 
-const CreateImage: FC<CreateImageProps> = ({subType}) => {
+
+const CreateImage: FC = () => {
     const { push } = useRouter();
     const {
         handleSubmit,

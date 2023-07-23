@@ -1,19 +1,25 @@
 import axios from 'axios'
 import {IProduct} from "@/src/interfaces/product.interface";
+import instance from "@/src/api/api.interceptors";
 
 
 export const ProductServices = {
     async getAllProducts(search?:string){
        try{
-           const response = await axios.get(`http://localhost:8080/product`, {
-               params: {search},
-
-           })
+           const response = await axios.get(`http://localhost:8080/product/search?query=${search}`, )
 
            return response.data
        }catch(e){
            console.log(e)
        }
+    },
+    async getProductBySlug(slug: string){
+        try{
+            const response = await axios.get(`http://localhost:8080/product/slug?slug=${slug}`)
+            return response.data
+        }catch(e) {
+            console.log(e)
+        }
     },
     async getShittyFilter(subType: string, heading: string,data: string){
         try{
@@ -41,14 +47,14 @@ export const ProductServices = {
     },
     async createProduct(data: string){
         try{
-            return axios.post('http://localhost:8080/product', data)
+            return instance.post('http://localhost:8080/product', data)
         }catch(e){
             console.log(e)
         }
     },
     async createFeatures(type: string, id: string | null, data: string){
         try{
-            return axios.post(`http://localhost:8080/product/features/${type}?productId=${id}`, data)
+            return instance.post(`http://localhost:8080/product/features/${type}?productId=${id}`, data)
         }catch (e){
             console.log(e)
         }

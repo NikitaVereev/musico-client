@@ -8,7 +8,9 @@ import {useQuery} from "@tanstack/react-query";
 const SearchPage: NextPage = () => {
     const searchItem = localStorage.getItem('search')
 
-    const {data: products, isLoading, isError}: any = useQuery<IProduct[]>(['searched products'], () => ProductServices.getSearchedProduct(searchItem))
+    const {data: products, isLoading, isError}: any = useQuery<IProduct[]>(['searched products'], () => ProductServices.getSearchedProduct(
+        //@ts-ignore
+        searchItem))
 
     console.log(products)
     return (

@@ -6,7 +6,8 @@ import CatalogWrapper from "@/src/components/screens/catalog/CatalogWrapper";
 import Banner from "@/src/components/ui/banner/Banner";
 
 const UkulelePage: NextPage = () => {
-    const {data: products, isLoading, isError, error}: any = useQuery<IProduct[]>(['ukulele'], () => ProductServices.getOnlyCategories('Укулеле'))
+    const subType = 'ukulele'
+    const {data: products, isLoading, isError, error}: any = useQuery<IProduct[]>(['ukulele'], () => ProductServices.getOnlyCategories(subType,'Укулеле'))
     const heading = 'Укулеле'
 
     if(isLoading)  return <div className='loader'>Загрузка</div>
@@ -14,6 +15,7 @@ const UkulelePage: NextPage = () => {
     console.log(products)
     return (
         <CatalogWrapper products={products}
+                        subType={subType}
             heading={heading} />
     );
 }

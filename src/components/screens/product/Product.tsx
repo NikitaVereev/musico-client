@@ -26,6 +26,7 @@ const Product: FC<ProductPageProps> = ({ product }) => {
 
     useLayoutEffect(() => {
         if (swiper1Ref.current !== null) {
+            //@ts-ignore
             swiper1Ref.current.controller.control = swiper2Ref.current;
         }
     }, []);
@@ -37,6 +38,7 @@ const Product: FC<ProductPageProps> = ({ product }) => {
                     <Swiper
                         onSwiper={(swiper) => {
                             if (swiper1Ref.current !== null) {
+                                //@ts-ignore
                                 swiper1Ref.current = swiper;
                             }
                         }}
@@ -68,6 +70,7 @@ const Product: FC<ProductPageProps> = ({ product }) => {
                         slidesPerView={8}
                         watchSlidesProgress
                         touchRatio={0.2}
+                        //@ts-ignore
                         preloadImages={false}
                         lazy
                         slideToClickedSlide={true}
@@ -85,56 +88,6 @@ const Product: FC<ProductPageProps> = ({ product }) => {
                         ))}
                     </Swiper>
                 </div>
-                {/*<div className={styles.images}>*/}
-                {/*    {product.fileUrl ? (*/}
-                {/*       // <ReactImageMagnify*/}
-                {/*       //     className={styles.image}*/}
-                {/*       //*/}
-                {/*       //     {...{*/}
-                {/*       //         smallImage: {*/}
-                {/*       //             alt: product.title,*/}
-                {/*       //             isFluidWidth: true,*/}
-                {/*       //*/}
-                {/*       //*/}
-                {/*       //             src: product.fileUrl*/}
-                {/*       //         },*/}
-                {/*       //         largeImage: {*/}
-                {/*       //             src: product.fileUrl,*/}
-                {/*       //             width: 1400,*/}
-                {/*       //             height: 2400*/}
-                {/*       //*/}
-                {/*       //         },*/}
-                {/*       //         enlargedImageContainerDimensions: {*/}
-                {/*       //             width: '350%',*/}
-                {/*       //             height: '100%'*/}
-                {/*       //         },*/}
-                {/*       //         isHintEnabled: true*/}
-                {/*       //     }}*/}
-                {/*       //*/}
-                {/*       // />*/}
-                {/*        <ReactImageMagnify*/}
-                {/*            className={styles.image}*/}
-                {/*            {...{*/}
-                {/*                smallImage: {*/}
-                {/*                    alt: "Wristwatch by Ted Baker London",*/}
-                {/*                    isFluidWidth: true,*/}
-                {/*                    width: 400,*/}
-                {/*                    height: 400,*/}
-                {/*                    src: product.fileUrl[0].url*/}
-                {/*                },*/}
-                {/*                largeImage: {*/}
-                {/*                    src: product.fileUrl[0].url,*/}
-                {/*                    width: 1280,*/}
-                {/*                    height: 968*/}
-                {/*                },*/}
-                {/*                enlargedImagePortalId: 'myPortal'*/}
-                {/*            }}*/}
-                {/*        />*/}
-                {/*    ) : (*/}
-                {/*        <div>Нету</div>*/}
-                {/*    )}*/}
-
-                {/*</div>*/}
                 <div className='w-1/2 h-full pt-[50px] wrapperHeader'>
                     <div id='myPortal' ></div>
                     <div className={styles.side}>

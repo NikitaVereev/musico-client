@@ -8,7 +8,9 @@ const OrderListPage: NextPageAuth = () => {
 
     if(isLoading) return <div className="loader">Загрузка</div>
     return (
-        <ListOrder orders={orders} isLoading={isLoading} />
+        <ListOrder
+            //@ts-ignore
+            orders={orders} isLoading={isLoading} />
     );
 }
 

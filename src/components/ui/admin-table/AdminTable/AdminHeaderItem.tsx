@@ -17,11 +17,19 @@ const AdminHeaderItem: FC<IAdminTableItem> = ({ tableItem, removeHandler,
 		<>
 		{pathname === '/manage/order-list' ? <div className={styles.item}>
 
-				<div>{tableItem.product.title}</div>
-				<div>{tableItem.quantity}</div>
-				<div>{tableItem.product.price}</div>
+				<div>{
+					//@ts-ignore
+					tableItem.product.title}</div>
+				<div>{
+					//@ts-ignore
+					tableItem.quantity}</div>
+				<div>{
+					//@ts-ignore
+					tableItem.product.price}</div>
 				<div>
-					<Image src={tableItem.product.fileUrl} width={50} height={50} alt={tableItem.product.title} />
+					<Image src={
+						//@ts-ignore
+						tableItem.product.fileUrl} width={50} height={50} alt={tableItem.product.title} />
 				</div>
 		</div> : <div className={styles.item}>
 			{tableItem.items.map((value) => (

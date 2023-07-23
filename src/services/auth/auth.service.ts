@@ -7,7 +7,7 @@ import instance from "@/src/api/api.interceptors";
 
 export const AuthService = {
 	async register(email: string, password: string) {
-		const response = await axios.post<IAuthResponse>(
+		const response = await instance.post<IAuthResponse>(
 			'http://localhost:8080/auth/register',
 			{ email, password }
 		)

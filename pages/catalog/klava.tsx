@@ -7,7 +7,8 @@ import {ProductServices} from "@/src/services/product.services";
 import Banner from "@/src/components/ui/banner/Banner";
 
 const KlavaPage: NextPage = () => {
-    const {data: products, isLoading, isError}: any = useQuery<IProduct[]>(['keyboards'], () => ProductServices.getOnlyCategories('Клавишная'))
+    const subType = 'keyboard'
+    const {data: products, isLoading, isError}: any = useQuery<IProduct[]>(['keyboards'], () => ProductServices.getOnlyCategories(subType,'Клавишная'))
     const heading = 'Клавишные'
 
     if(isLoading)  return <div  className='loader'>Загрузка</div>
@@ -15,6 +16,7 @@ const KlavaPage: NextPage = () => {
     console.log(products)
     return (
         <CatalogWrapper products={products}
+                        subType={subType}
             heading={heading} />
     );
 }

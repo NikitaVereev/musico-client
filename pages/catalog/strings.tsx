@@ -6,7 +6,8 @@ import CatalogWrapper from "@/src/components/screens/catalog/CatalogWrapper";
 import Banner from "@/src/components/ui/banner/Banner";
 
 const StringsPage: NextPage = () => {
-    const {data: products, isLoading, isError}: any = useQuery<IProduct[]>(['strings'], () => ProductServices.getOnlyCategories('Струна'))
+    const subType = 'strings'
+    const {data: products, isLoading, isError}: any = useQuery<IProduct[]>(['strings'], () => ProductServices.getOnlyCategories(subType,'Струна'))
     const heading = 'Струны'
 
     if(isLoading)  return <div  className='loader'>Загрузка</div>
@@ -14,6 +15,7 @@ const StringsPage: NextPage = () => {
     console.log(products)
     return (
         <CatalogWrapper products={products}
+                        subType={subType}
             heading={heading} />
     );
 }

@@ -19,10 +19,14 @@ export const useProduct = (setValue: UseFormSetValue<any>) => {
             },
             onSuccess(ggg) {
                 toastr.success('Товар добавлен', 'товар добавлен успешно');
-
+                //@ts-ignore
                 setGGG(ggg);
-                localStorage.setItem('ggg', ggg.data.id);
-                localStorage.setItem('subType', ggg.data.subType)
+                localStorage.setItem('ggg',
+                    //@ts-ignore
+                    ggg.data.id);
+                localStorage.setItem('subType',
+                    //@ts-ignore
+                    ggg.data.subType)
                 push('http://localhost:3000/manage/create-product/create-image');
             },
         }
@@ -42,7 +46,9 @@ export const useProduct = (setValue: UseFormSetValue<any>) => {
     );
 
     const { mutateAsync: createImageProduct } = useMutation(
-        (data: any) => FileService.upload(data, ggg), // Передаем ggg в качестве параметра id
+        (data: any) => FileService.upload(data,
+            //@ts-ignore
+            ggg),
         {
             onError(error) {
                 toastError(error, 'Добавление продукта');

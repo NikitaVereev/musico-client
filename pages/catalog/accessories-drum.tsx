@@ -6,7 +6,8 @@ import CatalogWrapper from "@/src/components/screens/catalog/CatalogWrapper";
 import Banner from "@/src/components/ui/banner/Banner";
 
 const AccessoriesDrumPage: NextPage = () => {
-    const {data: products, isLoading, isError}: any = useQuery<IProduct[]>(['accessories drum'], () => ProductServices.getOnlyCategories('Аксессуары для ударных'))
+    const subType = 'accessories-drum'
+    const {data: products, isLoading, isError}: any = useQuery<IProduct[]>(['accessories drum'], () => ProductServices.getOnlyCategories(subType,'Аксессуары для ударных'))
     const heading = 'Аксессуары для ударных'
 
     if(isLoading)  return <div  className='loader'>Загрузка</div>
@@ -14,6 +15,7 @@ const AccessoriesDrumPage: NextPage = () => {
     console.log(products)
     return (
         <CatalogWrapper products={products}
+                        subType={subType}
                         heading={heading}
 
                         />

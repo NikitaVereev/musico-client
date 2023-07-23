@@ -3,7 +3,8 @@ import {IAuthResponse, ITokens} from "@/src/components/store/user/user.interface
 
 
 export const getAccessToken =  () => {
-	const accessToken = Cookies.get('accessToken')
+	const accessToken = Cookies.get('refreshToken')
+	console.log(accessToken)
 	return accessToken || null
 }
 

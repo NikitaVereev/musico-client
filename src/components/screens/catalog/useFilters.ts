@@ -36,7 +36,9 @@ export const useFilters = () => {
 
         replace(pathname + `?${newParams.toString().replace(/%7C/g, '|')}`);
 
-        updateQueryParam({ key, value });
+        updateQueryParam({ key,
+            //@ts-ignore
+            value });
     };
 
     return { isFilterUpdated, updateQueryParams, queryParams };

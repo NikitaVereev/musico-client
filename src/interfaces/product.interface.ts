@@ -1,5 +1,5 @@
 export interface IProduct{
-    checked: boolean;
+
     id: string
     title: string
     slug: string
@@ -7,7 +7,12 @@ export interface IProduct{
     subType: string
     price: number
     description?: string
-    fileUrl:string
+    fileUrl: [
+        {
+            id: string
+            url: string
+        }
+    ]
     article: string
     features?: {
         grip: string,

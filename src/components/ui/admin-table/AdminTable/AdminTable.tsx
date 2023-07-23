@@ -30,7 +30,10 @@ const AdminTable: FC<IAdminTable> = ({
 							  isLoading={isLoading} />
 			{isLoading ? (
 				<SkeletonLoader count={1} height={48} className="mt-4" />
-			) : pathname === '/manage/order-list' && tableItems.items.length ? (
+			) : pathname === '/manage/order-list' &&
+			//@ts-ignore
+			tableItems.items.length ? (
+				//@ts-ignore
 				tableItems.items.map((tableItems) => (
 					<AdminHeaderItem key={tableItems.id} tableItem={tableItems} removeHandler={() => {}} />
 				))

@@ -7,7 +7,9 @@ import Button from '@/src/components/ui/button/Button'
 import AdminTable from "@/src/components/ui/admin-table/AdminTable/AdminTable";
 import styles from './ListOrder.module.scss'
 
-const ListOrder: FC = ({orders, isLoading}) => {
+const ListOrder: FC = ({
+                           //@ts-ignore
+                           orders, isLoading}) => {
 
 
     // Initialize the state array with all items initially closed
