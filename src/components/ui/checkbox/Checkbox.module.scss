@@ -1,0 +1,14 @@
+.checkbox{
+  @apply flex items-center ;
+  >svg{
+    @apply min-h-[16px] min-w-[16px] rounded  fill-primary bg-transparent transition-colors duration-300 ease-in-out;
+
+
+  }
+
+  >span:last-child{
+  @apply ml-4 text-base text-left font-normal;
+    letter-spacing: .2px;
+    line-height: 20px;
+}
+}
