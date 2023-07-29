@@ -1,4 +1,4 @@
-import {FC, useEffect} from 'react';
+import React, {FC, useEffect} from 'react';
 import Image from 'next/image';
 import styles from './CatalogItem.module.scss';
 import {FaShoppingCart} from "react-icons/fa";
@@ -10,6 +10,7 @@ import cn from "classnames";
 import {useAuth} from "@/src/hooks/useAuth";
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import {OrderService} from "@/src/services/order.service";
+import {MaterialIcon} from "@/src/components/ui/MaterialIcon";
 
 const CatalogWrapper: FC<{ product: IProduct }> = ({product}) => {
     const {addToCart, removeFromCart} = useActions()
@@ -55,6 +56,10 @@ const CatalogWrapper: FC<{ product: IProduct }> = ({product}) => {
         <>
                 <div key={product.id} className={cn(styles.glass, 'animate-scaleIn')}>
                     <Link className={styles.absolutePosition} href={`/product/${product.slug}`}></Link>
+                    <div className={styles.rating}>
+                        <MaterialIcon name='MdStarRate' />
+                        <span>{product?.rating ? product?.rating : 0}</span>
+                    </div>
                     <div className={styles.card}>
 
 
@@ -71,6 +76,7 @@ const CatalogWrapper: FC<{ product: IProduct }> = ({product}) => {
                         </div>
                     </div>
                 </div>
+           
 
         </>
     );

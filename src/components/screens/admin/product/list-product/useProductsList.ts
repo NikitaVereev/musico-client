@@ -54,7 +54,7 @@ console.log(queryData, 'куку', debouncedSearch, searchTerm)
             },
             onSuccess: () => {
                 toastr.success('Удаление товара', 'удаление прошло успешно')
-                queryData.refetch()
+                // queryData.refetch()
             }
         }
 

@@ -1,6 +1,6 @@
 .glass{
   max-width: 100%;
-  grid-column-start: span 3;
+  //grid-column-start: span 3;
   grid-column-end: auto;
   width: 100%;
   overflow: hidden;
@@ -90,5 +90,15 @@
         }
       }
     }
+  }
+}
+.rating {
+  @apply flex z-10 absolute top-2 right-8 items-center mb-2;
+  > svg {
+    @apply fill-yellow-700 mr-2 text-lg;
+  }
+
+  > span {
+    @apply text-black font-medium;
   }
 }

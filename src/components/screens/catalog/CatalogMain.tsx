@@ -12,8 +12,8 @@ const CatalogMain: FC = () => {
 
     return (
         <div className='wrapper martinTop'>
-
-            <div className={cn(styles.wrapper, 'wrapper')}>
+            <h1>Все категории</h1>
+            <div className={cn(styles.wrapper)}>
                 {catalogList.map((item:IList) => (
                     <div className={cn(styles.catalogList, 'animate-scaleIn')} key={item.title}>
                         <Link href={`/catalog/${item.link}`}></Link>

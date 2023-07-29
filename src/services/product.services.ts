@@ -47,11 +47,17 @@ export const ProductServices = {
         }
     },
     async createProduct(data: string){
-        const refreshToken = Cookies.get('accessToken')
+
         try{
-            return axios.post('http://localhost:8080/product/new', data, {
-                headers: {Authorization: `Bearer ${refreshToken}`}
-            }).then(console.log).catch(console.log)
+            return axios.post('http://localhost:8080/product/new', data)
+        }catch(e){
+            console.log(e)
+        }
+    },
+
+    async createReview(email: string, productId: string, data: any){
+        try{
+            return axios.post(`http://localhost:8080/review/new?email=${email}&productId=${productId}`, data)
         }catch(e){
             console.log(e)
         }
@@ -82,6 +88,6 @@ export const ProductServices = {
     },
 
     async deleteProduct(id: string){
-        return axios.delete<string>(`http://localhost:8080/product?id=${id}`)
+        return axios.delete<string>(`http://localhost:8080/product/changes?id=${id}`)
     }
 }

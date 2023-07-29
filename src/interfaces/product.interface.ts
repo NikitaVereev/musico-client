@@ -5,6 +5,7 @@ export interface IProduct{
     slug: string
     company: string
     subType: string
+    rating: number
     price: number
     description?: string
     fileUrl: [

@@ -34,22 +34,6 @@ const Home: FC = () => {
   if(isLoading)  return <div className='loader'>Загрузка</div>
 
   return <>
-    {/*<div className="box">*/}
-    {/*  <div className="effect"></div>*/}
-    {/*  <div className="effect"></div>*/}
-    {/*  <div className="effect"></div>*/}
-    {/*  <div className="effect"></div>*/}
-    {/*  <div className="effect"></div>*/}
-    {/*  <div className="effect"></div>*/}
-    {/*  <div className="effect"></div>*/}
-    {/*  <div className="effect"></div>*/}
-    {/*  <div className="effect"></div>*/}
-    {/*  <div className="effect"></div>*/}
-    {/*  <div className="effect"></div>*/}
-    {/*  <div className="effect"></div>*/}
-    {/*  <div className="effect"></div>*/}
-    {/*  <div className="effect"></div>*/}
-    {/*</div>*/}
     <div className='wrapper py-12 relative'>
       <div className="lines">
         <div className="line"></div>
@@ -124,10 +108,10 @@ const Home: FC = () => {
       <div className="wrapper my-32">
           <div>
               <h1 className='font-bold text-5xl mb-8'>Отзывы</h1>
-              <div className='flex items-center justify-between gap-12'>
+              <div className='flex items-start justify-between gap-12'>
                   <div
                       style={{
-                          width: '100%',
+                          width: '50%',
                           height: 1200,
                           overflow: "hidden",
                           position: "relative"
@@ -169,6 +153,14 @@ const Home: FC = () => {
                       >
                           Mus &amp; Co на карте Перми — Яндекс&nbsp;Карты
                       </a>
+                  </div>
+                  <div className='flex flex-col justify-between'>
+                     <h1 className='text-right mt-5'>О нашем <span className='text-primary'>качестве</span> рассказывают всем</h1>
+                    <div className='w-full h-[600px] flex items-center justify-center'>
+                        Блок с видеоотзывами
+                    </div>
+                      <h1 className=' mt-5'>К нам приходят <span className='text-primary'>клиентами</span>, а уходят <span className='text-primary'>друзьями!</span></h1>
+
                   </div>
 
               </div>
