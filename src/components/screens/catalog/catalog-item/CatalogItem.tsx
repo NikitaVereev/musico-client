@@ -1,9 +1,9 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC} from 'react';
 import Image from 'next/image';
 import styles from './CatalogItem.module.scss';
 import {FaShoppingCart} from "react-icons/fa";
 import Button from "@/src/components/ui/button/Button";
-import {useActions} from "@/src/hooks/useActions";
+
 import {IProduct} from "@/src/interfaces/product.interface";
 import Link from "next/link";
 import cn from "classnames";

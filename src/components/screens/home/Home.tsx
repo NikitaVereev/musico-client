@@ -52,14 +52,14 @@ const Home: FC = () => {
         </div>
         <Carousel items={carouselItems} className='mb-12 w-full ' />
       </div>
-      <div>
-        <h1 className='font-bold text-5xl mb-8'>Популярные продукты</h1>
-        <div className={styles.mostPopular}>
-          {isError ? <div>Ошибка загрузки</div> :
-            products.map((product: IProduct) => <CatalogItem  key={product.id} product={product} /> ).slice(0,4)
-          }
-        </div>
-      </div>
+      {/*<div>*/}
+      {/*  <h1 className='font-bold text-5xl mb-8'>Популярные продукты</h1>*/}
+      {/*  <div className={styles.mostPopular}>*/}
+      {/*    {isError ? <div>Ошибка загрузки</div> :*/}
+      {/*      products.map((product: IProduct) => <CatalogItem  key={product.id} product={product} /> ).slice(0,4)*/}
+      {/*    }*/}
+      {/*  </div>*/}
+      {/*</div>*/}
       <div>
       </div>
     </div>;
