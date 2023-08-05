@@ -25,7 +25,7 @@ export const useFilters = () => {
         });
     }, []);
 
-    const updateQueryParams = (key: keyof TypeProductDataFilters, value: string | null) => {
+    const updateQueryParams = (key: keyof TypeProductDataFilters, value: string ) => {
         const newParams = new URLSearchParams(searchParams.toString());
 
         if (value) {
@@ -36,10 +36,9 @@ export const useFilters = () => {
 
         replace(pathname + `?${newParams.toString().replace(/%7C/g, '|')}`);
 
-        updateQueryParam({ key,
-            //@ts-ignore
-            value });
+        updateQueryParam({ key, value });
     };
+
 
     return { isFilterUpdated, updateQueryParams, queryParams };
 };

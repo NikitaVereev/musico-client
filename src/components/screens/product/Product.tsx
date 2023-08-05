@@ -66,12 +66,12 @@ const Product: FC<ProductPageProps> = ({ product }) => {
     }
 
     return (
-        <div className={cn(styles.wrapper, 'pt-[100px], wrapper')}>
+        <div className={cn(styles.wrapper, 'pt-[100px] ')}>
             <div>
                 {/*<h1>{product.title}</h1>*/}
             </div>
             <div className={cn(styles.mainInfo)}>
-                <div className={cn("h-full gap-10 w-1/2 flex flex-row-reverse")}>
+                <div className={cn("h-full gap-10  w-1/2 flex flex-row-reverse")}>
                     <Swiper
                         onSwiper={(swiper) => {
                             if (swiper1Ref.current !== null) {
@@ -89,7 +89,7 @@ const Product: FC<ProductPageProps> = ({ product }) => {
                             swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
                         }}
                         modules={[FreeMode, Navigation, Thumbs, Controller]}
-                        className="w-full h-[600px] rounded-xl"
+                        className="w-full h-[600px]  "
                     >
                         {product.fileUrl && product.fileUrl.map(item => (
                             <SwiperSlide  key={item.id}>
@@ -111,7 +111,7 @@ const Product: FC<ProductPageProps> = ({ product }) => {
                         slideToClickedSlide={true}
                         onSwiper={setThumbsSwiper}
                         modules={[Navigation, Thumbs, Controller]}
-                        className="w-[120px] h-[600px] rounded-xl"
+                        className="w-[120px] h-[600px] rounded-xl "
                     >
                         {product.fileUrl && product.fileUrl.map(item => (
                             <SwiperSlide  key={item.id}>

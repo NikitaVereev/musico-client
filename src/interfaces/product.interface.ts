@@ -1,4 +1,12 @@
 export interface IProduct{
+    productReview: [
+        {
+            id: string
+            rating: number
+            review: string
+            image?: []
+        }
+    ];
 
     id: string
     title: string
@@ -49,8 +57,8 @@ export type TypeProductDataFilters = {
 }
 
 export enum EnumProductSort {
-    HIGH_PRICE = 'По убыванию',
-    LOW_PRICE = 'По возрастанию',
+    HIGH_PRICE = 'product.price,asc',
+    LOW_PRICE = 'product.price,desc',
     NEWEST = 'Новые',
     POPULAR = 'Популярные'
 }

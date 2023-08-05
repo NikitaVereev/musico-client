@@ -24,14 +24,21 @@ const RateProduct: FC<IRateProduct> = ({productId}) => {
         mode: 'onChange',
     });
     const {user} = useAuth()
-    const [isRating, setIsRating] = useState(0)
+    const [isOpen, setIsOpen] = useState(false)
     const [isComment, setIsComment] = useState('')
-    const {handleClick, mutateAsync, isSended, rating} = useRateProduct({email: user?.email, productId})
+    const {handleClick, mutateAsync, isSended, rating, isImage, createImageWithComment} = useRateProduct({email: user?.email, productId})
 
     const onSubmitCreate: SubmitHandler<any> = async (data) => {
         console.log('Данные формы:', data); // Вывод данных формы в консоль
+        //@ts-ignore
         await mutateAsync({rating: rating, review: data.review});
     };
+    const onSubmitImage: SubmitHandler<any> = async (data) => {
+        console.log('Данные формы:', data); // Вывод данных формы в консоль
+        //@ts-ignore
+        await createImageWithComment(isImage.data);
+    };
+    console.log(isImage, 'asgkhslke')
 
     return (
         <div className={styles.wrapper}>
@@ -39,34 +46,43 @@ const RateProduct: FC<IRateProduct> = ({productId}) => {
             <p>Оценка влияет на рекомендации</p>
             {user ? (
                 <>
-                    {isSended ?<div className={styles.thanks}>Спасибо за оценку</div> :<form  onSubmit={
-                        handleSubmit(onSubmitCreate)
+                    {isSended ?<div className={styles.thanks}>Спасибо за оценку</div> :<>
+                        <form  onSubmit={
+                            handleSubmit(onSubmitCreate)
 
-                    }>
-                        <StarRating name='star-rating' value={rating} onStarClick={handleClick} emptyStarColor='#4f4f4f'  />
-                        <Field
-                            placeholder="Комментарий"
-                            {...register('review', )}
-                            name="review"
-                        />
-                        <Controller
-                            control={control}
-                            name="fileUrl"
-                            defaultValue=""
-                            render={({ field: { value, onChange }, fieldState: { error } }) => (
-                                <UploadField
-                                    onChange={onChange}
-                                    value={value}
-                                    placeholder="Изображение"
-                                    error={error}
-                                    //@ts-ignore
+                        }>
+                            <StarRating name='star-rating' value={rating} onStarClick={handleClick} emptyStarColor='#4f4f4f'  />
+                            <Field
+                                placeholder="Комментарий"
+                                {...register('review', )}
+                                name="review"
+                            />
 
-                                />
-                            )}
-                        />
-                        <button>Отправить</button>
-                        <button>ДОбавить изображения</button>
-                    </form>}
+                            <button>Отправить</button>
+                            <button onClick={() => {
+                                onSubmitCreate
+                                setIsOpen(true)
+
+                            }}>ДОбавить изображения</button>
+                        </form>
+                        {isOpen && <form onSubmit={onSubmitImage}>
+                            <Controller
+                                control={control}
+                                name="fileUrl"
+                                defaultValue=""
+                                render={({field: {value, onChange}, fieldState: {error}}) => (
+                                    <UploadField
+                                        onChange={onChange}
+                                        value={value}
+                                        placeholder="Изображение"
+                                        error={error}
+                                        //@ts-ignore
+                                        folder={isImage}
+                                    />
+                                )}
+                            />
+                        </form>} </>
+                    }
                 </>
             ) : <button>Зарегистрироваться</button>}
         </div>

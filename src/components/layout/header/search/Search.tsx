@@ -5,11 +5,11 @@ import SearchField from "@/src/components/ui/search-field/SearchField";
 import SearchList from "@/src/components/layout/header/search/search-list/SearchList";
 
 const Search: FC = () => {
-    const {isSuccess, data, handleSearch, searchTerm} = useSearch()
+    const {isSuccess, data, handleSearch, searchTerm, setSearchTerm} = useSearch()
     return (
         <div className={styles.wrapper}>
             <SearchField searchTerm={searchTerm} handleSearch={handleSearch} />
-            {isSuccess && <SearchList products={data || []} />}
+            {isSuccess && <SearchList setSearchTerm={setSearchTerm} products={data || []} />}
         </div>
     );
 }

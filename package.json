@@ -38,6 +38,7 @@
     "react-image-magnify": "^2.7.4",
     "react-images-zoom": "^1.0.7",
     "react-loading-skeleton": "^3.3.1",
+    "react-paginate": "^8.2.0",
     "react-redux": "^8.0.7",
     "react-redux-toastr": "^7.6.11",
     "react-select": "^5.7.3",

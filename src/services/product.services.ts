@@ -22,14 +22,6 @@ export const ProductServices = {
             console.log(e)
         }
     },
-    async getShittyFilter(subType: string, heading: string,data: string){
-        try{
-            const response = await axios.get(`http://localhost:8080/product/search/${subType}?product.subType=${heading}&${data}`)
-            return response.data
-        }catch(e){
-            console.log(e)
-        }
-    },
     async getSearchedProduct(data: IProduct[]){
         try{
             const response = await axios.get(`http://localhost:8080/product/search/${data}`)
@@ -38,12 +30,18 @@ export const ProductServices = {
             console.log(e)
         }
     } ,
-    async getOnlyCategories( data: string, heading: string) {
-        try{
-            const response = await axios.get(`http://localhost:8080/product/search/${data}?product.subType=${heading}`)
-            return response.data
-        }catch(e){
-            console.log(e)
+    async getOnlyCategories(heading: string, page: number, data: string, sort: string) {
+        try {
+            const response = await axios.get(`http://localhost:8080/product/search/${heading}${data && `?${data}`}`, {
+                params: {
+                    numberOfPage: page,
+                    sort: sort,
+
+                },
+            });
+            return response.data;
+        } catch (e) {
+            console.log(e);
         }
     },
     async createProduct(data: string){
@@ -62,6 +60,7 @@ export const ProductServices = {
             console.log(e)
         }
     },
+
     async createFeatures(type: string, id: string | null, data: string){
         try{
             return axios.post(`http://localhost:8080/product/features/${type}?productId=${id}`, data)

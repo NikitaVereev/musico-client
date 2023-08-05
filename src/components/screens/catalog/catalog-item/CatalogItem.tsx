@@ -13,7 +13,7 @@ import {OrderService} from "@/src/services/order.service";
 import {MaterialIcon} from "@/src/components/ui/MaterialIcon";
 
 const CatalogWrapper: FC<{ product: IProduct }> = ({product}) => {
-    const {addToCart, removeFromCart} = useActions()
+
 
     const queryClient = useQueryClient()
 

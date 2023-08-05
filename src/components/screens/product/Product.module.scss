@@ -1,21 +1,21 @@
 
 .wrapper{
   background: #fff;
-  @apply py-5;
+  @apply border px-8 my-12 border-black;
   h1{
     @apply text-5xl font-bold;
     margin-bottom: 50px;
   }
 }
 .mainInfo{
-  @apply flex justify-center items-center;
+  @apply flex justify-center items-center ;
 
   .side{
-    @apply flex flex-col relative gap-8 p-5 w-full;
+    @apply flex flex-col relative gap-8  w-full;
     &:before{
       content: '';
       transform: translateX(-50%);
-      @apply absolute w-[70%] left-1/2 h-1 bg-gray-300 bottom-0;
+      @apply absolute  left-1/2 h-1 bg-gray-300 bottom-0;
     }
     .rating{
       @apply flex items-center mb-2;

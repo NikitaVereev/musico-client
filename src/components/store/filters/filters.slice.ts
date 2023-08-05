@@ -6,9 +6,9 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 const initialState: IFiltersState = {
     isFilterUpdated: false,
     queryParams: {
-        sort: EnumProductSort.NEWEST,
+        sort: EnumProductSort.HIGH_PRICE,
         searchTerm: '',
-        page: 1,
+        page: 0,
         perPage: 20,
         ratings: ''
     }

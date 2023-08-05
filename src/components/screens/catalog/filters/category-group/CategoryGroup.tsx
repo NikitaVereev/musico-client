@@ -64,12 +64,13 @@ const CategoryGroup: FC<{ heading?: string | any }> = ({ heading }) => {
                             </div>
                             {category.filterValues.map((param: any) => {
                                 const isChecked = checkedItems.includes(param.id);
-                                if(param.name === null) return null
+                                if(param.name === null ) return null
+
                                 return (
                                     <Checkbox
                                         key={param.id}
                                         isChecked={isChecked}
-                                        onClick={() => handleCheckboxClick(param)}
+                                        onClick={() => handleCheckboxClick(param === 'company' ? `product.${param}` : param)}
                                         className='mb-2 text-sm animate-scaleIn'
                                     >
                                         {param.name}
