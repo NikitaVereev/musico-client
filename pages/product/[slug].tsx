@@ -16,11 +16,16 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const products = await ProductServices.getAllProducts();
-    const paths = products.map((product: IProduct) => ({
-        params: { slug: product.slug },
-    }));
-    return { paths, fallback: 'blocking' };
+    try {
+        const products = await ProductServices.getAllProducts();
+        const paths = products.map((product: IProduct) => ({
+            params: { slug: product.slug },
+        }));
+        return { paths, fallback: 'blocking' };
+    } catch (e: any) {
+        console.error('Ошибка при получении данных о продуктах для статических путей:', e.message);
+        return { paths: [], fallback: 'blocking' };
+    }
 };
 
 export const getStaticProps: GetStaticProps<ProductPageProps> = async (context) => {
