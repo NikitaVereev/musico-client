@@ -1,14 +1,11 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { IProduct } from '@/src/interfaces/product.interface';
 import { useQuery } from '@tanstack/react-query';
-
 import Product from '@/src/components/screens/product/Product';
-import {ProductServices} from "@/src/services/product.services";
-
+import { ProductServices } from '@/src/services/product.services';
 
 export interface ProductPageProps {
     product: IProduct;
-
 }
 
 const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
@@ -29,15 +26,25 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps<ProductPageProps> = async (context) => {
-    const {
-        //@ts-ignore
-        slug } = context.params;
-    const product = await ProductServices.getProductBySlug(slug);
-    return {
-        props: {
-            product,
-        },
-    };
+    //@ts-ignore
+    const { slug } = context.params;
+    try {
+        if (!slug) {
+            throw new Error('Отсутствует параметр "slug"');
+        }
+
+        const product = await ProductServices.getProductBySlug(slug);
+        return {
+            props: {
+                product,
+            },
+        };
+    } catch (e: any) {
+        console.error('Ошибка при получении данных о продукте:', e.message);
+        return {
+            notFound: true,
+        };
+    }
 };
 
 export default ProductPage;
