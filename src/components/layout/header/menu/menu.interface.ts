@@ -6,7 +6,4 @@ export interface IMenuItem {
     link: string
 }
 
-export interface IMenu {
-    title: string
-    items: IMenuItem[]
-}
+

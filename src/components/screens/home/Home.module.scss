@@ -1,5 +1,4 @@
 .mostPopular{
-  //@apply grid grid-cols-4 gap-12;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   justify-items: center;

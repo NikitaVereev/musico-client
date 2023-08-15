@@ -16,11 +16,9 @@ import SwiperClass from "swiper/types/swiper-class";
 import SwiperCore, { FreeMode, Navigation, Thumbs, Controller } from "swiper";
 import dynamic from "next/dynamic";
 import {MaterialIcon} from "@/src/components/ui/MaterialIcon";
-import {MdStarRate} from "react-icons/md";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {OrderService} from "@/src/services/order.service";
 import {useAuth} from "@/src/hooks/useAuth";
-import {toastr} from "react-redux-toastr";
 
 const DynamicRating = dynamic(() => import('./rating/RateProduct'), {
     ssr: false
@@ -30,8 +28,10 @@ const Product: FC<ProductPageProps> = ({ product }) => {
     const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
     const [firstSwiper, setFirstSwiper] = useState<SwiperClass>();
     const [secondSwiper, setSecondSwiper] = useState<SwiperClass>();
+    const [isPopup, setIsPopup] = useState(false)
     const swiper1Ref = useRef<React.MutableRefObject<null>>(null);
     const swiper2Ref = useRef();
+
 
     const queryClient = useQueryClient()
 
@@ -160,17 +160,38 @@ const Product: FC<ProductPageProps> = ({ product }) => {
                    </div>
                 </div>
             </div>
-            <DynamicRating productId={product.id} />
+
             <div>
+                <div className='flex items-center justify-between'>
+                    <h1>Отзывы</h1>
+                    <Button onClick={() => setIsPopup(!isPopup)}>
+                        Добавить отзыв
+                    </Button>
+                </div>
+                {isPopup && <div className='relative'>
+
+                    <DynamicRating setIsPopup={setIsPopup} productId={product.id}/>
+                </div>}
                 {product?.productReview.map(item => (
-                    <div key={item.id}>
-                        <h2>имя</h2>
-                        <div className={styles.rating}>
-                            <MaterialIcon name='MdStarRate' />
-                            <span>{item.rating}</span>
+                    <div key={item.id} className={styles.reviewsWrapper}>
+                        <div className='flex items-center gap-3 '>
+                            <h2>имя</h2>
+                            <div className={styles.rating}>
+                                <MaterialIcon name='MdStarRate' />
+                                <span>{item.rating} / 5</span>
+                            </div>
                         </div>
                         <div>
                             {item.review}
+                        </div>
+                        <div >
+                            {item.image && <div className='flex gap-2'>
+                                {item.image.map(item => (
+                                    <>
+                                        {console.log(item)}
+                                        <Image src={item.url} key={item.id} width={140} height={140} alt={item.id} /></>
+                                ))}
+                            </div>}
                         </div>
                     </div>
                 ))}

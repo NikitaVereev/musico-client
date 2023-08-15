@@ -7,20 +7,15 @@ import { ProductPageProps } from '@/pages/product/[slug]';
 import { useQuery } from '@tanstack/react-query';
 
 const AdminProductEdit: NextPageAuth<ProductPageProps> = ({ product }) => {
-    const { data: products, isLoading, error }: any = useQuery<IProduct[]>(['change product'], () =>
+    const {  isLoading, error }: any = useQuery<IProduct[]>(['change product'], () =>
         ProductServices.getAllProducts()
     );
 
-    // Обработка ошибки при получении данных о продуктах
     if (error) {
         console.error('Ошибка при получении данных о продуктах:', error.message);
-        // Здесь вы можете выполнить дополнительные действия при возникновении ошибки.
-        // Например, показать пользователю уведомление или перенаправить на страницу ошибки.
         return <p>Произошла ошибка при загрузке данных о продуктах</p>;
     }
 
-    // Здесь также можно добавить обработку состояния загрузки,
-    // чтобы показывать индикатор загрузки, пока данные загружаются.
     if (isLoading) {
         return <p>Загрузка...</p>;
     }
@@ -56,8 +51,6 @@ export const getStaticProps: GetStaticProps<ProductPageProps> = async ({ params 
         };
     } catch (e: any) {
         console.error('Ошибка при получении данных о продукте:', e.message);
-        // Здесь также можно выполнить дополнительные действия при возникновении ошибки,
-        // например, показать пользователю уведомление или перенаправить на страницу ошибки.
         return {
             notFound: true,
         };

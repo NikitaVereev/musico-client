@@ -4,7 +4,12 @@ export interface IProduct{
             id: string
             rating: number
             review: string
-            image?: []
+            image?: [
+                {
+                    id: string
+                    url: string
+                }
+            ]
         }
     ];
 

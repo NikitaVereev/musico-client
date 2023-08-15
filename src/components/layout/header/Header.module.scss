@@ -4,17 +4,6 @@
   transition: .5s cubic-bezier(.26,.71,.72,.3);
   &.active{
     transform: translateY(-80%);
-    //.search{
-    //  transform: translateY(100%);
-    //  @apply bg-gray-300 p-3;
-    //
-    //  .searchInfo{
-    //    top: 3.3rem;
-    //    left: 0;
-    //    border-bottom-right-radius: 20px;
-    //    border-bottom-left-radius: 20px;
-    //  }
-    //}
   }
 
 

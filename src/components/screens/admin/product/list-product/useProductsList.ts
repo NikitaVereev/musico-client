@@ -1,6 +1,5 @@
 import {ChangeEvent, useMemo, useState} from "react";
 import {useDebounce} from "@/src/hooks/useDebounce";
-import {useRouter} from "next/router";
 import {useMutation, useQuery} from "@tanstack/react-query";
 import {ProductServices} from "@/src/services/product.services";
 import {getAdminUrl} from "@/src/config/url.config";
@@ -12,7 +11,7 @@ export const useProductsList = () => {
     const [searchTerm, setSearchTerm] = useState('')
     const debouncedSearch = useDebounce(searchTerm, 500)
 
-    const {push} = useRouter()
+
 
 
     const {data: queryData, isLoading} = useQuery(['admin products list', debouncedSearch], () => ProductServices.getAllProducts(debouncedSearch), {

@@ -1,6 +1,5 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { IProduct } from '@/src/interfaces/product.interface';
-import { useQuery } from '@tanstack/react-query';
 import Product from '@/src/components/screens/product/Product';
 import { ProductServices } from '@/src/services/product.services';
 
@@ -16,7 +15,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     try {
         const products = await ProductServices.getAllProducts();
         const paths = products.map((product: IProduct) => ({
-            params: { slug: product.slug },
+            params: { slug: product?.slug },
         }));
         return { paths, fallback: 'blocking' };
     } catch (e: any) {

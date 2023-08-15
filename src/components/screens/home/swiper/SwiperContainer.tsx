@@ -1,6 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwipeCore, {Navigation, Pagination, Autoplay, EffectCoverflow} from "swiper";
-// import { useState, useRef, useEffect } from "react";
 import image1 from '@/src/assets/mus1.jpg'
 import image2 from '@/src/assets/mus2.jpg'
 import image3 from '@/src/assets/mus3.jpg'
@@ -14,25 +13,6 @@ import styles from "./SwiperContainer.module.scss";
 
 import Image from "next/image";
 
-const items = [
-    {
-        title: "Recursive",
-        src:
-            image1
-    },
-    {
-        title: "Bunker",
-        src:
-image2    },
-    {
-        title: "Small Mountain",
-        src:
-image3    },
-    {
-        title: "Walking On a Dream",
-        src:
-image4    }
-];
 
 const SwiperContainer = () => {
     SwipeCore.use([Navigation, Pagination, Autoplay]);

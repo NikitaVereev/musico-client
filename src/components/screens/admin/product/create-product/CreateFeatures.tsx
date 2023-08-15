@@ -1,4 +1,4 @@
-import {FC, useEffect, useState} from 'react';
+import {FC} from 'react';
 import FieldsAcoustic from "@/src/components/screens/admin/product/create-product/sub-type-fields/FieldsAcoustic";
 import FieldsClassic from "@/src/components/screens/admin/product/create-product/sub-type-fields/FieldsClassic";
 import FieldsElectric from "@/src/components/screens/admin/product/create-product/sub-type-fields/FieldsElectric";

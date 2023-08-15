@@ -44,6 +44,7 @@ export const useRateProduct = (
         (data) => FileService.upload(
             //@ts-ignore
             isImage.data),
+
         {
             onError: (error) => {
                 toastError(error, 'rating')
@@ -65,6 +66,7 @@ export const useRateProduct = (
 
     const handleClick = async (nextValue: number) => {
         setRating(nextValue)
+        console.log(isImage, 'sg')
         // await mutateAsync({rating: nextValue, review: "Здарова"})
     }
 

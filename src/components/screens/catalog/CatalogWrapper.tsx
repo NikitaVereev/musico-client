@@ -1,21 +1,20 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import styles from './Catalog.module.scss';
 
 import CatalogItem from '@/src/components/screens/catalog/catalog-item/CatalogItem';
 import { IProduct } from '@/src/interfaces/product.interface';
 import { useFilters } from '@/src/components/screens/catalog/useFilters';
-import {useQuery, useQueryClient} from '@tanstack/react-query';
+import {useQuery} from '@tanstack/react-query';
 import cn from 'classnames';
 import Banner from '@/src/components/ui/banner/Banner';
 import Sort from '@/src/components/screens/catalog/sort/Sort';
 import Filters from '@/src/components/screens/catalog/filters/Filters';
 import { ProductServices } from '@/src/services/product.services';
 import Pagination from "@/src/components/screens/catalog/pagination/Pagination";
-import {useRouter} from 'next/router'
 
 const CatalogWrapper: FC<{  heading?: string; subType: string, featuresProductType: string }> = ({  heading, subType, featuresProductType }) => {
 
-    const router = useRouter()
+
     const { isFilterUpdated, queryParams, updateQueryParams } = useFilters();
 
 
@@ -50,7 +49,7 @@ const CatalogWrapper: FC<{  heading?: string; subType: string, featuresProductTy
             <div className={cn(styles.explorer)}>
                 <aside>
 
-                    <Filters heading={featuresProductType} />
+                    <Filters heading={featuresProductType} subType={subType} />
                 </aside>
 
                 <section>

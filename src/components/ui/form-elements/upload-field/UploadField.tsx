@@ -5,6 +5,7 @@ import { FC } from 'react'
 import SkeletonLoader from '../../heading/SkeletonLoader'
 import { IUploadField } from '../form.interface'
 import styles from '../Form.module.scss'
+import {useRouter} from 'next/router'
 
 import { useUpload } from './useUpload'
 
@@ -17,14 +18,16 @@ const UploadField: FC<IUploadField> = ({
                                            style,
                                            value,
                                        }) => {
-    const { isLoading, uploadImage } = useUpload(onChange, folder)
+    const { isLoading, uploadImage, uploadReview } = useUpload(onChange, folder)
+    const {pathname} = useRouter()
+
 
     return (
         <div className={cn(styles.field, styles.uploadField)} style={style}>
             <div className={styles.uploadFlex}>
                 <label>
                     <span>{placeholder}</span>
-                    <input type="file" onChange={uploadImage} />
+                    <input type="file" onChange={pathname === '/manage/create-product/create-image' ? uploadImage : uploadReview} />
                     {error && <div className={styles.error}>{error.message}</div>}
                 </label>
 

@@ -47,6 +47,15 @@
 
     }
   }
+  .notImage{
+    @apply w-full h-full flex-col air-block flex items-center justify-center;
+    svg{
+      @apply w-1/2 h-full;
+    }
+    h2{
+      @apply font-bold text-xl text-center;
+    }
+  }
   .card{
     @apply p-8 flex flex-col  gap-6 relative  max-w-[100%] rounded-[30px];
     transition: .5s ease;

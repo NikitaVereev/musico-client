@@ -64,7 +64,10 @@ const CatalogWrapper: FC<{ product: IProduct }> = ({product}) => {
 
 
                         <div className={styles.image}>
-                            <Image src={product.fileUrl[0]?.url} fill alt={product.title} />
+                            {Boolean(product.fileUrl[0]?.url)  ? <Image src={product.fileUrl[0]?.url} fill alt={product.title} /> : <div className={styles.notImage}>
+                                <MaterialIcon name='MdImageNotSupported' />
+                                <h2>Изображение отсутствует</h2>
+                            </div>}
                         </div>
                         <h3 className={styles.price}>{product.price} р.</h3>
                         <div className={styles.title}>

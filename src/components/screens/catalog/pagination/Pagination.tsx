@@ -1,5 +1,6 @@
-import { FC } from 'react';
+import {FC, useEffect} from 'react';
 import Button from '@/src/components/ui/button/Button'
+import {useRouter} from 'next/router'
 
 interface IPagination {
     numberPages: number
@@ -12,6 +13,12 @@ const Pagination: FC<IPagination> = ({
                                          changePage,
                                          currentPage
                                      }) => {
+    const {pathname} = useRouter()
+
+    useEffect(() => {
+        changePage('0');
+    }, [pathname]);
+
     return (
         <div className='text-center mt-16'>
             {Array.from({length: numberPages > 1 ? numberPages : 1}).map(

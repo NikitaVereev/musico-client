@@ -14,9 +14,6 @@ const FieldsClassic: FC<{productId: string | null}> = ({ productId}) => {
         handleSubmit,
         register,
         formState: { errors },
-        setValue,
-        getValues,
-        control,
     } = useForm({
         mode: 'onChange',
     });
@@ -31,15 +28,13 @@ const FieldsClassic: FC<{productId: string | null}> = ({ productId}) => {
             onSuccess(ggg) {
                 toastr.success('Товар добавлен', 'товар добавлен успешно');
 
-                // localStorage.removeItem('ggg');
-                // localStorage.removeItem('subType')
 
             },
         }
     );
 
     const onSubmitCreate: SubmitHandler<any> = async (data) => {
-        console.log('Данные формы:', data); // Вывод данных формы в консоль
+        console.log('Данные формы:', data);
         await mutateAsync(data);
     };
     return (

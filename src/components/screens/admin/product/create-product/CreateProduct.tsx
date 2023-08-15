@@ -1,6 +1,5 @@
 import {FC, useEffect, useState} from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import UploadField from '@/src/components/ui/form-elements/upload-field/UploadField';
 import AdminNavigation from '@/src/components/ui/admin-navigation/AdminNavigation';
 import cn from 'classnames';
 import Field from '@/src/components/ui/form-elements/Field';
@@ -11,9 +10,6 @@ import Button from '@/src/components/ui/button/Button';
 import Link from 'next/link';
 import { useAuth } from '@/src/hooks/useAuth';
 import { useProduct } from '@/src/components/screens/admin/product/create-product/useProduct';
-import CreateImage from '@/pages/manage/create-product/create-image';
-import Select from 'react-select';
-import makeAnimated from 'react-select/animated';
 import dynamic from "next/dynamic";
 
 const DynamicSelectType = dynamic(() => import('@/src/components/screens/admin/product/create-product/SelectType'), {

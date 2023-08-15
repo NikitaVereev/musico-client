@@ -11,6 +11,7 @@ type TypeUpload = (
 ) => {
     uploadImage: (e: ChangeEvent<HTMLInputElement>) => Promise<void>
     isLoading: boolean
+    uploadReview: (e: ChangeEvent<HTMLInputElement>) => Promise<void>
 }
 
 export const useUpload: TypeUpload = (onChange, id) => {
@@ -48,5 +49,37 @@ export const useUpload: TypeUpload = (onChange, id) => {
         [mutateAsync]
     )
 
-    return useMemo(() => ({ uploadImage, isLoading }), [uploadImage, isLoading])
+    const { mutateAsync: mutateAsyncReview } = useMutation(
+
+        (data: FormData) => FileService.uploadReviewFile(data, id),
+        {
+            onSuccess: ({ data }) => {
+                onChange(data);
+
+            },
+            onError: (error) => {
+                toastError(error, 'Upload file');
+            },
+        }
+    );
+
+    const uploadReview = useCallback(
+        async (e: ChangeEvent<HTMLInputElement>) => {
+            setIsLoading(true)
+
+            const files = e.target.files
+            if (!files?.length) return
+            const formData = new FormData()
+            formData.append('file', files[0])
+
+            await mutateAsyncReview(formData)
+
+            setTimeout(() => {
+                setIsLoading(false)
+            }, 1000)
+        },
+        [mutateAsyncReview]
+    )
+
+    return useMemo(() => ({ uploadImage, isLoading, uploadReview }), [uploadImage, isLoading, uploadReview])
 }

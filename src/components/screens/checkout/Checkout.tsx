@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import {useActions} from "@/src/hooks/useActions";
 import {useQuery} from "@tanstack/react-query";
 import {OrderService} from "@/src/services/order.service";
 import {useAuth} from "@/src/hooks/useAuth";

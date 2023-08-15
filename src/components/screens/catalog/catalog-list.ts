@@ -12,7 +12,7 @@ export const catalogList: IList[] = [
     {
         image: Acoustic,
         title: 'Акустические гитары',
-        link: 'acoustic'
+        link: 'acoustic-guitar'
     },
     {
         image: Ukulele,
@@ -22,7 +22,7 @@ export const catalogList: IList[] = [
     {
         image: Classic,
         title: 'Классические гитары',
-        link: 'classic'
+        link: 'classic-guitar'
     },
     {
         image: Drum,
@@ -56,12 +56,12 @@ export const guitars = [
     {
         image: Acoustic,
         title: 'Акустические гитары',
-        link: '/acoustic'
+        link: '/acoustic-guitar'
     },
     {
         image: Classic,
         title: 'Классические гитары',
-        link: '/classic'
+        link: '/classic-guitar'
     },
     {
         image: Electro,

@@ -3,23 +3,13 @@
 import React, { FC } from 'react';
 import Carousel from "@/src/components/ui/carousel/Carousel";
 import {carouselItems} from "@/src/components/screens/home/carousel.data";
-import Catalog from "@/pages/catalog";
-import CatalogMain from "@/src/components/screens/catalog/CatalogMain";
-import Product from "@/src/components/screens/product/Product";
 import {useQuery} from "@tanstack/react-query";
 import styles from './Home.module.scss'
 import {IProduct} from "@/src/interfaces/product.interface";
 import {ProductServices} from "@/src/services/product.services";
-import CatalogWrapper from "@/src/components/screens/catalog/CatalogWrapper";
-import CatalogItem from "@/src/components/screens/catalog/catalog-item/CatalogItem";
-import {drum, guitars, klavish} from "@/src/components/screens/catalog/catalog-list";
-import Link from "next/link";
-import Image from "next/image";
-import cn from "classnames";
 import Banner from "@/src/components/ui/banner/Banner";
 import {banerData} from "@/src/components/screens/home/banner.data";
 import {MaterialIcon} from "@/src/components/ui/MaterialIcon";
-import MapComponent from "@/src/components/ui/map/MapComponent";
 
 
 

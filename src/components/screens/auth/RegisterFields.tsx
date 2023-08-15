@@ -1,27 +1,35 @@
-import {BaseSyntheticEvent, FC} from 'react';
+import { FC } from 'react';
 import {FormState, UseFormRegister} from "react-hook-form";
-import styles from './Auth.module.scss'
-import Field from '@/src/components/ui/form-elements/Field'
 import Button from '@/src/components/ui/button/Button'
+import Field from '@/src/components/ui/form-elements/Field'
+import styles from './Auth.module.scss'
 import {validEmail} from "@/src/shared/regex";
 import cn from "classnames";
 
-interface IAuthFields {
+interface IRegisterFields {
     register: UseFormRegister<any>
     formState: FormState<any>
     isPasswordRequired?:boolean
     handleSubmit: () => void
 }
 
-const AuthFields: FC<IAuthFields> = ({
-    register,
-    formState: {errors},
-    isPasswordRequired = false,
-    handleSubmit
+const RegisterFields: FC<IRegisterFields> = ({
+                                         register,
+                                         formState: {errors},
+                                         isPasswordRequired = false,
+                                            handleSubmit
                                      }) => {
     return (
         <form onSubmit={handleSubmit} className={styles.form}>
-            <h2 className={cn(styles.form__title, styles.title)}>Войти на сайт</h2>
+            <h2 className={cn(styles.form__title, styles.title)}>Создать аккаунт</h2>
+            <Field
+                {...register('firstName', {
+                    required: 'Имя обязательно',
+                })}
+                placeholder="Имя пользователя"
+                //@ts-ignore
+                error={errors.name}
+            />
             <Field
                 {...register('email', {
                     required: 'Email обязательный',
@@ -52,9 +60,9 @@ const AuthFields: FC<IAuthFields> = ({
                 //@ts-ignore
                 error={errors.password}
             />
-            <Button  className={`${styles.switch__button} ${styles.button} ${styles.switch__btn} `}>Войти</Button>
+            <Button>Зарегистрироваться</Button>
         </form>
     );
 }
 
-export default AuthFields;
+export default RegisterFields;

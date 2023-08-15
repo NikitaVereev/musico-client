@@ -1,8 +1,5 @@
 import { FC, useState } from 'react';
 import AdminNavigation from "@/src/components/ui/admin-navigation/AdminNavigation";
-import { useQuery } from "@tanstack/react-query";
-import { OrderService } from "@/src/services/order.service";
-import Image from "next/image";
 import Button from '@/src/components/ui/button/Button'
 import AdminTable from "@/src/components/ui/admin-table/AdminTable/AdminTable";
 import styles from './ListOrder.module.scss'
@@ -10,16 +7,8 @@ import styles from './ListOrder.module.scss'
 const ListOrder: FC = ({
                            //@ts-ignore
                            orders, isLoading}) => {
-
-
-    // Initialize the state array with all items initially closed
     const [openStates, setOpenStates] = useState(orders.map(() => false));
 
-
-
-    console.log(orders);
-
-    // Function to handle opening/closing an item
     const handleItemClick = (index: number) => {
         const newOpenStates = [...openStates];
         newOpenStates[index] = !newOpenStates[index];

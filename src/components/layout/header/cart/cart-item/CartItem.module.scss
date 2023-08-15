@@ -1,7 +1,5 @@
 .item {
   @apply relative items-end flex gap-4 overflow-hidden border-b border-b-black/30 pb-6 pt-4 rounded-2xl bg-opacity-60 max-h-[230px] h-full;
-
-  //@apply flex relative items-center gap-4 border-b border-b-black/30 pb-6 pt-4;
   > img {
     @apply relative rounded-2xl h-fit object-contain;
   }

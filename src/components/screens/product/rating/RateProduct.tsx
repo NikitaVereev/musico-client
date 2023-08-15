@@ -1,4 +1,4 @@
-import {FC, useState} from 'react';
+import React, {Dispatch, FC, SetStateAction, useState} from 'react';
 import styles from './RateProduct.module.scss'
 import {useAuth} from "@/src/hooks/useAuth";
 import {useRateProduct} from "@/src/components/screens/product/rating/useRateProduct";
@@ -7,12 +7,14 @@ import button from "@/src/components/ui/button/Button";
 import Field from "@/src/components/ui/form-elements/Field";
 import {Controller, SubmitHandler, useForm} from "react-hook-form";
 import UploadField from "@/src/components/ui/form-elements/upload-field/UploadField";
+import {MaterialIcon} from "@/src/components/ui/MaterialIcon";
 
 interface IRateProduct{
     productId: string
+    setIsPopup: Dispatch<SetStateAction<boolean>>
 }
 
-const RateProduct: FC<IRateProduct> = ({productId}) => {
+const RateProduct: FC<IRateProduct> = ({productId, setIsPopup}) => {
     const {
         handleSubmit,
         register,
@@ -41,50 +43,55 @@ const RateProduct: FC<IRateProduct> = ({productId}) => {
     console.log(isImage, 'asgkhslke')
 
     return (
-        <div className={styles.wrapper}>
-            <h3>Поставьте отметку данному товару</h3>
-            <p>Оценка влияет на рекомендации</p>
-            {user ? (
-                <>
-                    {isSended ?<div className={styles.thanks}>Спасибо за оценку</div> :<>
-                        <form  onSubmit={
-                            handleSubmit(onSubmitCreate)
+        <div className={styles.layout}>
+            <button onClick={() => setIsPopup(false)}>
+                <MaterialIcon name='MdClose'  />
+            </button>
+            <div className={styles.wrapper}>
+                <h3>Поставьте отметку данному товару</h3>
+                <p>Оценка влияет на рекомендации</p>
+                {user ? (
+                    <>
+                        {isSended ?<div className={styles.thanks}>Спасибо за оценку</div> :<>
+                            <form  onSubmit={
+                                handleSubmit(onSubmitCreate)
 
-                        }>
-                            <StarRating name='star-rating' value={rating} onStarClick={handleClick} emptyStarColor='#4f4f4f'  />
-                            <Field
-                                placeholder="Комментарий"
-                                {...register('review', )}
-                                name="review"
-                            />
+                            }>
+                                <StarRating name='star-rating' value={rating} onStarClick={handleClick} emptyStarColor='#4f4f4f'  />
+                                <Field
+                                    placeholder="Комментарий"
+                                    {...register('review', )}
+                                    name="review"
+                                />
 
-                            <button>Отправить</button>
-                            <button onClick={() => {
-                                onSubmitCreate
-                                setIsOpen(true)
+                                <button>Отправить</button>
+                                <button onClick={() => {
+                                    onSubmitCreate
+                                    setIsOpen(true)
 
-                            }}>ДОбавить изображения</button>
-                        </form>
-                        {isOpen && <form onSubmit={onSubmitImage}>
-                            <Controller
-                                control={control}
-                                name="fileUrl"
-                                defaultValue=""
-                                render={({field: {value, onChange}, fieldState: {error}}) => (
-                                    <UploadField
-                                        onChange={onChange}
-                                        value={value}
-                                        placeholder="Изображение"
-                                        error={error}
-                                        //@ts-ignore
-                                        folder={isImage}
-                                    />
-                                )}
-                            />
-                        </form>} </>
-                    }
-                </>
-            ) : <button>Зарегистрироваться</button>}
+                                }}>ДОбавить изображения</button>
+                            </form>
+                            {isOpen && <form onSubmit={onSubmitImage}>
+                                <Controller
+                                    control={control}
+                                    name="fileUrl"
+                                    defaultValue=""
+                                    render={({field: {value, onChange}, fieldState: {error}}) => (
+                                        <UploadField
+                                            onChange={onChange}
+                                            value={value}
+                                            placeholder="Изображение"
+                                            error={error}
+                                            //@ts-ignore
+                                            folder={isImage?.data}
+                                        />
+                                    )}
+                                />
+                            </form>} </>
+                        }
+                    </>
+                ) : <button>Зарегистрироваться</button>}
+            </div>
         </div>
     );
 }

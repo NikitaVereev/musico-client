@@ -1,5 +1,4 @@
-import {FaMusic} from "react-icons/fa";
-import {IconType} from "react-icons";
+
 import {MdExplore} from "react-icons/md";
 import {TypeMaterialIconName} from "@/src/shared/types/icons.types";
 

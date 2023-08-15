@@ -24,8 +24,6 @@ const EditProduct: FC<IProduct> = ({
         setValue,
         getValues,
         control,
-        resetField,
-        formState: {isDirty, isValid}
     } = useForm({
         mode: 'onChange',
         defaultValues: {

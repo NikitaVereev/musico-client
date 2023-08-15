@@ -1,8 +1,7 @@
 
-import {GetStaticPaths, GetStaticProps, NextPage} from "next";
+import { NextPage} from "next";
 import {ProductServices} from "@/src/services/product.services";
 import {IProduct} from "@/src/interfaces/product.interface";
-import {ProductPageProps} from "@/pages/product/[slug]";
 import {useQuery} from "@tanstack/react-query";
 
 const SearchPage: NextPage = () => {

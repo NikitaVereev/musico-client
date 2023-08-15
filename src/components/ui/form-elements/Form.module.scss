@@ -14,7 +14,8 @@
 .field{
   @apply text-left mb-8;
   input {
-    @apply outline-none border-none focus:right-0 bg-transparent text-gray-300 w-full m-0 px-0;
+    @apply outline-none border-none focus:right-0   text-gray-900 w-full m-0 px-0;
+    background: transparent !important;
   }
 }
 

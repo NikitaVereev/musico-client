@@ -3,7 +3,7 @@ import axios from "axios";
 export const OrderService = {
     async createOrder({email, idProduct}: {email: string, idProduct: string}){
         try{
-            return axios.post(`/order?email=${email}&idProduct=${idProduct}`)
+            return axios.post(`http://localhost:8080/order?email=${email}&idProduct=${idProduct}`)
         }
         catch(e){
             console.log(e)
@@ -11,7 +11,7 @@ export const OrderService = {
     },
     async getOrder(data: string){
         try{
-            const response = await axios.get(`/order/pending?email=${data}`)
+            const response = await axios.get(`http://localhost:8080/order/pending?email=${data}`)
             return response.data
         }
         catch(e){
@@ -20,14 +20,14 @@ export const OrderService = {
     },
     async deleteOrderItem(data: string){
         try{
-            return axios.delete(`/order?idItemOrder=${data}`)
+            return axios.delete(`http://localhost:8080/order?idItemOrder=${data}`)
         }catch(e){
             console.log(e)
         }
     },
     async getAllOrders(data: string){
         try{
-            const response = await axios.get(`/order?email=${data}`)
+            const response = await axios.get(`http://localhost:8080/order?email=${data}`)
             return response.data
         }
         catch(e){
@@ -36,7 +36,7 @@ export const OrderService = {
     },
     async decrementQuantityOrderItem(data: string){
         try{
-            return axios.put(`/order?action=DECREASE&idItemOrder=${data}`)
+            return axios.put(`http://localhost:8080/order?action=DECREASE&idItemOrder=${data}`)
 
         }
         catch(e){
@@ -46,7 +46,7 @@ export const OrderService = {
 
     async getAllOrdersByAdmin(){
         try{
-            const response = await axios.get('/order/all')
+            const response = await axios.get('http://localhost:8080/order/all')
             return response.data
         }catch(e){
             console.log(e)
