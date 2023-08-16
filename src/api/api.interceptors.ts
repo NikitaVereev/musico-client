@@ -5,7 +5,7 @@ import {getAccessToken, removeTokensStorage} from "@/src/services/auth/auth.help
 import {AuthService} from "@/src/services/auth/auth.service";
 
 export const instance = axios.create({
-    baseURL: 'http://localhost:8080',
+    baseURL: 'http://89.248.193.110:8080',
     headers: getContentType(),
 })
 
