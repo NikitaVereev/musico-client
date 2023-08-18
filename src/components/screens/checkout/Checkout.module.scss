@@ -1,0 +1,63 @@
+.wrapper{
+  @apply flex gap-8;
+  .orders{
+    @apply relative w-2/3 air-block p-8 mt-12;
+    &:last-child{
+      @apply w-1/3 h-fit;
+      >button{
+        @apply w-full;
+      }
+      .price{
+        display: grid;
+        grid-template-columns: 150px auto;
+        h3{
+          @apply text-gray-500 text-xl;
+        }
+        h2{
+          @apply text-2xl text-black;
+        }
+      }
+    }
+    >h2{
+      @apply border-b pb-2 border-gray-500;
+    }
+    div{
+      div{
+        display: grid;
+        grid-template-columns: 100px auto 40px;
+        align-items: center;
+        &:last-child svg{
+          @apply relative inset-0;
+        }
+        &:nth-child(2){
+          display: grid;
+          grid-template-columns: 150px 100px auto;
+          align-items: center;
+          >div{
+            display: flex;
+          }
+          h4{
+            @apply mt-0;
+            max-width: 200px;
+          }
+          >span:last-child{
+            @apply text-gray-900 font-bold text-2xl text-right;
+
+          }
+        }
+      }
+    }
+    .price{
+      @apply flex justify-between my-12 items-center;
+      h3{
+        @apply text-2xl;
+      }
+      h2{
+        @apply text-primary;
+      }
+    }
+    >button{
+      @apply block ml-auto;
+    }
+  }
+}

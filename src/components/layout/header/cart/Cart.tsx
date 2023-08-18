@@ -33,7 +33,7 @@ const Cart: FC = ({setOpenBasket, openBasket}: any) => {
       <li>
         <Button onClick={() => setOpenBasket(!openBasket)}>
           <MdShoppingCart />
-          <span>{ user && orders && orders.items.length === 0 ? '' : orders && orders.items.length}</span>
+          <span>{ user && orders && orders.items.length === 0 ? null : orders && orders.items.length}</span>
         </Button>
 
 

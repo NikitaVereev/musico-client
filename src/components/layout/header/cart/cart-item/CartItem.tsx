@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { ICart } from '@/src/components/store/cart/cart.interface';
 import Image from 'next/image';
 import styles from './CartItem.module.scss';
@@ -8,6 +8,7 @@ import {OrderService} from "@/src/services/order.service";
 
 import {AiOutlineMinusCircle, AiOutlinePlusCircle} from "react-icons/ai";
 import {useAuth} from "@/src/hooks/useAuth";
+import {MaterialIcon} from "@/src/components/ui/MaterialIcon";
 
 const CartItem: FC<{ item: ICart }> = ({ item }) => {
 
@@ -47,12 +48,15 @@ const CartItem: FC<{ item: ICart }> = ({ item }) => {
 
   return (
     <div className={styles.item}>
-      <Image
-        src={item.product.fileUrl[0]?.url}
-        alt={item.product.title}
-        width={100}
-        height={100}
-      />
+        {Boolean(item.product.fileUrl[0]?.url) ?<Image
+            src={item.product.fileUrl[0]?.url}
+            alt={item.product.title}
+            width={100}
+            height={100}
+        /> : <div className={styles.notImage}>
+            <MaterialIcon name='MdImageNotSupported' />
+
+        </div>}
       <div className={styles.itemInfo}>
         <h4>{item.product.title}</h4>
 

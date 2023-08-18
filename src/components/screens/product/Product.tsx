@@ -91,11 +91,15 @@ const Product: FC<ProductPageProps> = ({ product }) => {
                         modules={[FreeMode, Navigation, Thumbs, Controller]}
                         className="w-full h-[600px]  "
                     >
-                        {product.fileUrl && product.fileUrl.map(item => (
-                            <SwiperSlide  key={item.id}>
-                                <Image src={item.url} fill alt={product.title}/>
-                            </SwiperSlide>
-                        ))}
+                        {Boolean(product.fileUrl[0]?.url)  ? product.fileUrl && product.fileUrl.map(item => (
+                                <SwiperSlide  key={item.id}>
+                                    <Image src={item.url} fill alt={product.title}/>
+                                </SwiperSlide>
+                            )) : <div className={styles.notImage}>
+                            <MaterialIcon name='MdImageNotSupported' />
+                            <h2>Изображение отсутствует</h2>
+                        </div>}
+
                     </Swiper>
                     <Swiper
                         controller={{ control: firstSwiper }}
@@ -185,6 +189,7 @@ const Product: FC<ProductPageProps> = ({ product }) => {
                             {item.review}
                         </div>
                         <div >
+
                             {item.image && <div className='flex gap-2'>
                                 {item.image.map(item => (
                                     <>

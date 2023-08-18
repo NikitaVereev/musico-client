@@ -16,7 +16,7 @@ const MenuItem: FC<{ item: IMenuItem }> = ({ item }) => {
         >
             <Button><MaterialIcon name={item.icon} />
                 <Link href={item.link} className={styles.button}>
-
+                    <p>{item.title}</p>
 
                 </Link>
             </Button>

@@ -5,6 +5,7 @@ import {toastr} from "react-redux-toastr";
 import {toastError} from "@/src/components/utils/toast-error";
 import {errorCatch} from "@/src/api/api.helpers";
 
+
 export const register = createAsyncThunk<IAuthResponse, IEmailPassword>(
     'auth/register',
     async ({ email, password }, thunkApi) => {

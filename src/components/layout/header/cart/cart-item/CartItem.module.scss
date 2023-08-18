@@ -22,6 +22,13 @@
       @apply text-primary font-bold;
     }
   }
+  .notImage{
+    @apply w-[100px] h-full flex-col air-block flex items-center  bg-transparent justify-around;
+    svg{
+      @apply w-full h-full;
+    }
+
+  }
 }
 .quantityContainer{
   @apply flex gap-3 items-center;

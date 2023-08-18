@@ -67,10 +67,19 @@ $black: #fff;
   }
   &:hover {
     color: $black;
-    font-weight: normal;
-    text-decoration: none;
+
     &:after {
       width: 100%;
     }
   }
+  &:disabled,
+  &[disabled]{
+    border: none;
+    background-color: #cccccc;
+    color: #666666;
+    &:after{
+      content: none;
+    }
+  }
 }
+

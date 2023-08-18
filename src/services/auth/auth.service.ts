@@ -8,7 +8,7 @@ import {getContentType} from "@/src/api/api.helpers";
 export const AuthService = {
 	async register(email: string, password: string) {
 		const response = await axios.post<IAuthResponse>(
-			'http://89.248.193.110:8080/auth/register',
+			`https://89.248.193.110:8080/auth/register`,
 			{ email, password }
 		)
 
@@ -18,7 +18,7 @@ export const AuthService = {
 	},
 	async login(email: string, password: string) {
 		const response = await axios.post<IAuthResponse>(
-			'http://89.248.193.110:8080/auth/login',
+			'https://89.248.193.110:8080/auth/login',
 			{ email, password }
 		)
 		console.log(response.data)
@@ -35,7 +35,7 @@ export const AuthService = {
 	async getNewTokens() {
 		const refreshToken = Cookies.get('refreshToken')
 		const response = await axios.post<IAuthResponse>(
-			'http://89.248.193.110:8080/auth/refresh-token', null,
+			'https://89.248.193.110:8080/auth/refresh-token', null,
 			{
 				headers: {Authorization: `Bearer ${refreshToken}`}
 			}
