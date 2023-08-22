@@ -1,5 +1,5 @@
 import {FC, useState} from 'react';
-import {useQuery} from "@tanstack/react-query";
+import {useMutation, useQuery} from "@tanstack/react-query";
 import {OrderService} from "@/src/services/order.service";
 import {useAuth} from "@/src/hooks/useAuth";
 import CartItem from "@/src/components/layout/header/cart/cart-item/CartItem";
@@ -17,14 +17,42 @@ interface IOrder{
 const Checkout: FC = () => {
     const [isContinue, setIsContinue] = useState(false)
 
+    const {mutate, isLoading} = useMutation({
+        mutationFn: (data) => OrderService.createPaymant(data),
+
+    })
+
     const { user } = useAuth();
     const email = user?.email;
 
-    const { data: orders, isLoading } = useQuery( ["single"],() => email ? OrderService.getOrder(email) : null,
+    const { data: orders, isLoading: isLoadingPayment } = useQuery( ["single"],() => email ? OrderService.getOrder(email) : null,
 
     );
     if(isLoading) return <div className='loader'>Загрузка</div>
 
+    const handleClick = () => {
+        setIsContinue(true)
+
+
+        mutate({
+            data: {
+                order_id: orders.id,
+                customer_email: user?.email,
+                products: orders.items.map(item => ({
+                    sku: item.id,
+                    name: item.product.title,
+                    price: item.product.price,
+                    quantity: item.quantity,
+                    paymentMethod: "1",
+                    paymentObject: "1"
+                })),
+                do: "pay",
+                urlReturn: "http...",
+                urlNotification: "http...",
+                sys: "код системы"
+            }
+        });
+    }
 
 
     return (
@@ -57,7 +85,7 @@ const Checkout: FC = () => {
                         <h3>Итого</h3>
                         <h2>{orders && orders.price} руб.</h2>
                     </div>
-                    <Button onClick={() => console.log('Go!')} disabled={!isContinue}>Оформить заказ</Button>
+                    <Button onClick={handleClick} disabled={!isContinue}>Оформить заказ</Button>
                 </div>
             </div>
         </div>

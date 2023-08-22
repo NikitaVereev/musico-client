@@ -20,8 +20,8 @@ import SwiperContainer from "@/src/components/screens/home/swiper/SwiperContaine
 
 
 const Home: FC = () => {
-  const {data: products, isLoading, isError}: any = useQuery<IProduct[]>(['all products'], () => ProductServices.getAllProducts())
-  if(isLoading)  return <div className='loader'>Загрузка</div>
+  // const {data: products, isLoading, isError}: any = useQuery<IProduct[]>(['all products'], () => ProductServices.getAllProducts())
+  // if(isLoading)  return <div className='loader'>Загрузка</div>
 
   return <>
     <div className='wrapper py-12 relative'>

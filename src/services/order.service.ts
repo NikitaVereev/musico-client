@@ -9,6 +9,14 @@ export const OrderService = {
             console.log(e)
         }
     },
+
+    async createPaymant({data}){
+        try{
+            return axios.post('https://89.248.193.110:8080/pay/url', data)
+        }catch (e){
+            console.log(e)
+        }
+    },
     async getOrder(data: string){
         try{
             const response = await axios.get(`https://89.248.193.110:8080/order/pending?email=${data}`)
