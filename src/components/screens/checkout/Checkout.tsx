@@ -18,7 +18,9 @@ const Checkout: FC = () => {
     const [isContinue, setIsContinue] = useState(false)
 
     const {mutate, isLoading} = useMutation({
-        mutationFn: (data) => OrderService.createPaymant(data),
+        mutationFn: (data) => OrderService.createPaymant(
+            //@ts-ignore
+            data),
 
     })
 
@@ -34,11 +36,15 @@ const Checkout: FC = () => {
         setIsContinue(true)
 
 
+        // @ts-ignore
         mutate({
+
             data: {
                 order_id: orders.id,
                 customer_email: user?.email,
-                products: orders.items.map(item => ({
+                products: orders.items.map(
+                    //@ts-ignore
+                    item => ({
                     sku: item.id,
                     name: item.product.title,
                     price: item.product.price,

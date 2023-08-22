@@ -10,7 +10,9 @@ export const OrderService = {
         }
     },
 
-    async createPaymant({data}){
+    async createPaymant({
+                            //@ts-ignore
+                            data}){
         try{
             return axios.post('https://89.248.193.110:8080/pay/url', data)
         }catch (e){
