@@ -10,12 +10,14 @@ import { useQuery } from '@tanstack/react-query';
 import { OrderService } from '@/src/services/order.service';
 import {IProduct} from "@/src/interfaces/product.interface";
 import cn from "classnames";
+import {useOutside} from "@/src/hooks/useOutside";
 
 
 
 const Cart: FC = ({setOpenBasket, openBasket}: any) => {
   const { user } = useAuth();
   const state = useTypedSelector((state) => state.cart.items);
+  const {ref, isShow, setIsShow} = useOutside(false)
 
   const email = user?.email;
 
@@ -30,14 +32,14 @@ const Cart: FC = ({setOpenBasket, openBasket}: any) => {
 
 
   return (
-      <li>
-        <Button onClick={() => setOpenBasket(!openBasket)}>
+      <li ref={ref}>
+        <Button onClick={() => setIsShow(!isShow)}>
           <MdShoppingCart />
           <span>{ user && orders && orders.items.length === 0 ? null : orders && orders.items.length}</span>
         </Button>
 
 
-            <div className={cn(styles.cartWrapper, openBasket && styles.active)}>
+            <div className={cn(styles.cartWrapper, isShow && styles.active)}>
               <div className='font-normal text-lg mb-5'>Корзина</div>
 
               <div className={styles.cart}>
@@ -48,11 +50,11 @@ const Cart: FC = ({setOpenBasket, openBasket}: any) => {
                         </div>
                     ))
                 ) : (
-                    <div>Пусто(</div>
+                    <h3>В корзине нет товаров</h3>
                 )}
               </div>
 
-              {user && orders  && (
+              {user && orders && !!orders.items.length  && (
                   <>
                     <div className={styles.totalPrice}>
                       <div>Цена:</div>

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IAddToCartPayload, IInitialState } from '@/src/components/store/cart/cart.interface';
+import {IAddToCartPayload, IChangeQuantityPayload, IInitialState} from '@/src/components/store/cart/cart.interface';
 import { OrderService } from '@/src/services/order.service';
 
 const initialState: IInitialState = {
@@ -16,21 +16,10 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<{ payload: IAddToCartPayload; user: string }>) => {
-      const { payload, user } = action.payload;
-      const item = state.items.find((item) => item.id ===
-          //@ts-ignore
-          payload.id);
-      if (!item) {
-        state.items.push({ ...payload,
-          //@ts-ignore
-          id: state.items.length });
-        OrderService.createOrder({
-          email: user || 'user@example.com', // Используем переданный user или дефолтное значение
-          idProduct:
-          //@ts-ignore
-          payload.id,
-        });
-      }
+      //@ts-ignore
+     const isExist = state.items.some(item => item.product.id === action.payload.product.id)
+  //@ts-ignore
+      if(!isExist) state.items.push({...action.payload, id: state.items.length})
     },
     removeFromCart: (state, action: PayloadAction<{ id: number }>) => {
       state.items = state.items.filter((item) =>
@@ -38,9 +27,18 @@ export const cartSlice = createSlice({
           item.id !== action.payload.id);
     },
   },
-  extraReducers: (builder) => {
-    // Add any extra reducers if needed
+  //@ts-ignore
+  changeQuantity: (state, action: PayloadAction<IChangeQuantityPayload>) => {
+    const {id, type} = action.payload
+    const item = state.items.find(
+        //@ts-ignore
+        item => item.id === id)
+    if(item) type === 'plus' ? item.quantity++ : item.quantity--
   },
+  //@ts-ignore
+  reset: state => {
+    state.items = []
+  }
 });
 
 export const { reducer } = cartSlice;

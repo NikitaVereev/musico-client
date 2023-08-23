@@ -1,12 +1,13 @@
-import axios from 'axios'
+
 import {IProduct} from "@/src/interfaces/product.interface";
+import instance from "@/src/api/api.interceptors";
 
 
 
 export const ProductServices = {
     async getAllProducts(search?: string) {
         try {
-            const response = await axios.get(`https://89.248.193.110:8080/product/search?query=${search}`);
+            const response = await instance.get(`/product/search?query=${search}`);
             return response.data;
         } catch (e) {
             throw new Error('Не удалось получить данные о продуктах');
@@ -14,7 +15,7 @@ export const ProductServices = {
     },
     async getProductBySlug(slug: string){
         try{
-            const response = await axios.get(`https://89.248.193.110:8080/product/slug?slug=${slug}`)
+            const response = await instance.get(`/product/slug?slug=${slug}`)
             return response.data
         }catch(e) {
             console.log(e)
@@ -22,7 +23,7 @@ export const ProductServices = {
     },
     async getSearchedProduct(data: IProduct[]){
         try{
-            const response = await axios.get(`https://89.248.193.110:8080/product/search/${data}`)
+            const response = await instance.get(`/product/search/${data}`)
             return response.data
         }catch(e){
             console.log(e)
@@ -30,7 +31,7 @@ export const ProductServices = {
     } ,
     async getOnlyCategories(heading: string, page: number, data: string, sort: string) {
         try {
-            const response = await axios.get(`https://89.248.193.110:8080/product/search/${heading}${data && `?${data}`}`, {
+            const response = await instance.get(`/product/search/${heading}${data && `?${data}`}`, {
                 params: {
                     numberOfPage: page,
                     sort: sort,
@@ -45,7 +46,7 @@ export const ProductServices = {
     async createProduct(data: string){
 
         try{
-            return axios.post('https://89.248.193.110:8080/product/new', data)
+            return instance.post('/product/new', data)
         }catch(e){
             console.log(e)
         }
@@ -53,7 +54,7 @@ export const ProductServices = {
 
     async createReview(email: string, productId: string, data: any){
         try{
-            return axios.post(`https://89.248.193.110:8080/review/new?email=${email}&productId=${productId}`, data)
+            return instance.post(`/review/new?email=${email}&productId=${productId}`, data)
         }catch(e){
             console.log(e)
         }
@@ -61,7 +62,7 @@ export const ProductServices = {
 
     async createFeatures(type: string, id: string | null, data: string){
         try{
-            return axios.post(`https://89.248.193.110:8080/product/features/${type}?productId=${id}`, data)
+            return instance.post(`/product/features/${type}?productId=${id}`, data)
         }catch (e){
             console.log(e)
         }
@@ -69,7 +70,7 @@ export const ProductServices = {
 
     async createImageProduct(id: string, data: any){
         try{
-            return axios.post(`https://89.248.193.110:8080/product/upload?productId=${id}`, data)
+            return instance.post(`/product/upload?productId=${id}`, data)
         }catch(e){
             console.log(e)
         }
@@ -77,7 +78,7 @@ export const ProductServices = {
 
     async changeProduct( data: string) {
         try{
-            return axios.put(`https://89.248.193.110:8080/product/changes`, data)
+            return instance.put(`/product/changes`, data)
             console.log('привет', data)
         }catch (e){
             console.log(e, 'dsgwegewhewh')
@@ -86,7 +87,7 @@ export const ProductServices = {
 
     async deleteProduct(id: string) {
         try {
-            const response = await axios.delete<string>(`https://89.248.193.110:8080/product/changes?id=${id}`);
+            const response = await instance.delete<string>(`/product/changes?id=${id}`);
             return response.data;
         } catch (e) {
             throw new Error('Не удалось удалить продукт');

@@ -23,7 +23,9 @@ const Home: FC = () => {
   // const {data: products, isLoading, isError}: any = useQuery<IProduct[]>(['all products'], () => ProductServices.getAllProducts())
   // if(isLoading)  return <div className='loader'>Загрузка</div>
 
-  return <>
+
+
+    return <>
     <div className='wrapper py-12 relative'>
       <div className="lines">
         <div className="line"></div>

@@ -1,12 +1,15 @@
+
+
 import axios from "axios";
+import instance from "@/src/api/api.interceptors";
 
 export const CategoryService = {
     async getAllCategories(subType: string) {
         try{
-            const response = await axios.get(`https://89.248.193.110:8080/product/features/subtype?subType=${subType}`)
+            const response = await instance.get(`/product/features/subtype?subType=${subType}`)
             return response.data
         }catch (e){
             console.log(e)
         }
-}
+    }
 }

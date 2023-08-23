@@ -1,9 +1,10 @@
-import axios from "axios";
+import instance from "@/src/api/api.interceptors";
+
 
 export const OrderService = {
     async createOrder({email, idProduct}: {email: string, idProduct: string}){
         try{
-            return axios.post(`https://89.248.193.110:8080/order?email=${email}&idProduct=${idProduct}`)
+            return instance.post(`/order?email=${email}&idProduct=${idProduct}`)
         }
         catch(e){
             console.log(e)
@@ -14,14 +15,14 @@ export const OrderService = {
                             //@ts-ignore
                             data}){
         try{
-            return axios.post('https://89.248.193.110:8080/pay/url', data)
+            return instance.post('/pay/url', data)
         }catch (e){
             console.log(e)
         }
     },
     async getOrder(data: string){
         try{
-            const response = await axios.get(`https://89.248.193.110:8080/order/pending?email=${data}`)
+            const response = await instance.get(`/order/pending?email=${data}`)
             return response.data
         }
         catch(e){
@@ -30,14 +31,14 @@ export const OrderService = {
     },
     async deleteOrderItem(data: string){
         try{
-            return axios.delete(`https://89.248.193.110:8080/order?idItemOrder=${data}`)
+            return instance.delete(`/order?idItemOrder=${data}`)
         }catch(e){
             console.log(e)
         }
     },
     async getAllOrders(data: string){
         try{
-            const response = await axios.get(`https://89.248.193.110:8080/order?email=${data}`)
+            const response = await instance.get(`/order?email=${data}`)
             return response.data
         }
         catch(e){
@@ -46,7 +47,7 @@ export const OrderService = {
     },
     async decrementQuantityOrderItem(data: string){
         try{
-            return axios.put(`https://89.248.193.110:8080/order?action=DECREASE&idItemOrder=${data}`)
+            return instance.put(`/order?action=DECREASE&idItemOrder=${data}`)
 
         }
         catch(e){
@@ -56,7 +57,7 @@ export const OrderService = {
 
     async getAllOrdersByAdmin(){
         try{
-            const response = await axios.get('https://89.248.193.110:8080/order/all')
+            const response = await instance.get('/order/all')
             return response.data
         }catch(e){
             console.log(e)

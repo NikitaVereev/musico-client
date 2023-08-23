@@ -1,14 +1,15 @@
 import {removeTokensStorage, saveToStorage} from './auth.helper'
 import {IAuthResponse} from "@/src/components/store/user/user.interface";
-import axios from "axios";
+
 import Cookies from 'js-cookie'
 import {getContentType} from "@/src/api/api.helpers";
-// import axios from "@/src/api/api.interceptors";
+import instance from "@/src/api/api.interceptors";
+// import instance from "@/src/api/api.interceptors";
 
 export const AuthService = {
 	async register(email: string, password: string) {
-		const response = await axios.post<IAuthResponse>(
-			`https://89.248.193.110:8080/auth/register`,
+		const response = await instance.post<IAuthResponse>(
+			`/auth/register`,
 			{ email, password }
 		)
 
@@ -17,8 +18,8 @@ export const AuthService = {
 		return response
 	},
 	async login(email: string, password: string) {
-		const response = await axios.post<IAuthResponse>(
-			'https://89.248.193.110:8080/auth/login',
+		const response = await instance.post<IAuthResponse>(
+			'/auth/login',
 			{ email, password }
 		)
 		console.log(response.data)
@@ -34,8 +35,8 @@ export const AuthService = {
 
 	async getNewTokens() {
 		const refreshToken = Cookies.get('refreshToken')
-		const response = await axios.post<IAuthResponse>(
-			'https://89.248.193.110:8080/auth/refresh-token', null,
+		const response = await instance.post<IAuthResponse>(
+			'/auth/refresh-token', null,
 			{
 				headers: {Authorization: `Bearer ${refreshToken}`}
 			}

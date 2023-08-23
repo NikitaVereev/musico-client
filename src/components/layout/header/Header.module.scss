@@ -99,7 +99,7 @@
 
         .cartWrapper {
          // @apply fixed overflow-x-hidden absolute min-h-full max-h-[90vh] overflow-y-scroll  w-1/3 min-h-full top-0 rounded-2xl -right-full z-40 text-white;
-         @apply overflow-x-hidden absolute bg-gray-300 min-h-full max-h-[90vh] overflow-y-scroll -right-[100%] top-[5rem] z-20 w-96 rounded-xl  px-6 py-4 text-sm text-white;
+         @apply overflow-x-hidden absolute bg-gray-300 min-h-full max-h-[90vh] overflow-y-scroll -right-[100%] top-[5rem] z-20 w-96 rounded-xl  px-6 py-4 text-sm text-gray-800;
           backdrop-filter: blur(120px);
           transition: 0.5s ease;
           &.active{
