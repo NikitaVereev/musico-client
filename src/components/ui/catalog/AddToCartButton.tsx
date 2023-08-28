@@ -1,11 +1,13 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import {IProduct} from "@/src/interfaces/product.interface";
 import {useActions} from "@/src/hooks/useActions";
 import {useCart} from "@/src/components/layout/header/cart/useCart";
+import Button from '@/src/components/ui/button/Button'
+import {FaShoppingCart} from "react-icons/fa";
 
 const AddToCartButton: FC<{product: IProduct}> = ({product}) => {
     const {
-        //@ts-ignore
+
         addToCart, removeFromCart} = useActions()
     const {items} = useCart()
 
@@ -15,12 +17,12 @@ const AddToCartButton: FC<{product: IProduct}> = ({product}) => {
     )
     return (
         <div>
-            <button onClick={() => currentElement ? removeFromCart({id: currentElement.id}) : addToCart({
+            <Button onClick={() => currentElement ? removeFromCart({id: currentElement.id}) : addToCart({
                 //@ts-ignore
                 product,
                 quantity: 1,
                 price: product.price
-            })}>{currentElement ? <span>Удалить</span> : <span>Добавить</span>}</button>
+            })}>{currentElement ? <span>УДАЛИТЬ<FaShoppingCart /></span> : <span>ДОБАВИТЬ<FaShoppingCart /></span>}</Button>
         </div>
     );
 }

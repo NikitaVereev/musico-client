@@ -4,6 +4,7 @@ import {toastError} from "@/src/components/utils/toast-error";
 import {ProductServices} from "@/src/services/product.services";
 import {toastr} from "react-redux-toastr";
 import {FileService} from "@/src/services/file.service";
+import {useQueryClient} from "@tanstack/react-query";
 
 interface IRateProduct {
     productId: string
@@ -17,6 +18,8 @@ export const useRateProduct = (
     const [isSended, setIsSended] = useState(false)
     const [isImage, setIsImage] = useState(null)
 
+    const queryClient = useQueryClient()
+
 
     const {mutateAsync} = useMutation(
         ['set rating product'],
@@ -28,6 +31,7 @@ export const useRateProduct = (
             onSuccess(data){
                 toastr.success('Рейтинг', 'спасибо за оценку, это важно для нас')
                 setIsSended(true)
+                queryClient.invalidateQueries(['single'])
                 // @ts-ignore
                 setIsImage(data)
                 console.log(data, 'adsgashash')

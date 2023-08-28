@@ -26,19 +26,20 @@ export const cartSlice = createSlice({
           //@ts-ignore
           item.id !== action.payload.id);
     },
+    changeQuantity: (state, action: PayloadAction<IChangeQuantityPayload>) => {
+      const {id, type} = action.payload
+      const item = state.items.find(
+          //@ts-ignore
+          item => item.id === id)
+      if(item) type === 'plus' ? item.quantity++ : item.quantity--
+    },
+    //@ts-ignore
+    reset: state => {
+      state.items = []
+    }
   },
-  //@ts-ignore
-  changeQuantity: (state, action: PayloadAction<IChangeQuantityPayload>) => {
-    const {id, type} = action.payload
-    const item = state.items.find(
-        //@ts-ignore
-        item => item.id === id)
-    if(item) type === 'plus' ? item.quantity++ : item.quantity--
-  },
-  //@ts-ignore
-  reset: state => {
-    state.items = []
-  }
+
+
 });
 
 export const { reducer } = cartSlice;

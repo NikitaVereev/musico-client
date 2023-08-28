@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { IProduct } from '@/src/interfaces/product.interface';
 import Product from '@/src/components/screens/product/Product';
 import { ProductServices } from '@/src/services/product.services';
+import {useQuery} from "@tanstack/react-query";
 
 export interface ProductPageProps {
     product: IProduct;
@@ -27,6 +28,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<ProductPageProps> = async (context) => {
     //@ts-ignore
     const { slug } = context.params;
+
     try {
         if (!slug) {
             throw new Error('Отсутствует параметр "slug"');

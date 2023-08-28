@@ -1,11 +1,14 @@
-import { FC } from 'react';
+import {FC, useEffect} from 'react';
 import {useAuth} from "@/src/hooks/useAuth";
 import MenuItem from '@/src/components/layout/header/menu/MenuItem'
 import LogoutButton from "@/src/components/layout/header/auth/LogoutButton";
 
 const AuthItems: FC = () => {
     const {user} = useAuth()
-    console.log(user)
+
+    useEffect(() => {
+        console.log(user);
+    }, [user]);
     return (
         <>
             {user ? (

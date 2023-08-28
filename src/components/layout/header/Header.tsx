@@ -19,27 +19,27 @@ const Header: FC = () => {
   const [openBasket, setOpenBasket] = useState(false);
   const { user } = useAuth();
 
-  const controlNavbar = useCallback(() => {
-    if (typeof window !== 'undefined') {
-      if (window.scrollY < isLastScrollY) {
-        setIsShow(false);
-        setOpenBasket(false);
-      } else {
-        setIsShow(true);
-        setOpenBasket(false);
-      }
-      setIsLastScrollY(window.scrollY);
-    }
-  }, [isLastScrollY]);
+  // const controlNavbar = useCallback(() => {
+  //   if (typeof window !== 'undefined') {
+  //     if (window.scrollY < isLastScrollY) {
+  //       setIsShow(false);
+  //       setOpenBasket(false);
+  //     } else {
+  //       setIsShow(true);
+  //       setOpenBasket(false);
+  //     }
+  //     setIsLastScrollY(window.scrollY);
+  //   }
+  // }, [isLastScrollY]);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', controlNavbar);
-      return () => {
-        window.removeEventListener('scroll', controlNavbar);
-      };
-    }
-  }, [controlNavbar]);
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     window.addEventListener('scroll', controlNavbar);
+  //     return () => {
+  //       window.removeEventListener('scroll', controlNavbar);
+  //     };
+  //   }
+  // }, [controlNavbar]);
 
   const router = useRouter();
 

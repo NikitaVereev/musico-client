@@ -6,6 +6,7 @@ import CartItem from "@/src/components/layout/header/cart/cart-item/CartItem";
 import {IProduct} from "@/src/interfaces/product.interface";
 import Button from '@/src/components/ui/button/Button'
 import styles from './Checkout.module.scss'
+import {useRouter} from 'next/router'
 import cn from "classnames";
 
 interface IOrder{
@@ -16,11 +17,16 @@ interface IOrder{
 
 const Checkout: FC = () => {
     const [isContinue, setIsContinue] = useState(false)
+    const {push} = useRouter()
 
     const {mutate, isLoading} = useMutation({
         mutationFn: (data) => OrderService.createPaymant(
             //@ts-ignore
             data),
+        onSuccess: (response: any) =>{
+            push(response.data)
+
+    }
 
     })
 
@@ -41,6 +47,7 @@ const Checkout: FC = () => {
 
             data: {
                 order_id: orders.id,
+                customer_phone: user?.phone || "+79048339006",
                 customer_email: user?.email,
                 products: orders.items.map(
                     //@ts-ignore
@@ -49,13 +56,19 @@ const Checkout: FC = () => {
                     name: item.product.title,
                     price: item.product.price,
                     quantity: item.quantity,
+                    tax: {
+                        tax_type: 0,
+                        tax_sum: "0"
+                    },
                     paymentMethod: "1",
                     paymentObject: "1"
                 })),
                 do: "pay",
-                urlReturn: "http...",
-                urlNotification: "http...",
-                sys: "код системы"
+                type: "json",
+                callbackType: "json",
+                urlReturn: "https://musco.store/",
+                urlSuccess: "https://musco.store/",
+                urlNotification: "https://muscoservicenevoruite.ru/pay/url"
             }
         });
     }

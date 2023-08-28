@@ -61,7 +61,7 @@ const CatalogWrapper: FC<{  heading?: string; subType: string, featuresProductTy
                                         <h1>Товаров в выбранной категории на данный момент нет</h1>
                                     </Banner>
                                 ) : (
-                                    data.map((product: IProduct) => <CatalogItem key={product.id} product={product} />)
+                                    data.objects.map((product: IProduct) => <CatalogItem key={product.id} product={product} />)
                                 )
                             ) : (
                                 <div className="loader">Загрузка</div>
