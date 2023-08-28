@@ -4,6 +4,7 @@ import { FC } from 'react'
 import styles from './AdminTable.module.scss'
 
 const AdminTableHeader: FC<{ headerItems: string[] }> = ({ headerItems }) => {
+	console.log(headerItems, 'sdg')
 	return (
 		<div className={cn(styles.item, styles.itemHeader)}>
 			{headerItems.map((value) => (

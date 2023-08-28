@@ -7,7 +7,7 @@ import styles from './ListOrder.module.scss'
 const ListOrder: FC = ({
                            //@ts-ignore
                            orders, isLoading}) => {
-    const [openStates, setOpenStates] = useState(orders.map(() => false));
+    const [openStates, setOpenStates] = useState(orders?.map(() => false));
 
     const handleItemClick = (index: number) => {
         const newOpenStates = [...openStates];
@@ -21,7 +21,7 @@ const ListOrder: FC = ({
             <h1 className='animate-fade'>Список заказов</h1>
             <div className='animate-scaleIn flex flex-col gap-10'>
 
-                {orders.length === 0 ? <h2>Заказов нет</h2> : orders.map((item: any, index: number) => (
+                {orders?.length === 0 ? <h2>Заказов нет</h2> : orders?.map((item: any, index: number) => (
                     <div key={item.id} className={styles.order}>
                         <div className={styles.heading}>
                             <div>

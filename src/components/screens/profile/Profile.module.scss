@@ -1,0 +1,21 @@
+.itemWrapper{
+  @apply bg-gray-700 bg-opacity-20  px-5 rounded-lg transition-colors;
+
+  .item {
+    @apply flex items-center justify-between p-3 rounded-xl;
+
+    > div {
+      @apply text-black text-opacity-80 py-3;
+      width: 24%;
+      &:last-child {
+        @apply text-right justify-end ml-auto;
+      }
+    }
+  }
+  .itemHeading {
+    @apply bg-primary bg-opacity-20 shadow-lg w-full ;
+    > div {
+      @apply text-opacity-90 font-semibold py-2.5;
+    }
+  }
+}

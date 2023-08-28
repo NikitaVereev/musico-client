@@ -22,7 +22,7 @@ const AdminTable: FC<IAdminTable> = ({
 	tableItems,
 }) => {
 	const {pathname} = useRouter()
-	console.log(tableItems)
+	console.log(tableItems, 'sdga')
 	return (
 		<div className='animate-scaleIn'>
 			<AdminTableHeader headerItems={headerItems}
