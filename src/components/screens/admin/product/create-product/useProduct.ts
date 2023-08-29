@@ -29,7 +29,7 @@ export const useProduct = (setValue: UseFormSetValue<any>) => {
                 localStorage.setItem('subType',
                     //@ts-ignore
                     ggg.data.subType)
-                push('http://localhost:3000/manage/create-product/create-image');
+                push('https://musco.store/manage/create-product/create-image');
             },
         }
     );
@@ -42,7 +42,7 @@ export const useProduct = (setValue: UseFormSetValue<any>) => {
             },
             onSuccess() {
                 toastr.success('Товар обновлен', 'товар успешно обновлен');
-                push('http://localhost:3000/catalog');
+                push('https://musco.store/catalog');
             },
         }
     );
