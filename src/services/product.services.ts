@@ -1,6 +1,7 @@
 
 import {IProduct} from "@/src/interfaces/product.interface";
 import instance from "@/src/api/api.interceptors";
+import Cookies from "js-cookie";
 
 
 
@@ -46,7 +47,10 @@ export const ProductServices = {
     async createProduct(data: string){
 
         try{
-            return instance.post('/product/new', data)
+            const refreshToken = Cookies.get('accessToken')
+            return instance.post('/product/new', data, {
+                headers: {Authorization: `Bearer ${refreshToken}`}
+            })
         }catch(e){
             console.log(e)
         }
@@ -61,20 +65,16 @@ export const ProductServices = {
     },
 
     async createFeatures(type: string, id: string | null, data: string){
+        const refreshToken = Cookies.get('accessToken')
         try{
-            return instance.post(`/product/features/${type}?productId=${id}`, data)
+            return instance.post(`/product/features/${type}?productId=${id}`, data,{
+                headers: {Authorization: `Bearer ${refreshToken}`}
+            })
         }catch (e){
             console.log(e)
         }
     },
 
-    async createImageProduct(id: string, data: any){
-        try{
-            return instance.post(`/product/upload?productId=${id}`, data)
-        }catch(e){
-            console.log(e)
-        }
-    },
 
     async changeProduct( data: string) {
         try{
@@ -87,7 +87,10 @@ export const ProductServices = {
 
     async deleteProduct(id: string) {
         try {
-            const response = await instance.delete<string>(`/product/changes?id=${id}`);
+            const refreshToken = Cookies.get('accessToken')
+            const response = await instance.delete<string>(`/product/changes?id=${id}`, {
+                headers: {Authorization: `Bearer ${refreshToken}`}
+            });
             return response.data;
         } catch (e) {
             throw new Error('Не удалось удалить продукт');
