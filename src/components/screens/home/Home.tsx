@@ -14,6 +14,7 @@ import {MaterialIcon} from "@/src/components/ui/MaterialIcon";
 
 
 import SwiperContainer from "@/src/components/screens/home/swiper/SwiperContainer";
+import Meta from "@/src/components/utils/meta/Meta";
 
 
 
@@ -25,7 +26,7 @@ const Home: FC = () => {
 
 
 
-    return <>
+    return <Meta title='Главная страница' description='Музыкальные инструменты для всех, покупка музыкальных инструментов'>
     <div className='wrapper py-12 relative'>
       <div className="lines">
         <div className="line"></div>
@@ -158,7 +159,7 @@ const Home: FC = () => {
               </div>
           </div>
       </div>
-  </>
+  </Meta>
 };
 
 export default Home;

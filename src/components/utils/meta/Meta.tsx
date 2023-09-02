@@ -6,10 +6,10 @@ import React, { FC } from 'react'
 
 import logoImage from '@/src/assets/logo.png'
 
-
-import { ISeo } from './meta.interface'
 import {siteName, titleMerge} from "@/src/config/seo.config";
 import {onlyText} from "@/src/components/utils/string/clear-text";
+
+import { ISeo } from './meta.interface'
 
 const Meta: FC<ISeo> = ({ title, description, image, children }) => {
     const { asPath } = useRouter()
@@ -29,9 +29,9 @@ const Meta: FC<ISeo> = ({ title, description, image, children }) => {
                     <meta property="og:locale" content="en" />
                     <meta property="og:title" content={titleMerge(title)} />
                     <meta property="og:url" content={currentUrl} />
-                    <meta property="og:image"
-                        //@ts-ignore
-                          content={image || logoImage} />
+
+                    {/*//@ts-ignore*/}
+                    <meta property="og:image" content={image || logoImage} />
                     <meta property="og:site_name" content={siteName} />
                     <meta
                         property="og:description"

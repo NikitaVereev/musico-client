@@ -46,6 +46,7 @@ const Product: FC<ProductPageProps> = ({ product }) => {
 
         )
     })
+    console.log(product)
 
     const {user} = useAuth()
     const email = user?.email
@@ -64,6 +65,8 @@ const Product: FC<ProductPageProps> = ({ product }) => {
 
 
     }
+
+
 
     return (
         <div className={cn(styles.wrapper, 'pt-[100px] ')}>
@@ -179,7 +182,7 @@ const Product: FC<ProductPageProps> = ({ product }) => {
                 {product?.productReview.map(item => (
                     <div key={item.id} className={styles.reviewsWrapper}>
                         <div className='flex items-center gap-3 '>
-                            <h2>имя</h2>
+                            <h2>{user?.firstName}</h2>
                             <div className={styles.rating}>
                                 <MaterialIcon name='MdStarRate' />
                                 <span>{item.rating} / 5</span>

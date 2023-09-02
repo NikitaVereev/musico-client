@@ -1,4 +1,4 @@
-import {YMaps, Map, ObjectManager, Placemark} from '@pbe/react-yandex-maps'
+import {YMaps, Map, ObjectManager, Placemark, Panorama} from '@pbe/react-yandex-maps'
 
 import { FC } from 'react';
 
@@ -14,7 +14,8 @@ const MapComponent: FC = () => {
                     zoom: 10,
                 }}
             >
-                <Placemark geometry={[58.005507, 56.259240]} />
+                <Placemark geometry={[58.005507, 56.259240]}  />
+                <Panorama defaultPoint={[58.005507, 56.259240]} />
             </Map>
         </YMaps>
     );

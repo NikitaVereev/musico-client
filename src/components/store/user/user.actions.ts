@@ -8,9 +8,9 @@ import {errorCatch} from "@/src/api/api.helpers";
 
 export const register = createAsyncThunk<IAuthResponse, IEmailPassword>(
     'auth/register',
-    async ({ email, password }, thunkApi) => {
+    async ({ email, password, firstName }, thunkApi) => {
         try {
-            const response = await AuthService.register(email, password)
+            const response = await AuthService.register(email, password, firstName)
             toastr.success('Регистрация почти закончена', 'Чтобы подтвердить регистрацию, перейдите по ссылке, прищедщей на вашу почту')
             return response.data
         } catch (error) {

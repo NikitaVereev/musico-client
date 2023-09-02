@@ -24,7 +24,7 @@ const Checkout: FC = () => {
             //@ts-ignore
             data),
         onSuccess: (response: any) =>{
-            push(response.data)
+            push(response.data.payment_link)
 
     }
 

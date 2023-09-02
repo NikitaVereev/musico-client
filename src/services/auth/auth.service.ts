@@ -7,10 +7,10 @@ import instance from "@/src/api/api.interceptors";
 // import instance from "@/src/api/api.interceptors";
 
 export const AuthService = {
-	async register(email: string, password: string) {
+	async register(email: string, password: string, firstName: string | undefined) {
 		const response = await instance.post<IAuthResponse>(
 			`/auth/register`,
-			{ email, password }
+			{ email, password, firstName }
 		)
 
 
