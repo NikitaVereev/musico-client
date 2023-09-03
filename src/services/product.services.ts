@@ -57,8 +57,10 @@ export const ProductServices = {
     },
 
     async createReview(email: string, productId: string, data: any){
+        const refreshToken = Cookies.get('accessToken')
         try{
-            return instance.post(`/review/new?email=${email}&productId=${productId}`, data)
+            return instance.post(`/review/new?email=${email}&productId=${productId}`, data, {
+                headers: {Authorization: `Bearer ${refreshToken}`}})
         }catch(e){
             console.log(e)
         }

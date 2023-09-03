@@ -8,6 +8,7 @@ import Button from '@/src/components/ui/button/Button'
 import styles from './Checkout.module.scss'
 import {useRouter} from 'next/router'
 import cn from "classnames";
+import Meta from "@/src/components/utils/meta/Meta";
 
 interface IOrder{
     product: IProduct
@@ -75,39 +76,41 @@ const Checkout: FC = () => {
 
 
     return (
-        <div className='wrapper'>
-            <h1>Оформление заказа</h1>
-            <div className={styles.wrapper}>
-                {isContinue ? <div className={styles.orders}>
-                    Ok!)
-                </div> : <div className={styles.orders}>
-                    <h2>Корзина</h2>
-                    {orders && orders.items.map((item: IOrder) => (
-                        <div key={item.id}>
-                            <CartItem item={item}/>
+        <Meta title='Оформление заказа' description='Страница оформления заказа'>
+            <div className='wrapper'>
+                <h1>Оформление заказа</h1>
+                <div className={styles.wrapper}>
+                    {isContinue ? <div className={styles.orders}>
+                        Ok!)
+                    </div> : <div className={styles.orders}>
+                        <h2>Корзина</h2>
+                        {orders && orders.items.map((item: IOrder) => (
+                            <div key={item.id}>
+                                <CartItem item={item}/>
+                            </div>
+                        ))}
+                        <div className={styles.price}>
+                            <h3>Общая сумма заказа:</h3>
+                            <h2>{orders && orders.price} руб.</h2>
                         </div>
-                    ))}
-                    <div className={styles.price}>
-                        <h3>Общая сумма заказа:</h3>
-                        <h2>{orders && orders.price} руб.</h2>
-                    </div>
-                    <Button onClick={() => setIsContinue(true)}>Продолжить</Button>
-                </div>}
-                <div className={styles.orders}>
-                    <h2>Итого</h2>
+                        <Button onClick={() => setIsContinue(true)}>Продолжить</Button>
+                    </div>}
+                    <div className={styles.orders}>
+                        <h2>Итого</h2>
 
-                    <div className={styles.price}>
-                        <h3>Товары ({orders && orders.items.length})</h3>
-                        <h3>{orders && orders.price} руб.</h3>
+                        <div className={styles.price}>
+                            <h3>Товары ({orders && orders.items.length})</h3>
+                            <h3>{orders && orders.price} руб.</h3>
+                        </div>
+                        <div className={styles.price}>
+                            <h3>Итого</h3>
+                            <h2>{orders && orders.price} руб.</h2>
+                        </div>
+                        <Button onClick={handleClick} disabled={!isContinue}>Оформить заказ</Button>
                     </div>
-                    <div className={styles.price}>
-                        <h3>Итого</h3>
-                        <h2>{orders && orders.price} руб.</h2>
-                    </div>
-                    <Button onClick={handleClick} disabled={!isContinue}>Оформить заказ</Button>
                 </div>
             </div>
-        </div>
+        </Meta>
     );
 }
 
