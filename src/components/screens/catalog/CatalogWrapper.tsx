@@ -68,11 +68,13 @@ const CatalogWrapper: FC<{  heading?: string; subType: string, featuresProductTy
                             )}
 
                         </div><div>
-                        <Pagination
-                            changePage={page => updateQueryParams('page', page.toString())}
-                            currentPage={queryParams.page}
-                            numberPages={4}
-                        />
+                        {!isFetching && !isLoading ? (
+                            <Pagination
+                                changePage={page => updateQueryParams('page', page.toString())}
+                                currentPage={queryParams.page}
+                                numberPages={data.numberOfPage}
+                            />
+                        ): <div className="loader">Загрузка</div>}
                     </div>
                     </div>
                 </section>

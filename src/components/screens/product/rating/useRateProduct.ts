@@ -31,7 +31,7 @@ export const useRateProduct = (
             onSuccess(data){
                 toastr.success('Рейтинг', 'спасибо за оценку, это важно для нас')
                 setIsSended(true)
-                queryClient.invalidateQueries(['single'])
+                queryClient.invalidateQueries(['get product by id:'])
                 // @ts-ignore
                 setIsImage(data)
                 console.log(data, 'adsgashash')
@@ -50,20 +50,14 @@ export const useRateProduct = (
             isImage.data),
 
         {
-            onError: (error) => {
-                toastError(error, 'rating')
-            },
             onSuccess(data){
                 toastr.success('Рейтинг', 'спасибо за оценку, это важно для нас')
-                setIsSended(true)
+                console.log('asdgsadg', productId)
+                queryClient.invalidateQueries(['get product by id:'])
                 setIsImage(
                     //@ts-ignore
                     data.data)
-                console.log(data, 'adsgashash')
 
-
-                setTimeout(() => {})
-                setIsSended(false), 2500
             }
         }
     )
@@ -71,6 +65,7 @@ export const useRateProduct = (
     const handleClick = async (nextValue: number) => {
         setRating(nextValue)
         console.log(isImage, 'sg')
+        queryClient.invalidateQueries(['get product by id:', productId])
         // await mutateAsync({rating: nextValue, review: "Здарова"})
     }
 

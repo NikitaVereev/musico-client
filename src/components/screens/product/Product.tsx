@@ -16,9 +16,11 @@ import SwiperClass from "swiper/types/swiper-class";
 import SwiperCore, { FreeMode, Navigation, Thumbs, Controller } from "swiper";
 import dynamic from "next/dynamic";
 import {MaterialIcon} from "@/src/components/ui/MaterialIcon";
-import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import {OrderService} from "@/src/services/order.service";
 import {useAuth} from "@/src/hooks/useAuth";
+import {ProductServices} from "@/src/services/product.services";
+import RatingList from "@/src/components/screens/product/rating/RatingList";
 
 const DynamicRating = dynamic(() => import('./rating/RateProduct'), {
     ssr: false
@@ -46,7 +48,8 @@ const Product: FC<ProductPageProps> = ({ product }) => {
 
         )
     })
-    console.log(product)
+
+    const {isLoading, data: rating} = useQuery(['get product by id:', product.id], () => ProductServices.getReview(product.id))
 
     const {user} = useAuth()
     const email = user?.email
@@ -179,30 +182,12 @@ const Product: FC<ProductPageProps> = ({ product }) => {
 
                     <DynamicRating setIsPopup={setIsPopup} productId={product.id}/>
                 </div>}
-                {product?.productReview.map(item => (
-                    <div key={item.id} className={styles.reviewsWrapper}>
-                        <div className='flex items-center gap-3 '>
-                            <h2>{user?.firstName}</h2>
-                            <div className={styles.rating}>
-                                <MaterialIcon name='MdStarRate' />
-                                <span>{item.rating} / 5</span>
-                            </div>
-                        </div>
-                        <div>
-                            {item.review}
-                        </div>
-                        <div >
 
-                            {item.image && <div className='flex gap-2'>
-                                {item.image.map(item => (
-                                    <>
-                                        {console.log(item)}
-                                        <Image src={item.url} key={item.id} width={140} height={140} alt={item.id} /></>
-                                ))}
-                            </div>}
-                        </div>
-                    </div>
-                ))}
+                {isLoading ? <div>Загрузка</div> :
+                    //@ts-ignore
+                    <RatingList data={rating} />}
+
+
             </div>
         </div>
     );

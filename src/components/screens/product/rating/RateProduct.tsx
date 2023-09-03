@@ -8,6 +8,7 @@ import Field from "@/src/components/ui/form-elements/Field";
 import {Controller, SubmitHandler, useForm} from "react-hook-form";
 import UploadField from "@/src/components/ui/form-elements/upload-field/UploadField";
 import {MaterialIcon} from "@/src/components/ui/MaterialIcon";
+import {useOutside} from "@/src/hooks/useOutside";
 
 interface IRateProduct{
     productId: string
@@ -27,6 +28,7 @@ const RateProduct: FC<IRateProduct> = ({productId, setIsPopup}) => {
     });
     const {user} = useAuth()
     const [isOpen, setIsOpen] = useState(false)
+    const {ref, isShow, setIsShow} = useOutside(false)
     const [isComment, setIsComment] = useState('')
     const {handleClick, mutateAsync, isSended, rating, isImage, createImageWithComment} = useRateProduct({email: user?.email, productId})
 
@@ -36,7 +38,7 @@ const RateProduct: FC<IRateProduct> = ({productId, setIsPopup}) => {
         await mutateAsync({rating: rating, review: data.review});
     };
     const onSubmitImage: SubmitHandler<any> = async (data) => {
-        console.log('Данные формы:', data); // Вывод данных формы в консоль
+        console.log('Данные формыdffdfdfddff:', data); // Вывод данных формы в консоль
         //@ts-ignore
         await createImageWithComment(isImage.data);
     };
@@ -63,15 +65,7 @@ const RateProduct: FC<IRateProduct> = ({productId, setIsPopup}) => {
                                     {...register('review', )}
                                     name="review"
                                 />
-
-                                <button>Отправить</button>
-                                <button onClick={() => {
-                                    onSubmitCreate
-                                    setIsOpen(true)
-
-                                }}>ДОбавить изображения</button>
-                            </form>
-                            {isOpen && <form onSubmit={onSubmitImage}>
+                                {isOpen && <form onSubmit={onSubmitImage}>
                                 <Controller
                                     control={control}
                                     name="fileUrl"
@@ -87,7 +81,16 @@ const RateProduct: FC<IRateProduct> = ({productId, setIsPopup}) => {
                                         />
                                     )}
                                 />
-                            </form>} </>
+                            </form>}
+
+                                <button>Отправить</button>
+                                <button onClick={() => {
+                                    onSubmitCreate
+                                    setIsOpen(true)
+
+                                }}>ДОбавить изображения</button>
+                            </form>
+                            </>
                         }
                     </>
                 ) : <button>Зарегистрироваться</button>}

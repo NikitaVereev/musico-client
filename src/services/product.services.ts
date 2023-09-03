@@ -66,6 +66,14 @@ export const ProductServices = {
         }
     },
 
+    async getReview( productId: string){
+        try{
+            return instance.get(`/review/all?productId=${productId}`)
+        }catch(e){
+            console.log(e)
+        }
+    },
+
     async createFeatures(type: string, id: string | null, data: string){
         const refreshToken = Cookies.get('accessToken')
         try{

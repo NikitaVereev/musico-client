@@ -64,7 +64,7 @@ const Checkout: FC = () => {
                     paymentMethod: "1",
                     paymentObject: "1"
                 })),
-                do: "pay",
+                do: "link",
                 type: "json",
                 callbackType: "json",
                 urlReturn: "https://musco.store/",

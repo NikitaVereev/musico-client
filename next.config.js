@@ -7,7 +7,7 @@ const nextConfig = {
   },
   env: {
     APP_URL: 'https://muscoservicenevoruite.ru',
-    APP_ENV: 'production',
+    APP_ENV: 'dev',
     APP_SERVER_URL: 'http://localhost:8080',
   },
   swcMinify: true
