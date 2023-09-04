@@ -3,7 +3,7 @@ import { FC } from 'react'
 
 
 
-import styles from './AdminActions.module.sass'
+import styles from './AdminActions.module.scss'
 import {MaterialIcon} from "@/src/components/ui/MaterialIcon";
 
 interface IAdminActions {
