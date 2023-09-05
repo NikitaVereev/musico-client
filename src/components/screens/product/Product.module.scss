@@ -1,17 +1,20 @@
 
 .wrapper{
-  background: #fff;
-  @apply border px-8 my-12 border-black;
+
+  @apply  px-12 mb-12 flex flex-col gap-24;
   h1{
     @apply text-5xl font-bold;
     margin-bottom: 50px;
   }
+  h2{
+    @apply mb-8
+  }
 }
 .mainInfo{
-  @apply flex justify-center items-center ;
+  @apply flex p-4 justify-center bg-white items-center ;
 
   .side{
-    @apply flex flex-col relative gap-8  w-full;
+    @apply flex flex-col relative gap-8 p-3  w-full;
     &:before{
       content: '';
       transform: translateX(-50%);

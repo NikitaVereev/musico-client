@@ -1,0 +1,80 @@
+
+  .absolutePosition {
+    @apply absolute inset-0 w-full h-full;
+    z-index: 49;
+  }
+  .notImage{
+    @apply w-full h-full flex-col  flex items-center justify-center;
+    svg{
+      @apply w-1/2 h-full;
+    }
+    h2{
+      @apply font-bold text-xl text-center;
+    }
+  }
+  .card{
+    @apply p-4 flex flex-col bg-white  gap-6 relative  max-w-[100%] rounded-[16px];
+
+
+    .title{
+      position: relative;
+      z-index: 1;
+      transition: .5s ease;
+      h3{
+        @apply text-base font-bold ;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+        color: #333;
+      }
+    }
+    .image{
+      @apply w-auto  relative h-[240px] rounded-3xl ;
+      >img{
+        @apply object-contain;
+        transition: .5s ease;
+      }
+    }
+    .price{
+      @apply text-2xl w-full text-center  font-bold relative z-10;
+      transition: .5s ease;
+    }
+
+    .description {
+      @apply flex pt-3 items-center relative z-50 justify-between;
+      transition: .5s ease;
+      > button {
+        @apply m-0 p-4 w-fit font-bold relative justify-center gap-4 overflow-hidden flex items-center rounded-2xl;
+        color: #333;
+        z-index: 99;
+
+        > svg {
+          @apply w-6 h-6;
+        }
+      }
+    }
+  }
+.rating {
+  @apply flex z-10 absolute top-2 right-8 items-center mb-2;
+  > svg {
+    @apply fill-yellow-700 mr-2 text-lg;
+  }
+
+  > span {
+    @apply text-black font-medium;
+  }
+}
+
+.mySwiper{
+
+  .swiperSlide{
+    @apply relative h-[500px];
+  }
+
+}
+
+
+
+
+

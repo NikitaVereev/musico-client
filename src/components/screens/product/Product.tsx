@@ -7,7 +7,7 @@ import cn from 'classnames';
 import Button from '@/src/components/ui/button/Button';
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
+
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
@@ -21,6 +21,9 @@ import {OrderService} from "@/src/services/order.service";
 import {useAuth} from "@/src/hooks/useAuth";
 import {ProductServices} from "@/src/services/product.services";
 import RatingList from "@/src/components/screens/product/rating/RatingList";
+import DashboardSlider from "@/src/components/ui/dashboard-slider/DashboardSlider";
+import {useFilters} from "@/src/components/screens/catalog/useFilters";
+import Skeleton from "react-loading-skeleton";
 
 const DynamicRating = dynamic(() => import('./rating/RateProduct'), {
     ssr: false
@@ -36,6 +39,8 @@ const Product: FC<ProductPageProps> = ({ product }) => {
 
 
     const queryClient = useQueryClient()
+    const { isFilterUpdated, queryParams, updateQueryParams } = useFilters();
+    const subType = 'acoustic-guitar';
 
 
 
@@ -50,6 +55,11 @@ const Product: FC<ProductPageProps> = ({ product }) => {
     })
 
     const {isLoading, data: rating} = useQuery(['get product by id:', product.id], () => ProductServices.getReview(product.id))
+
+    const {isLoading: loadingProducts, data: products, isFetching, isError: errorProduct} = useQuery(['get products'], () => ProductServices.getOnlyCategories(subType, queryParams.page, queryParams.searchTerm, queryParams.sort), {
+        initialData: [],
+        enabled: true,
+    })
 
     const {user} = useAuth()
     const email = user?.email
@@ -155,7 +165,7 @@ const Product: FC<ProductPageProps> = ({ product }) => {
 
             <div className='w-[75%] mt-24'>
                 <div className='align-baseline flex mb-[24px]'>
-                    <h2 className='text-[#001a34] text-[24px] font-bold'>Характеристики</h2>
+                    <h2 >Характеристики</h2>
                 </div>
                 <div >
                    <div className='grid grid-cols-2 gap-8'>
@@ -170,10 +180,18 @@ const Product: FC<ProductPageProps> = ({ product }) => {
                    </div>
                 </div>
             </div>
-
+            <div>
+                <h2>Смотрите также</h2>
+                <div>
+                    {
+                        loadingProducts ? <Skeleton /> ? errorProduct : <div>Ошибка</div> :
+                            //@ts-ignore
+                        <DashboardSlider products={products.objects} isLoading={loadingProducts}/>
+                    }</div>
+            </div>
             <div>
                 <div className='flex items-center justify-between'>
-                    <h1>Отзывы</h1>
+                    <h2>Отзывы</h2>
                     <Button onClick={() => setIsPopup(!isPopup)}>
                         Добавить отзыв
                     </Button>

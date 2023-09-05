@@ -23,7 +23,7 @@
     }
   }
   .notImage{
-    @apply w-[100px] h-full flex-col air-block flex items-center  bg-transparent justify-around;
+    @apply w-[100px] h-full flex-col air-block  flex items-center  bg-transparent justify-around;
     svg{
       @apply w-full h-full;
     }
