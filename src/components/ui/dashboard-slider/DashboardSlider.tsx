@@ -35,6 +35,10 @@ const DashboardSlider: FC<IProduct> = (
                 pagination={{
                     clickable: true
                 }}
+                autoplay={{
+                    "delay": 2500,
+                    "disableOnInteraction": false
+                }}
                 className={styles.mySwiper}
             >
                 {isLoading ? <div>доав</div> : products?.map((product: IProduct) =>

@@ -1,24 +1,41 @@
 
 .wrapper{
 
-  @apply  px-12 mb-12 flex flex-col gap-24;
+  @apply  px-12 mb-12 flex relative flex-col gap-24;
   h1{
     @apply text-5xl font-bold;
     margin-bottom: 50px;
   }
   h2{
-    @apply mb-8
+    @apply mb-4
   }
 }
 .mainInfo{
-  @apply flex p-4 justify-center bg-white items-center ;
+  @apply flex p-4 relative justify-center bg-white items-start ;
 
   .side{
-    @apply flex flex-col relative gap-8 p-3  w-full;
+    @apply flex flex-col relative gap-4 p-3 min-h-[60vh]  w-full;
     &:before{
       content: '';
       transform: translateX(-50%);
       @apply absolute  left-1/2 h-1 bg-gray-300 bottom-0;
+    }
+    .flexItem{
+      @apply  flex flex-col gap-4 overflow-y-auto;
+
+    }
+    .tabs{
+      @apply grid-cols-3 grid w-full air-block mb-10;
+      button{
+        @apply relative py-6 font-bold text-xl ;
+        &.active{
+          @apply text-primary;
+          &:before{
+            content: '';
+            @apply w-full h-1 absolute bg-primary rounded-xl bottom-0 left-0;
+          }
+        }
+      }
     }
     .rating{
       @apply flex items-center mb-2;
@@ -31,7 +48,7 @@
       }
     }
     h1{
-      @apply text-center;
+      @apply text-left mb-1.5;
     }
     margin-right: 30px;
     box-shadow: 10px 20px 11px rgba(33,33,33,.2);
@@ -90,4 +107,37 @@
   h2{
     @apply font-bold text-xl text-center;
   }
+}
+
+
+.zoom{
+z-index: 99;
+  pointer-events: none;
+  width: 80%;
+  height:100%;
+  left: 100%;
+  position: absolute;
+
+  z-index: 35;
+  div{
+
+    @apply  animate-scaleIn air-block bg-white rounded-3xl ;
+
+    img{
+      object-fit: contain;
+    }
+  }
+}
+.swiperMain{
+  @apply h-[90vh];
+}
+.thumbGalaty{
+    .swiper-wrapper{
+      .swiper-slide-thumb-active{
+        background: #666666 !important;
+        border: 1px solid #666666 !important;
+
+      }
+    }
+
 }
