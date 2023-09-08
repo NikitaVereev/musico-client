@@ -14,32 +14,11 @@ import Search from '@/src/components/layout/header/search/Search';
 const DynamicAuth = dynamic(() => import('./auth/AuthItems'), { ssr: false });
 
 const Header: FC = () => {
-  const [isShow, setIsShow] = useState(false);
-  const [isLastScrollY, setIsLastScrollY] = useState(200);
+  const [openMenu, setOpenMenu] = useState(false)
   const [openBasket, setOpenBasket] = useState(false);
   const { user } = useAuth();
 
-  // const controlNavbar = useCallback(() => {
-  //   if (typeof window !== 'undefined') {
-  //     if (window.scrollY < isLastScrollY) {
-  //       setIsShow(false);
-  //       setOpenBasket(false);
-  //     } else {
-  //       setIsShow(true);
-  //       setOpenBasket(false);
-  //     }
-  //     setIsLastScrollY(window.scrollY);
-  //   }
-  // }, [isLastScrollY]);
 
-  // useEffect(() => {
-  //   if (typeof window !== 'undefined') {
-  //     window.addEventListener('scroll', controlNavbar);
-  //     return () => {
-  //       window.removeEventListener('scroll', controlNavbar);
-  //     };
-  //   }
-  // }, [controlNavbar]);
 
   const router = useRouter();
 
@@ -64,12 +43,12 @@ const Header: FC = () => {
   ];
 
   return (
-      <header className={cn(styles.header, isShow && styles.active)}>
+      <header className={cn(styles.header)}>
         <nav className={cn(styles.nav, 'wrapperHeader')}>
           <ul>
-            <div className={styles.links}>
+            <div className={cn(styles.links)}>
               {links.map((link, idx) => (
-                  <li key={idx} className={cn(link.icon ? styles.logo : null, router.pathname === link.link && styles.active)}>
+                  <li key={idx} className={cn(link.icon ? styles.logo : null, router.pathname === link.link && styles.active, openMenu && !link.icon  && styles.linksOpen )}>
                     <Link href={link.link}>
                       {link.icon !== undefined ? (
                           <Image src={link.icon} alt={link.name} className={styles.logo} />
@@ -85,13 +64,20 @@ const Header: FC = () => {
               <Search />
             </div>
 
-            <div className={styles.btns}>
-              <DynamicAuth />
+             <div className={cn(styles.btns, openMenu && styles.openMenu)}>
+              <DynamicAuth/>
               <Cart //@ts-ignore
-                  setOpenBasket={setOpenBasket} openBasket={openBasket} />
+                  setOpenBasket={setOpenBasket} openBasket={openBasket}/>
+            </div>
+            <div className={cn(openMenu && styles.open, styles.menu)} onClick={() => setOpenMenu(!openMenu)}>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
           </ul>
         </nav>
+
       </header>
   );
 };

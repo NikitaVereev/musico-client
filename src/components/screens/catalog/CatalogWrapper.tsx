@@ -11,6 +11,7 @@ import Sort from '@/src/components/screens/catalog/sort/Sort';
 import Filters from '@/src/components/screens/catalog/filters/Filters';
 import { ProductServices } from '@/src/services/product.services';
 import Pagination from "@/src/components/screens/catalog/pagination/Pagination";
+import Meta from "@/src/components/utils/meta/Meta";
 
 const CatalogWrapper: FC<{  heading?: string; subType: string, featuresProductType: string }> = ({  heading, subType, featuresProductType }) => {
 
@@ -43,6 +44,7 @@ const CatalogWrapper: FC<{  heading?: string; subType: string, featuresProductTy
 
 
     return (
+        <Meta title={subType} description='Музыкальные инструменты для всех, покупка музыкальных инструментов'>
         <div className="wrapper mt-32">
             <h1 className="mb-12">{heading}</h1>
             <Sort />
@@ -80,6 +82,7 @@ const CatalogWrapper: FC<{  heading?: string; subType: string, featuresProductTy
                 </section>
             </div>
         </div>
+        </Meta>
     );
 };
 

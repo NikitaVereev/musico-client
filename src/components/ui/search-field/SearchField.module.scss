@@ -14,3 +14,9 @@
     }
   }
 }
+
+@media (max-width: 1160px) {
+  .search{
+    @apply h-10;
+  }
+}

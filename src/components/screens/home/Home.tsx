@@ -15,6 +15,7 @@ import {MaterialIcon} from "@/src/components/ui/MaterialIcon";
 
 import SwiperContainer from "@/src/components/screens/home/swiper/SwiperContainer";
 import Meta from "@/src/components/utils/meta/Meta";
+import cn from "classnames";
 
 
 
@@ -40,7 +41,7 @@ const Home: FC = () => {
 
         <div className='w-full overflow-hidden flex flex-col items-center mb-24'>
 
-          <h1 className='text-[8vw] font-black  animate-scaleIn'>Mus & Co</h1>
+          <h1 className={styles.logo}>Mus & Co</h1>
           <h3 className='text-center text-[2vw] animate-scaleIn'>магазин музыкальных инструментов</h3>
         </div>
         <Carousel items={carouselItems} className='mb-12 w-full ' />
@@ -56,7 +57,7 @@ const Home: FC = () => {
       <div>
       </div>
     </div>;
-    <Banner className='my-32'>
+    <Banner className={styles.bannerContainer}>
       <div className='wrapperHeader'>
         <h1>Выбирая нас вы получите</h1>
         <div className={styles.bannerWrapper}>
@@ -70,10 +71,10 @@ const Home: FC = () => {
       </div>
     </Banner>
   <div className="wrapperHeader">
-    <h1 className='font-bold text-5xl mb-8'>Кто мы?</h1>
-    <div className='flex gap-10 items-end '>
+    <h1 className='font-bold  mb-8'>Кто мы?</h1>
+    <div className={styles.aboutWrapper}>
       <div className={styles.about}>
-        <h1 className='font-bold text-3xl mb-6'>MUS & CO - МУЗ и Ко</h1>
+        <h2 className='font-bold  mb-6'>MUS & CO - МУЗ и Ко</h2>
         <p>Музыкальный магазин MUS&CO работает без обеда и выходных с 10:00 до 20:00!</p>
         <p>В магазине представлены товары мировых брендов для новичков и профессионалов.</p>
         <p>Среди них - всемирно известные марки музыкальных инструментов: Casio, Cort LAG, Parkwood, SIGMA, D`addario, Flight, Ditson ...</p>
@@ -81,11 +82,11 @@ const Home: FC = () => {
 
         <div className='flex gap-12 mt-24'>
           <div>
-            <h2 className='text-4xl font-black text-primary'>1000+</h2>
+            <h2 className=' font-black text-primary'>1000+</h2>
             <p className='text-primary'>Довольных клиентов</p>
           </div>
           <div>
-            <h2 className='text-4xl font-black text-primary'>500+</h2>
+            <h2 className=' font-black text-primary'>500+</h2>
             <p className='text-primary'>Чего-то</p>
           </div>
 
@@ -100,11 +101,10 @@ const Home: FC = () => {
   </div>
       <div className="wrapper my-32">
           <div>
-              <h1 className='font-bold text-5xl mb-8'>Отзывы</h1>
-              <div className='flex items-start justify-between gap-12'>
+              <h1 className='font-bold mb-8'>Отзывы</h1>
+              <div className={cn(styles.aboutWrapper, ' items-start')}>
                   <div
                       style={{
-                          width: '50%',
                           height: 1200,
                           overflow: "hidden",
                           position: "relative"

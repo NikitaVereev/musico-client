@@ -17,7 +17,7 @@ const AuthItems: FC = () => {
                         item={{
                             icon: 'MdPerson',
                             link: '/profile',
-                            title: user.firstName,
+                            // title: user.firstName || 'Войти',
 
                         }}
                     />

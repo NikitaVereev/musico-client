@@ -83,3 +83,9 @@ $black: #fff;
   }
 }
 
+@media (max-width: 1160px) {
+  .btn{
+    @apply m-2 ml-0 p-3;
+
+  }
+}

@@ -56,6 +56,14 @@ h1{
 h2{
   @apply font-bold text-3xl;
 }
+@media (max-width: 1160px) {
+  h1{
+    @apply text-4xl leading-none;
+  }
+  h2{
+    @apply text-2xl
+  }
+}
 svg{
   fill: #333;
 

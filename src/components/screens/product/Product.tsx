@@ -16,6 +16,7 @@ import DashboardSlider from "@/src/components/ui/dashboard-slider/DashboardSlide
 import {useFilters} from "@/src/components/screens/catalog/useFilters";
 import Skeleton from "react-loading-skeleton";
 import ProductImage from "@/src/components/screens/product/product-image/ProductImage";
+import Meta from "@/src/components/utils/meta/Meta";
 
 const DynamicRating = dynamic(() => import('./rating/RateProduct'), {
     ssr: false
@@ -66,6 +67,7 @@ const Product: FC<ProductPageProps> = ({ product }) => {
 
 
     return (
+        <Meta title={product.title} description={product.description}>
         <div className={cn(styles.wrapper)}>
             <div>
                 {/*<h1>{product.title}</h1>*/}
@@ -142,6 +144,7 @@ const Product: FC<ProductPageProps> = ({ product }) => {
 
             </div>
         </div>
+        </Meta>
     );
 };
 
