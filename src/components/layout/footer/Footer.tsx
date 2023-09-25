@@ -94,7 +94,7 @@ const Footer: FC = () => {
             <li><Link href='ddd'>
               Пользовательское соглашение
             </Link></li>
-            <li><Link href='ddd'>
+            <li><Link href='public-offer'>
               Публичная оферта
             </Link></li>
           </ul>

@@ -1,0 +1,19 @@
+.info{
+  max-width: 800px;
+  margin: 0 auto;
+  h1{
+    @apply text-center font-medium text-lg mb-9;
+  }
+  p{
+    @apply mb-5;
+  }
+  div{
+    p{
+      @apply mb-1.5;
+    }
+  }
+  .p{
+    @apply pl-6;
+  }
+
+}
