@@ -14,37 +14,37 @@ export const catalogList: IList[] = [
         title: 'Акустические гитары',
         link: 'acoustic-guitar'
     },
-    {
-        image: Ukulele,
-        title: 'Укулеле',
-        link: 'ukulele'
-    },
+    // {
+    //     image: Ukulele,
+    //     title: 'Укулеле',
+    //     link: 'ukulele'
+    // },
     {
         image: Classic,
         title: 'Классические гитары',
         link: 'classic-guitar'
     },
-    {
-        image: Drum,
-        title: 'Аксессуары для ударных',
-        link: 'accessories-drum'
-    }
-    ,
-    {
-        image: Strings,
-        title: 'Струны',
-        link: 'strings'
-    },
+    // {
+    //     image: Drum,
+    //     title: 'Аксессуары для ударных',
+    //     link: 'accessories-drum'
+    // }
+    // ,
+    // {
+    //     image: Strings,
+    //     title: 'Струны',
+    //     link: 'strings'
+    // },
     {
         image: Electro,
         title: 'Электрогитары',
         link: 'electric-guitar'
     },
-    {
-        image: Acses,
-        title: 'Аксессуары для гитар',
-        link: 'accessories-guitar'
-    },
+    // {
+    //     image: Acses,
+    //     title: 'Аксессуары для гитар',
+    //     link: 'accessories-guitar'
+    // },
     {
         image: Klava,
         title: 'Клавишные',
