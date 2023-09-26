@@ -1,7 +1,7 @@
 .column{
 
   h3, h2{
-    @apply font-bold text-xl mb-4;
+    @apply font-bold text-sm mb-4;
   }
   h2{
     @apply mb-0;
@@ -18,7 +18,7 @@
     }
   }
   &:nth-child(1){
-    @apply flex flex-col gap-6;
+    @apply flex flex-col gap-3;
     ul{
       @apply flex-row;
       li{
@@ -36,5 +36,8 @@
         }
       }
     }
+  }
+  p{
+    font-size: 13px;
   }
 }

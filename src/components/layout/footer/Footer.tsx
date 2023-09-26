@@ -23,7 +23,7 @@ const Footer: FC = () => {
       <div className='flex items-start justify-between'>
         <div className={styles.column}>
          <div>
-           <Image src={Logo} alt='logo' width={120} />
+           <Image src={Logo} alt='logo' width={50} />
          </div>
           <ul>
             <li>
@@ -44,9 +44,16 @@ const Footer: FC = () => {
           </ul>
           <div>
             <h2>г. Пермь, ул Революции, 22</h2>
-            <p>пн-вс 10:00 - 20:00</p>
+            <h3>пн-вс 10:00 - 20:00</h3>
+            <p>+7 (922) 330-20-04</p>
+            <p>ИНН 592012369679</p>
+            <p>КПП 590443002</p>
+            <p>ОГРН (ОГРНИП) 32059800029387</p>
+            <p>Банк Публичное Акционерное Общество «Уральский Банк Реконструкций и Развития»</p>
+            <p>Р/С40802810349770085654</p>
+            <p>БИК 042202603</p>
+            <p>к/с 30101810900000000603</p>
           </div>
-          <h2>+7 (922) 330-20-04</h2>
         </div>
         <div className={styles.column}>
           <h3>Каталог</h3>

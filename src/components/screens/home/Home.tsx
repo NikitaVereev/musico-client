@@ -57,19 +57,19 @@ const Home: FC = () => {
       <div>
       </div>
     </div>;
-    <Banner className={styles.bannerContainer}>
-      <div className='wrapperHeader'>
-        <h1>Выбирая нас вы получите</h1>
-        <div className={styles.bannerWrapper}>
-          {banerData.map(item => (
-              <div key={item.title} className={styles.banner}>
-                <MaterialIcon name={item.icon} />
-                <h4>{item.title}</h4>
-              </div>
-          )) }
-        </div>
-      </div>
-    </Banner>
+    {/*<Banner className={styles.bannerContainer}>*/}
+    {/*  <div className='wrapperHeader'>*/}
+    {/*    <h1>Выбирая нас вы получите</h1>*/}
+    {/*    <div className={styles.bannerWrapper}>*/}
+    {/*      {banerData.map(item => (*/}
+    {/*          <div key={item.title} className={styles.banner}>*/}
+    {/*            <MaterialIcon name={item.icon} />*/}
+    {/*            <h4>{item.title}</h4>*/}
+    {/*          </div>*/}
+    {/*      )) }*/}
+    {/*    </div>*/}
+    {/*  </div>*/}
+    {/*</Banner>*/}
   <div className="wrapperHeader">
     <h1 className='font-bold  mb-8'>Кто мы?</h1>
     <div className={styles.aboutWrapper}>
@@ -82,12 +82,12 @@ const Home: FC = () => {
 
         <div className='flex gap-12 mt-24'>
           <div>
-            <h2 className=' font-black text-primary'>1000+</h2>
-            <p className='text-primary'>Довольных клиентов</p>
+            <h2 className=' font-black text-primary'></h2>
+            <p className='text-primary'></p>
           </div>
           <div>
-            <h2 className=' font-black text-primary'>500+</h2>
-            <p className='text-primary'>Чего-то</p>
+            <h2 className=' font-black text-primary'></h2>
+            <p className='text-primary'></p>
           </div>
 
         </div>
