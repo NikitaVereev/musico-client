@@ -66,16 +66,16 @@ const Footer: FC = () => {
           </ul>
         </div>
         <div className={styles.column}>
-          <h3>
-            Покупателю
-          </h3>
+          {/*<h3>*/}
+          {/*  Покупателю*/}
+          {/*</h3>*/}
           <ul>
             {/*<li><Link href='ddd'>*/}
             {/*  Гарантия*/}
             {/*</Link></li>*/}
-            <li><Link href='ddd'>
-              Оплата
-            </Link></li>
+            {/*<li><Link href='ddd'>*/}
+            {/*  Оплата*/}
+            {/*</Link></li>*/}
             {/*<li><Link href='ddd'>*/}
             {/*  Кредит*/}
             {/*</Link></li>*/}
