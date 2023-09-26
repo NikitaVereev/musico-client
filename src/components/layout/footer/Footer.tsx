@@ -70,18 +70,18 @@ const Footer: FC = () => {
             Покупателю
           </h3>
           <ul>
-            <li><Link href='ddd'>
-              Гарантия
-            </Link></li>
+            {/*<li><Link href='ddd'>*/}
+            {/*  Гарантия*/}
+            {/*</Link></li>*/}
             <li><Link href='ddd'>
               Оплата
             </Link></li>
-            <li><Link href='ddd'>
-              Кредит
-            </Link></li>
-            <li><Link href='ddd'>
-              Подарочные сертификаты
-            </Link></li>
+            {/*<li><Link href='ddd'>*/}
+            {/*  Кредит*/}
+            {/*</Link></li>*/}
+            {/*<li><Link href='ddd'>*/}
+            {/*  Подарочные сертификаты*/}
+            {/*</Link></li>*/}
           </ul>
         </div>
         <div className={styles.column}>
@@ -98,9 +98,9 @@ const Footer: FC = () => {
             <li><Link href='ddd'>
               Политика конфиденциальности
             </Link></li>
-            <li><Link href='ddd'>
-              Пользовательское соглашение
-            </Link></li>
+            {/*<li><Link href='ddd'>*/}
+            {/*  Пользовательское соглашение*/}
+            {/*</Link></li>*/}
             <li><Link href='public-offer'>
               Публичная оферта
             </Link></li>
