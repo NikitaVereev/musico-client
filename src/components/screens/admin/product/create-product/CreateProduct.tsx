@@ -36,8 +36,10 @@ const CreateProduct: FC = () => {
 
     const options = [
         { value: 'Электрогитара', label: 'Электрогитара' },
+        {value: "Клавишные", label: "Клавишные"},
         { value: 'Акустическая', label: 'Акустическая гитара' },
-        { value: 'Классическая', label: 'Классическая гитара' }
+        { value: 'Классическая', label: 'Классическая гитара' },
+
     ]
 
     const { user } = useAuth();
