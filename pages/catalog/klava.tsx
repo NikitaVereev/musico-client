@@ -3,7 +3,7 @@ import CatalogWrapper from "@/src/components/screens/catalog/CatalogWrapper";
 
 
 const KlavaPage: NextPage = () => {
-    const subType = 'keyboard'
+    const subType = 'piano'
     const heading = 'Клавишные'
     const featuresProductType = 'Клавишная'
 
