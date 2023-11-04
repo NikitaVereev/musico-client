@@ -18,7 +18,7 @@ const FieldsKlava: FC<{productId: string | null}> = ({ productId}) => {
         mode: 'onChange',
     });
     const { mutateAsync } = useMutation(
-        (data: any) => ProductServices.createFeatures('electric-guitar', productId, data),
+        (data: any) => ProductServices.createFeatures('piano', productId, data),
 
         {
             onError(error) {
