@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 interface ISearchField {
   searchTerm: string;
   handleSearch: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleKeyPress: any;
+  handleKeyPress?: any;
 }
 
 const SearchField: FC<ISearchField> = ({ searchTerm,handleKeyPress, handleSearch }) => {

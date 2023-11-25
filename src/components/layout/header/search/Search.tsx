@@ -11,7 +11,7 @@ const Search: FC = () => {
   const { isSuccess, data, handleSearch, searchTerm, setSearchTerm } = useSearch();
   const dispatch = useDispatch()
   const router = useRouter();
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyPress = (e: any) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       dispatch(searchSlice.actions.setData(data));
