@@ -1,26 +1,15 @@
+import { NextPage } from "next";
+import SearchPageInfo from "@/src/components/screens/search/Search";
+import {useTypedSelector} from "@/src/hooks/useTypedSelector";
 
-import { NextPage} from "next";
-import {ProductServices} from "@/src/services/product.services";
-import {IProduct} from "@/src/interfaces/product.interface";
-import {useQuery} from "@tanstack/react-query";
 
 const SearchPage: NextPage = () => {
-    const searchItem = localStorage.getItem('search')
-
-    const {data: products, isLoading, isError}: any = useQuery<IProduct[]>(['searched products'], () => ProductServices.getSearchedProduct(
-        //@ts-ignore
-        searchItem))
-
-    console.log(products)
+  const state = useTypedSelector((state) => state.search.search);
     return (
-        <div>
-            {isLoading ? <div className='loader'></div> : isError ? <div>Ошибка</div> : products.map((item: IProduct) => (
-                <h1 key={item.id}>item.title</h1>
-            ))}
-        </div>
+      <div >
+          {<SearchPageInfo products={state || []} />}
+      </div>
     );
-}
-
-
+};
 
 export default SearchPage;

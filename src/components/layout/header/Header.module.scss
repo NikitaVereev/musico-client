@@ -11,7 +11,7 @@
     ul {
       @apply flex  items-center w-full text-base justify-between;
       .links {
-        @apply flex items-center;
+        @apply flex items-center relative;
       }
       .btns {
         @apply flex items-center;
@@ -317,6 +317,18 @@
 
         }
       }
+    }
+  }
+}
+.link{
+  @apply relative;
+}
+.wrapper{
+  @apply absolute top-[100%] pt-4 left-0 overflow-hidden w-[220px] rounded-[8px];
+  .catalogList{
+    @apply bg-gray-300 py-1 overflow-hidden;
+    a{
+      @apply text-sm leading-[12px] pl-4 text-white font-bold;
     }
   }
 

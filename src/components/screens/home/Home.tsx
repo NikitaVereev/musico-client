@@ -100,64 +100,64 @@ const Home: FC = () => {
 
   </div>
       <div className="wrapper my-32">
-          <div>
-              <h1 className='font-bold mb-8'>Отзывы</h1>
-              <div className={cn(styles.aboutWrapper, ' items-start')}>
-                  <div
-                      style={{
-                          height: 1200,
-                          overflow: "hidden",
-                          position: "relative"
-                      }}
-                      className={styles.map}
-                  >
-                      <iframe
-                          id="widgetFrame"
-                          style={{
-                              width: "100%",
-                              height: "100%",
-                              border: "1px solid #e6e6e6",
-                              borderRadius: 8,
-                              boxSizing: "border-box"
-                          }}
-                          src="https://yandex.ru/maps-reviews-widget/16582718810?comments"
-                      />
-                      <a
-                          href="https://yandex.ru/maps/org/mus_co/16582718810/"
-                          target="_blank"
-                          style={{
-                              boxSizing: "border-box",
-                              textDecoration: "none",
-                              color: "#b3b3b3",
-                              fontSize: 10,
-                              fontFamily: "YS Text,sans-serif",
-                              padding: "0 16px",
-                              position: "absolute",
-                              bottom: 8,
-                              width: "100%",
-                              textAlign: "center",
-                              left: 0,
-                              overflow: "hidden",
-                              textOverflow: "ellipsis",
-                              display: "block",
-                              maxHeight: 14,
-                              whiteSpace: "nowrap"
-                          }}
-                      >
-                          Mus &amp; Co на карте Перми — Яндекс&nbsp;Карты
-                      </a>
-                  </div>
-                  <div className='flex flex-col justify-between'>
-                     <h1 className='text-right mt-5'>О нашем <span className='text-primary'>качестве</span> рассказывают всем</h1>
-                    <div className='w-full h-[600px] flex items-center justify-center'>
-                        Блок с видеоотзывами
-                    </div>
-                      <h1 className=' mt-5'>К нам приходят <span className='text-primary'>клиентами</span>, а уходят <span className='text-primary'>друзьями!</span></h1>
+          {/*<div>*/}
+          {/*    <h1 className='font-bold mb-8'>Отзывы</h1>*/}
+          {/*    <div className={cn(styles.aboutWrapper, ' items-start')}>*/}
+          {/*        <div*/}
+          {/*            style={{*/}
+          {/*                height: 1200,*/}
+          {/*                overflow: "hidden",*/}
+          {/*                position: "relative"*/}
+          {/*            }}*/}
+          {/*            className={styles.map}*/}
+          {/*        >*/}
+          {/*            <iframe*/}
+          {/*                id="widgetFrame"*/}
+          {/*                style={{*/}
+          {/*                    width: "100%",*/}
+          {/*                    height: "100%",*/}
+          {/*                    border: "1px solid #e6e6e6",*/}
+          {/*                    borderRadius: 8,*/}
+          {/*                    boxSizing: "border-box"*/}
+          {/*                }}*/}
+          {/*                src="https://yandex.ru/maps-reviews-widget/16582718810?comments"*/}
+          {/*            />*/}
+          {/*            <a*/}
+          {/*                href="https://yandex.ru/maps/org/mus_co/16582718810/"*/}
+          {/*                target="_blank"*/}
+          {/*                style={{*/}
+          {/*                    boxSizing: "border-box",*/}
+          {/*                    textDecoration: "none",*/}
+          {/*                    color: "#b3b3b3",*/}
+          {/*                    fontSize: 10,*/}
+          {/*                    fontFamily: "YS Text,sans-serif",*/}
+          {/*                    padding: "0 16px",*/}
+          {/*                    position: "absolute",*/}
+          {/*                    bottom: 8,*/}
+          {/*                    width: "100%",*/}
+          {/*                    textAlign: "center",*/}
+          {/*                    left: 0,*/}
+          {/*                    overflow: "hidden",*/}
+          {/*                    textOverflow: "ellipsis",*/}
+          {/*                    display: "block",*/}
+          {/*                    maxHeight: 14,*/}
+          {/*                    whiteSpace: "nowrap"*/}
+          {/*                }}*/}
+          {/*            >*/}
+          {/*                Mus &amp; Co на карте Перми — Яндекс&nbsp;Карты*/}
+          {/*            </a>*/}
+          {/*        </div>*/}
+          {/*        <div className='flex flex-col justify-between'>*/}
+          {/*           <h1 className='text-right mt-5'>О нашем <span className='text-primary'>качестве</span> рассказывают всем</h1>*/}
+          {/*          <div className='w-full h-[600px] flex items-center justify-center'>*/}
+          {/*              Блок с видеоотзывами*/}
+          {/*          </div>*/}
+          {/*            <h1 className=' mt-5'>К нам приходят <span className='text-primary'>клиентами</span>, а уходят <span className='text-primary'>друзьями!</span></h1>*/}
 
-                  </div>
+          {/*        </div>*/}
 
-              </div>
-          </div>
+          {/*    </div>*/}
+          {/*</div>*/}
       </div>
   </Meta>
 };

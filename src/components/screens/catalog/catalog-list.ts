@@ -14,11 +14,11 @@ export const catalogList: IList[] = [
         title: 'Акустические гитары',
         link: 'acoustic-guitar'
     },
-    // {
-    //     image: Ukulele,
-    //     title: 'Укулеле',
-    //     link: 'ukulele'
-    // },
+    {
+        image: Ukulele,
+        title: 'Укулеле',
+        link: 'ukulele'
+    },
     {
         image: Classic,
         title: 'Классические гитары',

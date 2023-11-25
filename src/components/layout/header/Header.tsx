@@ -10,12 +10,15 @@ import { useAuth } from '@/src/hooks/useAuth';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import Search from '@/src/components/layout/header/search/Search';
+import {catalogList} from "@/src/components/screens/catalog/catalog-list";
+import {IList} from "@/src/components/screens/catalog/catalog-list.interface";
 
 const DynamicAuth = dynamic(() => import('./auth/AuthItems'), { ssr: false });
 
 const Header: FC = () => {
   const [openMenu, setOpenMenu] = useState(false)
   const [openBasket, setOpenBasket] = useState(false);
+  const [onMouse, setOnMouse] = useState(false)
   const { user } = useAuth();
 
 
@@ -31,6 +34,13 @@ const Header: FC = () => {
     {
       name: 'Каталог',
       link: '/catalog',
+      items: <div className={cn(styles.wrapper)}>
+        {catalogList.map((item:IList) => (
+          <div className={cn(styles.catalogList,router.pathname === item.link && styles.active, 'animate-scaleIn')} key={item.title}>
+            <Link href={`/catalog/${item.link}`}>{item.title}</Link>
+          </div>
+        ))}
+      </div>
     },
     {
       name: 'Доставка',
@@ -48,7 +58,7 @@ const Header: FC = () => {
           <ul>
             <div className={cn(styles.links)}>
               {links.map((link, idx) => (
-                  <li key={idx} className={cn(link.icon ? styles.logo : null, router.pathname === link.link && styles.active, openMenu && !link.icon  && styles.linksOpen )}>
+                  <li onMouseEnter={() => setOnMouse(link.name === 'Каталог' && true)} key={idx} className={cn(link.icon ? styles.logo : null, router.pathname === link.link && styles.active, openMenu && !link.icon  && styles.linksOpen, styles.link )}>
                     <Link href={link.link}>
                       {link.icon !== undefined ? (
                           <Image src={link.icon} alt={link.name} className={styles.logo} />
@@ -56,6 +66,11 @@ const Header: FC = () => {
                           link.name
                       )}
                     </Link>
+                    {onMouse &&
+                      <div onMouseLeave={() => setOnMouse(false)}>
+                        {link.items}
+                      </div>
+                    }
                   </li>
               ))}
             </div>

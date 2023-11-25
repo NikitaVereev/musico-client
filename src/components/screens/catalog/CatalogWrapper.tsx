@@ -14,15 +14,7 @@ import Pagination from "@/src/components/screens/catalog/pagination/Pagination";
 import Meta from "@/src/components/utils/meta/Meta";
 
 const CatalogWrapper: FC<{  heading?: string; subType: string, featuresProductType: string }> = ({  heading, subType, featuresProductType }) => {
-
-
-    const { isFilterUpdated, queryParams, updateQueryParams } = useFilters();
-
-
-
-
-
-
+    const { queryParams, updateQueryParams } = useFilters();
     const { data, isFetching, isLoading, isError } = useQuery(['product explorer', queryParams, heading], () =>
             ProductServices.getOnlyCategories(subType, queryParams.page, queryParams.searchTerm, queryParams.sort),
         {
@@ -30,19 +22,12 @@ const CatalogWrapper: FC<{  heading?: string; subType: string, featuresProductTy
             enabled: true,
         }
     );
-
-
-
-
     if (isError)
         return (
             <Banner className="wrapper">
                 <h1>Проблемы на серверной стороне, мы уже разбираемся с этим</h1>
             </Banner>
         );
-
-
-
     return (
         <Meta title={subType} description='Музыкальные инструменты для всех, покупка музыкальных инструментов'>
         <div className="wrapper mt-32">

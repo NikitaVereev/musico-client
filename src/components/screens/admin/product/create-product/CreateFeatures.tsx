@@ -3,6 +3,7 @@ import FieldsAcoustic from "@/src/components/screens/admin/product/create-produc
 import FieldsClassic from "@/src/components/screens/admin/product/create-product/sub-type-fields/FieldsClassic";
 import FieldsElectric from "@/src/components/screens/admin/product/create-product/sub-type-fields/FieldsElectric";
 import FieldsKlava from "@/src/components/screens/admin/product/create-product/sub-type-fields/FieldsKlava";
+import FieldsUkulele from "@/src/components/screens/admin/product/create-product/sub-type-fields/FieldsUkulele";
 
 
 const CreateFeatures: FC = () => {
@@ -14,7 +15,11 @@ const CreateFeatures: FC = () => {
 
 
                 {
-                    subType === 'Клавишные' ? <FieldsKlava productId={productId} /> : subType === 'Акустическая' ? <FieldsAcoustic productId={productId} /> : subType === 'Классическая' ? <FieldsClassic productId={productId} /> : subType === 'Электрогитара' && <FieldsElectric productId={productId} />
+                    subType === 'Клавишные' ? <FieldsKlava productId={productId} /> :
+                      subType === 'Акустическая' ? <FieldsAcoustic productId={productId} /> :
+                        subType === 'Классическая' ? <FieldsClassic productId={productId} /> :
+                          subType === 'Электрогитара' ? <FieldsElectric productId={productId} /> :
+                            subType === 'Укулеле' && <FieldsUkulele productId={productId} />
                 }
 
         </>

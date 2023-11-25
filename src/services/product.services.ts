@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 export const ProductServices = {
     async getAllProducts(search?: string) {
         try {
-            const response = await instance.get(`/product/search?query=${search}`);
+            const response = await instance.get(`/product/search?page=0&query=${search}`);
             return response.data;
         } catch (e) {
             throw new Error('Не удалось получить данные о продуктах');

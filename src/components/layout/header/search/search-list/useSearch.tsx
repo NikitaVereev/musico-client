@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import {ChangeEvent, useState} from "react";
 import { useDebounce } from "@/src/hooks/useDebounce";
 import { useQuery } from "@tanstack/react-query";
 import { ProductServices } from "@/src/services/product.services";
