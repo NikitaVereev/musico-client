@@ -10,14 +10,16 @@ const SearchPageInfo: FC<{ products: IProduct[];  }> = ({ products }) => {
   return (
     <div className={cn(styles.list, 'wrapper')} >
       <h1>Поиск</h1>
-      {Boolean(products) && (
-        state ? state.map((product: any) => (
-          <section className={styles.wrapper} key={product.id}>
-            <CatalogItem key={product.id} product={product} />
+      <div className={styles.wrapper}>
+        {Boolean(products) && (
+          state ? state.map((product: any) => (
+            <section key={product.id}>
+              <CatalogItem key={product.id} product={product} />
 
-          </section>
-        )) : []
-      )}
+            </section>
+          )) : []
+        )}
+      </div>
     </div>
   );
 };

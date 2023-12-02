@@ -39,7 +39,7 @@ const CreateProduct: FC = () => {
         {value: "Клавишные", label: "Клавишные"},
         { value: 'Акустическая', label: 'Акустическая гитара' },
         { value: 'Классическая', label: 'Классическая гитара' },
-
+      {value: 'Укулеле', label: 'Укулеле'}
     ]
 
     const { user } = useAuth();

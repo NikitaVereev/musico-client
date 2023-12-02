@@ -3,7 +3,7 @@ import styles from './RateProduct.module.scss'
 import {useAuth} from "@/src/hooks/useAuth";
 import {useRateProduct} from "@/src/components/screens/product/rating/useRateProduct";
 import StarRating from 'react-star-rating-component'
-import button from "@/src/components/ui/button/Button";
+import Button from "@/src/components/ui/button/Button";
 import Field from "@/src/components/ui/form-elements/Field";
 import {Controller, SubmitHandler, useForm} from "react-hook-form";
 import UploadField from "@/src/components/ui/form-elements/upload-field/UploadField";
@@ -83,12 +83,12 @@ const RateProduct: FC<IRateProduct> = ({productId, setIsPopup}) => {
                                 />
                             </form>}
 
-                                <button>Отправить</button>
-                                <button onClick={() => {
+                                <Button>Отправить</Button>
+                                <Button onClick={() => {
                                     onSubmitCreate
                                     setIsOpen(true)
 
-                                }}>ДОбавить изображения</button>
+                                }}>Добавить изображения</Button>
                             </form>
                             </>
                         }
