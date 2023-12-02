@@ -22,9 +22,9 @@ export const ProductServices = {
             console.log(e)
         }
     },
-    async getSearchedProduct(data: IProduct[]){
+    async getSearchedProduct(){
         try{
-            const response = await instance.get(`/product/search/${data}`)
+            const response = await instance.get(`/product`)
             return response.data
         }catch(e){
             console.log(e)

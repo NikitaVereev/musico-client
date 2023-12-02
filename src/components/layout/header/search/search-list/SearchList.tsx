@@ -4,7 +4,7 @@ import Link from "next/link";
 import { IProduct } from "@/src/interfaces/product.interface";
 
 const SearchList: FC<{ products: IProduct[]; setSearchTerm: Dispatch<SetStateAction<string>> }> = ({ products, setSearchTerm }) => {
-  console.log(products)
+
   return (
       <div className={styles.list}>
           {Boolean(products) && (

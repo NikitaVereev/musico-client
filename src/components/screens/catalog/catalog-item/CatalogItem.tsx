@@ -11,6 +11,8 @@ import {useAuth} from "@/src/hooks/useAuth";
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import {OrderService} from "@/src/services/order.service";
 import {MaterialIcon} from "@/src/components/ui/MaterialIcon";
+import {toastr} from "react-redux-toastr";
+import {toastError} from "@/src/components/utils/toast-error";
 
 const CatalogWrapper: FC<{ product: IProduct }> = ({product}) => {
 
@@ -45,7 +47,7 @@ const CatalogWrapper: FC<{ product: IProduct }> = ({product}) => {
 
 
     const handleClick = () => {
-        if(!user) return alert('Зарегистрируйтесь, ради бога')
+        if(!user) return toastr.error('Зарегистрируйтесь', 'чтобы совершить покупки')
         //@ts-ignore
         mutate({email: user.email, idProduct: product.id})
 

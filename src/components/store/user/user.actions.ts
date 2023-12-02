@@ -26,7 +26,7 @@ export const login = createAsyncThunk<IAuthResponse, IEmailPassword>(
         try {
 
             const response = await AuthService.login(email, password)
-            toastr.success('Login', 'Completed successfully')
+            toastr.success('Авторизация', 'вы успешно вошли в аккаунт')
             console.log(response.data)
             return response.data
 

@@ -17,6 +17,8 @@ import {useFilters} from "@/src/components/screens/catalog/useFilters";
 import Skeleton from "react-loading-skeleton";
 import ProductImage from "@/src/components/screens/product/product-image/ProductImage";
 import Meta from "@/src/components/utils/meta/Meta";
+import {toastError} from "@/src/components/utils/toast-error";
+import {toastr} from "react-redux-toastr";
 
 const DynamicRating = dynamic(() => import('./rating/RateProduct'), {
     ssr: false
@@ -55,7 +57,7 @@ const Product: FC<ProductPageProps> = ({ product }) => {
 
 
     const handleClick = () => {
-        if(!user) return alert('Зарегистрируйтесь, ради бога')
+        if(!user) return toastr.error('Зарегистрируйтесь', 'чтобы совершить покупки')
         //@ts-ignore
         mutate({email: user.email, idProduct: product.id})
 

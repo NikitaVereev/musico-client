@@ -1,4 +1,4 @@
-import {FC, useEffect} from 'react';
+import {FC, useEffect, useState} from 'react';
 import { useSearch } from "@/src/components/layout/header/search/search-list/useSearch";
 import styles from './Search.module.scss'
 import SearchField from "@/src/components/ui/search-field/SearchField";
@@ -11,12 +11,19 @@ const Search: FC = () => {
   const { isSuccess, data, handleSearch, searchTerm, setSearchTerm } = useSearch();
   const dispatch = useDispatch()
   const router = useRouter();
+
+  const [product, setProduct] = useState(data)
+
+  useEffect(() => {
+    setProduct(data)
+  }, [searchTerm])
   const handleKeyPress = (e: any) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       dispatch(searchSlice.actions.setData(data));
       router.push('/search-page');
     }
+    setProduct([])
   };
 
 
@@ -25,7 +32,7 @@ const Search: FC = () => {
   return (
     <div className={styles.wrapper}>
       <SearchField searchTerm={searchTerm} handleKeyPress={handleKeyPress} handleSearch={handleSearch} />
-      {isSuccess && <SearchList setSearchTerm={setSearchTerm} products={data || []} />}
+      {isSuccess && <SearchList setSearchTerm={setSearchTerm} products={product || []} />}
     </div>
   );
 };

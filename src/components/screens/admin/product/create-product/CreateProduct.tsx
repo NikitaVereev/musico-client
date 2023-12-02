@@ -63,6 +63,23 @@ const CreateProduct: FC = () => {
                 style={{ padding: 30 }}
                 className={cn('marginTop, animate-scaleIn')}
             >
+              <Controller
+                control={control}
+                name="subType"
+                render={({ field, fieldState: { error } }) => (
+                  <DynamicSelectType
+                    field={field}
+                    options={options || {}}
+                    isLoading={false}
+
+                    placeholder="Тип"
+                    error={error}
+                  />
+                )}
+                rules={{
+                  required: 'Пожалуйста, введите хоть один жанр!',
+                }}
+              />
             <div >
                 <Field
                     {...register('title', {
@@ -101,30 +118,7 @@ const CreateProduct: FC = () => {
 
                 />
             </div>
-            <div>
-                {/*<Field*/}
-                {/*    placeholder="Подтип"*/}
-                {/*    {...register('subType', )}*/}
-                {/*    name="subType"*/}
-                {/*/>*/}
-                <Controller
-                    control={control}
-                    name="subType"
-                    render={({ field, fieldState: { error } }) => (
-                        <DynamicSelectType
-                            field={field}
-                            options={options || {}}
-                            isLoading={false}
 
-                            placeholder="Тип"
-                            error={error}
-                        />
-                    )}
-                    rules={{
-                        required: 'Пожалуйста, введите хоть один жанр!',
-                    }}
-                />
-            </div>
             <div>
                 <Field
                     placeholder="Компания"

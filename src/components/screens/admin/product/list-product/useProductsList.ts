@@ -14,7 +14,7 @@ export const useProductsList = () => {
 
 
 
-    const {data: queryData, isLoading} = useQuery(['admin products list', debouncedSearch], () => ProductServices.getAllProducts(debouncedSearch), {
+    const {data: queryData, isLoading} = useQuery(['admin products list', debouncedSearch], () => ProductServices.getSearchedProduct(), {
         select: ( data ) =>
             data.map(
                 (

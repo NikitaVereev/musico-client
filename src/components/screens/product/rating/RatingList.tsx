@@ -5,14 +5,13 @@ import Image from "next/image";
 
 //@ts-ignore
 const RatingList: FC = ({data}) => {
-    console.log(data)
     return (
         <div>
             {/*//@ts-ignore*/}
             {data.data.map(item => (
                 <div key={item.id} className={styles.reviewsWrapper}>
                     <div className='flex items-center gap-3 '>
-                        <h2>Имя</h2>
+                        <h2>{item.user}</h2>
                         <div className={styles.rating}>
 
                             {(() => {

@@ -10,12 +10,12 @@ export const SORT_SELECT_DATA: ISelectItem<EnumProductSort>[] = [
         key: EnumProductSort.LOW_PRICE,
         label: 'По убыванию'
     },
-    {
-        key: EnumProductSort.NEWEST,
-        label: 'Новые'
-    },
-    {
-        key: EnumProductSort.POPULAR,
-        label: 'Популярные'
-    }
+    // {
+    //     key: EnumProductSort.NEWEST,
+    //     label: 'Новые'
+    // },
+    // {
+    //     key: EnumProductSort.POPULAR,
+    //     label: 'Популярные'
+    // }
 ]
